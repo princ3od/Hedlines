@@ -64,7 +64,7 @@ class AppColors {
     return AppColors(
       header: colorBlack,
       primary: headerCalendarColor,
-      background: backgroundPrimaryColor,
+      background: Colors.white,
       accent: const Color(0xFF17c063),
       disabled: Colors.black12,
       error: const Color(0xFFFF7466),
