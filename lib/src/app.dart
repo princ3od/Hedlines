@@ -85,7 +85,13 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           },
           home: GetBuilder<AppController>(
             builder: (appController) {
-              if (Enum.compareByIndex(AppState.loaded, appController.appState.value) == 0) {
+              // if (Enum.compareByIndex(AppState.loaded, appController.appState.value) == 0) {
+              //   return ScaffoldWrapper(
+              //     child: HomeScreen(),
+              //   );
+              // }
+              // return ScaffoldWrapper(child: SplashScreen());
+              if (AppState.loaded == appController.appState.value) {
                 return ScaffoldWrapper(
                   child: HomeScreen(),
                 );
