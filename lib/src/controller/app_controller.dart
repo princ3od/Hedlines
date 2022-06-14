@@ -9,7 +9,7 @@ class AppController extends GetxController {
 
   Future<void> _setUpData(BuildContext context) async {
     await Application().initialAppLication(context);
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(seconds: 3));
     appState.value = AppState.loaded;
     update();
   }
