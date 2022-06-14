@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hedlines/src/constants/slide_mode.dart';
+import 'package:hedlines/src/ui/common/app_bars/app_bar_brighness_dark.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_confirm_cancel.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_wrapper.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
@@ -62,9 +63,10 @@ class _ScaffoldWrapperState extends State<ScaffoldWrapper> {
             resizeToAvoidBottomInset: false,
             extendBodyBehindAppBar: true,
             extendBody: true,
+            appBar: appBarBrighnessDark(brightness: Brightness.light),
             body: _getBody,
           )
-        : Container();
+        : _getBody;
   }
 
   Widget get _getBody {

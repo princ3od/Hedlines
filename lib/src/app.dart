@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:hedlines/src/constants/app_state.dart';
 import 'package:hedlines/src/routes/app_navigator_observer.dart';
 import 'package:hedlines/src/routes/app_pages.dart';
@@ -30,6 +29,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
     super.initState();
     WidgetsBinding.instance!.addObserver(this);
     DeviceOrientationHelper().setPortrait();
+    appController.setUpData(context);
   }
 
   @override
@@ -85,12 +85,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           },
           home: GetBuilder<AppController>(
             builder: (appController) {
-              // if (Enum.compareByIndex(AppState.loaded, appController.appState.value) == 0) {
-              //   return ScaffoldWrapper(
-              //     child: HomeScreen(),
-              //   );
-              // }
-              // return ScaffoldWrapper(child: SplashScreen());
               if (AppState.loaded == appController.appState.value) {
                 return ScaffoldWrapper(
                   child: HomeScreen(),

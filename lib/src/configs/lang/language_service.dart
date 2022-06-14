@@ -5,22 +5,22 @@ import 'package:i18n_extension/i18n_widget.dart';
 
 class LanguageService {
   ///Default Language
-  static final locale = Locale('vi', 'VN');
+  static const locale = Locale('vi', 'VN');
 
   ///List Language support in Application
   static List<Locale> supportLanguage = [
-    Locale("en"),
-    Locale("vi"),
-    Locale("da"),
-    Locale("de"),
-    Locale("el"),
-    Locale("fr"),
-    Locale("id"),
-    Locale("ja"),
-    Locale("ko"),
-    Locale("nl"),
-    Locale("zh"),
-    Locale("ru"),
+    const Locale("en"),
+    const Locale("vi"),
+    const Locale("da"),
+    const Locale("de"),
+    const Locale("el"),
+    const Locale("fr"),
+    const Locale("id"),
+    const Locale("ja"),
+    const Locale("ko"),
+    const Locale("nl"),
+    const Locale("zh"),
+    const Locale("ru"),
   ];
 
   switchLanguage() async {
@@ -31,18 +31,18 @@ class LanguageService {
   changeLanguage({bool isEnglish = false}) async {
     await UserLocal().saveLocale(isEnglish ? "en" : "vi");
     if (isEnglish) {
-      I18n.of(AppNavigator.context!).locale = Locale("en", "US");
+      I18n.of(AppNavigator.context!).locale = const Locale("en", "US");
     } else {
-      I18n.of(AppNavigator.context!).locale = Locale("vi", "VN");
+      I18n.of(AppNavigator.context!).locale = const Locale("vi", "VN");
     }
   }
 
   initialLanguage(context) {
     String localeStr = UserLocal().getLocale();
     if (localeStr == "vi") {
-      I18n.of(context).locale = Locale("vi", "VN");
+      I18n.of(context).locale = const Locale("vi", "VN");
     } else {
-      I18n.of(context).locale = Locale("en", "US");
+      I18n.of(context).locale = const Locale("en", "US");
     }
   }
 

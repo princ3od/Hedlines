@@ -168,11 +168,3 @@ final TextStyle text13w400cRed = TextStyle(
   fontWeight: FontWeight.w400,
   color: Color(0xffB31D1D),
 );
-Map<int, int> mapMyOfferIdToTabNumber = {
-  2: 1,
-  3: 1,
-  4: 2,
-  -2: 4,
-  -3: 5,
-  6: 6,
-};

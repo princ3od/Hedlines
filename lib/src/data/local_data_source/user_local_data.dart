@@ -62,23 +62,6 @@ class UserLocal {
     await box.put(StorageKey.LOCALE, locale);
   }
 
-  // User
-  String getAccessToken() {
-    return box.get(StorageKey.TOKEN) ?? '';
-  }
-
-  String getBackupToken() {
-    return box.get(StorageKey.BACKUP_TOKEN) ?? '';
-  }
-
-  bool getIsExpert() {
-    return box.get(StorageKey.IS_EXPERT) ?? false;
-  }
-
-  bool getIsVerifyPhone() {
-    return box.get(StorageKey.IS_VERIFY_PHONE) ?? false;
-  }
-
   AccountModel getUser() {
     var _accountLocal = box.get(StorageKey.ACCOUNT);
     if (_accountLocal == null) {
@@ -90,39 +73,7 @@ class UserLocal {
     return AccountModel.fromJson(_accountLocal);
   }
 
-  void saveAccessToken(String token) async {
-    box.put(StorageKey.TOKEN, token);
-  }
-
-  void saveBackupToken(String token) async {
-    box.put(StorageKey.BACKUP_TOKEN, token);
-  }
-
-  void saveIsExpert(bool value) async {
-    box.put(StorageKey.IS_EXPERT, value);
-  }
-
-  void clearAccessToken() async {
-    box.delete(StorageKey.TOKEN);
-  }
-
-  void clearBackupToken() async {
-    box.delete(StorageKey.BACKUP_TOKEN);
-  }
-
-  void clearUser() async {
-    box.delete(StorageKey.ACCOUNT);
-  }
-
   void saveAccount(AccountModel _accountModel) {
     box.put(StorageKey.ACCOUNT, _accountModel.toJson());
-  }
-
-  bool getShouldShowTutorial() {
-    return box.get(StorageKey.SHOULD_SHOWN_TUTORIAL) ?? true;
-  }
-
-  void showedTutorial() {
-    box.put(StorageKey.SHOULD_SHOWN_TUTORIAL, false);
   }
 }

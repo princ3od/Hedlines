@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:hedlines/src/constants/constants.dart';
 import 'package:hedlines/src/routes/app_routes.dart';
@@ -18,13 +17,11 @@ class AppMaterialPageRoute<T> extends MaterialPageRoute<T> {
 
   @protected
   bool get hasScopedWillPopCallback {
-    return [Routes.ROOT]
-        .contains(AppNavigator.currentRoute());
+    return [Routes.ROOT].contains(AppNavigator.currentRoute());
   }
 
   @override
-  Widget buildTransitions(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation, Widget child) {
+  Widget buildTransitions(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
     final PageTransitionsTheme theme = Theme.of(context).pageTransitionsTheme;
     return theme.buildTransitions<T>(
       this,
