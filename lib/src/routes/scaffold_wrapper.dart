@@ -1,19 +1,15 @@
 import 'dart:io';
-import 'package:askany/src/bloc/timer/timer_bloc.dart';
-import 'package:askany/src/bloc/video_call/video_call_bloc.dart';
-import 'package:askany/src/configs/lang/localization.dart';
-import 'package:askany/src/models/slide_mode.dart';
-import 'package:askany/src/routes/app_navigator_observer.dart';
-import 'package:askany/src/routes/app_pages.dart';
-import 'package:askany/src/routes/app_routes.dart';
-import 'package:askany/src/ui/common/widgets/appbars/appbar_none.dart';
-import 'package:askany/src/ui/common/widgets/call/calling_bar.dart';
-import 'package:askany/src/ui/common/widgets/dialogs/dialog_confirm_cancel.dart';
-import 'package:askany/src/ui/common/widgets/dialogs/dialog_wrapper.dart';
-import 'package:askany/src/ui/style/style.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:askany/src/helpers/sizer_custom/sizer.dart';
+import 'package:hedlines/src/constants/slide_mode.dart';
+import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
+import 'package:hedlines/src/ui/common/dialogs/dialog_confirm_cancel.dart';
+import 'package:hedlines/src/ui/common/dialogs/dialog_wrapper.dart';
+import 'package:hedlines/src/ui/styles/app_styles.dart';
+
+import 'app_navigator_observer.dart';
+import 'app_pages.dart';
+import 'app_routes.dart';
 
 class ScaffoldWrapper extends StatefulWidget {
   final Widget child;
@@ -41,10 +37,10 @@ class _ScaffoldWrapperState extends State<ScaffoldWrapper> {
           await dialogAnimationWrapper(
             slideFrom: SlideMode.bot,
             child: DialogConfirmCancel(
-              bodyBefore: '${Strings.sureLogout.i18n}',
+              bodyBefore: '{Strings.sureLogout.i18n}',
               bodyColor: colorGray1,
-              cancelText: '${Strings.cancel.i18n.toUpperCase()}',
-              confirmText: '${Strings.ok.i18n.toUpperCase()}',
+              cancelText: '{Strings.cancel.i18n.toUpperCase()}',
+              confirmText: '{Strings.ok.i18n.toUpperCase()}',
               onConfirmed: () {
                 AppNavigator.pop();
                 exit(0);
@@ -55,50 +51,7 @@ class _ScaffoldWrapperState extends State<ScaffoldWrapper> {
           return false;
         }
         String descriptionDialog() {
-          return Strings.descriptionCancelBookingExpert.i18n;
-        }
-
-        if (AppNavigatorObserver.currentRouteName == Routes.ORDER_EXPERT) {
-          if (AppNavigator.canPop) {
-            await dialogAnimationWrapper(
-              borderRadius: 10.sp,
-              slideFrom: SlideMode.bot,
-              child: DialogConfirmCancel(
-                bodyBefore: descriptionDialog(),
-                confirmText: '${Strings.confirm.i18n.toUpperCase()}',
-                cancelText: '${Strings.cancel.i18n.toUpperCase()}',
-                onConfirmed: () async {
-                  AppNavigator.pop();
-                  AppNavigator.pop();
-                },
-              ),
-            );
-
-            return false;
-          }
-        }
-
-        if (AppNavigatorObserver.currentRouteName == Routes.CREATE_REQUEST ||
-            AppNavigatorObserver.currentRouteName == Routes.ADD_SKILL ||
-            AppNavigatorObserver.currentRouteName == Routes.ADD_EXPERIENCE ||
-            AppNavigatorObserver.currentRouteName == Routes.INFO_EXPERT ||
-            AppNavigatorObserver.currentRouteName == Routes.EXPERT_EDIT_PRICE) {
-          if (AppNavigator.canPop) {
-            await dialogAnimationWrapper(
-              child: DialogConfirmCancel(
-                bodyBefore: '${Strings.areYouSureToExitScreen.i18n}',
-                bodyColor: colorGray1,
-                cancelText: '${Strings.cancel.i18n.toUpperCase()}',
-                confirmText: '${Strings.ok.i18n.toUpperCase()}',
-                onConfirmed: () {
-                  AppNavigator.pop();
-                  AppNavigator.pop();
-                },
-              ),
-            );
-
-            return false;
-          }
+          return "Strings.descriptionCancelBookingExpert.i18n";
         }
 
         return true;
@@ -107,7 +60,7 @@ class _ScaffoldWrapperState extends State<ScaffoldWrapper> {
     );
   }
 
-  Widget get _child {
+  Widget? get _child {
     return AppNavigator.currentRoute() == Routes.ROOT
         ? Scaffold(
             resizeToAvoidBottomInset: false,
@@ -115,31 +68,7 @@ class _ScaffoldWrapperState extends State<ScaffoldWrapper> {
             extendBody: true,
             body: _getBody,
           )
-        : BlocBuilder<VideoCallBloc, VideoCallState>(
-            builder: (context, videoCall) {
-              return BlocBuilder<TimerBloc, TimerState>(
-                builder: (context, state) {
-                  return videoCall is VideoCalling && AppNavigator.currentRoute() != Routes.VIDEO_CALL
-                      ? Scaffold(
-                          appBar: appBarBrighnessDark(brightness: Brightness.light),
-                          body: Column(
-                            children: [
-                              Visibility(
-                                  visible: AppNavigator.currentRoute() != Routes.ROOT && AppNavigator.currentRoute() != Routes.VIDEO_CALL,
-                                  child: CallingBar(
-                                    state: state,
-                                  )),
-                              Expanded(
-                                child: _getBody,
-                              ),
-                            ],
-                          ),
-                        )
-                      : _getBody;
-                },
-              );
-            },
-          );
+        : Container();
   }
 
   Widget get _getBody {

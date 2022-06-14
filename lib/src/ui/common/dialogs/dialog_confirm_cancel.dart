@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
+import 'package:hedlines/src/routes/app_pages.dart';
+import 'package:hedlines/src/ui/common/buttons/touchable_opacity.dart';
+import 'package:hedlines/src/ui/styles/app_styles.dart';
 
 class DialogConfirmCancel extends StatelessWidget {
   const DialogConfirmCancel(
@@ -119,7 +122,7 @@ class DialogConfirmCancel extends StatelessWidget {
                 TouchableOpacity(
                   onTap: onConfirmed,
                   child: Text(
-                    confirmText ?? Strings.confirm.i18n.toUpperCase(),
+                    confirmText ?? "Confirm".toUpperCase(),
                     style: TextStyle(
                       color: colorGreen2,
                       fontSize: 13.sp,

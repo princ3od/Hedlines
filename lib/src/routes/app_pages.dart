@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hedlines/src/routes/scaffold_wrapper.dart';
 
 import '../app.dart';
 import 'app_navigator_observer.dart';

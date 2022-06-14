@@ -4,11 +4,12 @@
 */
 library sizer;
 
-import 'package:askany/src/constants/constants.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:io';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:math' as math;
+
+import 'package:hedlines/src/constants/constants.dart';
 
 part 'extension.dart';
 

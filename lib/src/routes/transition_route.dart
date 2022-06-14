@@ -1,7 +1,9 @@
-import 'package:askany/src/constants/constants.dart';
-import 'package:askany/src/routes/app_pages.dart';
-import 'package:askany/src/routes/app_routes.dart';
+
 import 'package:flutter/material.dart';
+import 'package:hedlines/src/constants/constants.dart';
+import 'package:hedlines/src/routes/app_routes.dart';
+
+import 'app_pages.dart';
 
 class AppMaterialPageRoute<T> extends MaterialPageRoute<T> {
   AppMaterialPageRoute({
@@ -16,7 +18,7 @@ class AppMaterialPageRoute<T> extends MaterialPageRoute<T> {
 
   @protected
   bool get hasScopedWillPopCallback {
-    return [Routes.ROOT, Routes.EDIT_PHOTO, Routes.EDIT_PHOTO_MESSAGE]
+    return [Routes.ROOT]
         .contains(AppNavigator.currentRoute());
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'helper/sizer_custom/sizer.dart';
 import 'helper/utils/device_orientation_helper.dart';
@@ -40,10 +41,10 @@ class _AppState extends State<App> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Sizer(
       builder: (context, orientation, deviceType) {
-        return MaterialApp(
+        return GetMaterialApp(
           navigatorKey: AppNavigator.navigatorKey,
           debugShowCheckedModeBanner: false,
-          title: 'Askany',
+          title: 'Hedlines',
           locale: LanguageService.locale,
           supportedLocales: LanguageService.supportLanguage,
           localizationsDelegates: [
