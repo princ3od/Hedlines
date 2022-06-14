@@ -38,7 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.5
   hive: ^2.2.2
-  i18n_extension: ^5.0.0
+  i18n_extension: ^4.2.0
 
 dev_dependencies:
   flutter_test:

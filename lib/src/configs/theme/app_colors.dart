@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
 
-var colorBlack = Color(0xFF121212);
-var colorPrimaryBlack = Color(0xFF14171A);
-var colorDarkGrey = Color(0xFF657786);
-var colorPrimary = Color(0xFF1DA1F2);
-var colorTitle = Color(0xFF2C3D50);
+var colorBlack = const Color(0xFF121212);
+var colorPrimaryBlack = const Color(0xFF14171A);
+var colorDarkGrey = const Color(0xFF657786);
+var colorPrimary = const Color(0xFF1DA1F2);
+var colorTitle = const Color(0xFF2C3D50);
 
 var colorHigh = Colors.redAccent;
 var colorMedium = Colors.amber.shade700;
 var colorLow = colorPrimary;
 var colorCompleted = Colors.green;
 var colorFailed = colorDarkGrey;
-var colorActive = Color(0xFF00D72F);
-var colorGreenLight = Color(0xFF009E60);
-var colorAttendance = Color(0xFF0CCF4C);
+var colorActive = const Color(0xFF00D72F);
+var colorGreenLight = const Color(0xFF009E60);
+var colorAttendance = const Color(0xFF0CCF4C);
 
-var colorBlueGrey = Color(0xFF455A64);
-var colorBlueGreyIos = Color(0xFF1C1F2E);
+var colorBlueGrey = const Color(0xFF455A64);
+var colorBlueGreyIos = const Color(0xFF1C1F2E);
 
-var colorGreyWhite = Color(0x4dE3E3E3);
-var colorGreywhite2 = Color(0xFFE3E3E3);
+var colorGreyWhite = const Color(0x4dE3E3E3);
+var colorGreywhite2 = const Color(0xFFE3E3E3);
 
-var colorwhiteborder = Color(0xFF6E6D7A);
+var colorwhiteborder = const Color(0xFF6E6D7A);
 
 Color mC = Colors.grey.shade100;
 Color mCL = Colors.white;
@@ -63,11 +63,11 @@ class AppColors {
       header: colorBlack,
       primary: headerCalendarColor,
       background: Colors.white,
-      accent: Color(0xFF17c063),
+      accent: const Color(0xFF17c063),
       disabled: Colors.black12,
-      error: Color(0xFFFF7466),
+      error: const Color(0xFFFF7466),
       divider: Colors.black26,
-      button: Color(0xFF657786),
+      button: const Color(0xFF657786),
       contentText1: colorBlack,
       contentText2: colorPrimaryBlack,
     );
@@ -76,11 +76,11 @@ class AppColors {
   factory AppColors.dark() {
     return AppColors(
       header: Colors.white,
-      primary: Color(0xFF1DA1F2),
-      background: Color(0xFF14171A),
-      accent: Color(0xFF17c063),
+      primary: const Color(0xFF1DA1F2),
+      background: const Color(0xFF14171A),
+      accent: const Color(0xFF17c063),
       disabled: Colors.white12,
-      error: Color(0xFFFF5544),
+      error: const Color(0xFFFF5544),
       divider: Colors.white24,
       button: Colors.white,
       contentText1: mCL,

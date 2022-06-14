@@ -1,7 +1,7 @@
-import 'package:askany/src/configs/themes/app_colors.dart';
-import 'package:askany/src/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hedlines/src/configs/theme/app_colors.dart';
+import 'package:hedlines/src/constants/constants.dart';
 
 class AppTheme {
   AppTheme({

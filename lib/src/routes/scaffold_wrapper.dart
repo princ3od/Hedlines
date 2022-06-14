@@ -1,13 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:hedlines/src/constants/slide_mode.dart';
-import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_confirm_cancel.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_wrapper.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
-
-import 'app_navigator_observer.dart';
 import 'app_pages.dart';
 import 'app_routes.dart';
 
@@ -60,7 +56,7 @@ class _ScaffoldWrapperState extends State<ScaffoldWrapper> {
     );
   }
 
-  Widget? get _child {
+  Widget get _child {
     return AppNavigator.currentRoute() == Routes.ROOT
         ? Scaffold(
             resizeToAvoidBottomInset: false,
