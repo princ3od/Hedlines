@@ -83,15 +83,16 @@ class _AppState extends State<App> with WidgetsBindingObserver {
               data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
             );
           },
-          home: GetBuilder<AppController>(builder: (appController) {
-            var relationByIndex = Enum.compareByIndex(AppState.loaded, appController.appState.value);
-            if (relationByIndex == 0) {
-              return ScaffoldWrapper(
-                child: HomeScreen(),
-              );
-            }
-            return ScaffoldWrapper(child: SplashScreen());
-          }),
+          home: GetBuilder<AppController>(
+            builder: (appController) {
+              if (Enum.compareByIndex(AppState.loaded, appController.appState.value) == 0) {
+                return ScaffoldWrapper(
+                  child: HomeScreen(),
+                );
+              }
+              return ScaffoldWrapper(child: SplashScreen());
+            },
+          ),
         );
       },
     );
