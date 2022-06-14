@@ -8,10 +8,10 @@ class AppController extends GetxController {
   var appState = AppState.loading.obs;
 
   Future<void> _setUpData(BuildContext context) async {
-    await Application().initialAppLication(context);
-    await Future.delayed(Duration(seconds: 3));
-    appState.value = AppState.loaded;
-    update();
+    // await Application().initialAppLication(context);
+    // await Future.delayed(Duration(seconds: 3));
+    // appState.value = AppState.loaded;
+    // update();
   }
 
   void setUpData(BuildContext context) {

@@ -33,6 +33,8 @@ Color mCC = Colors.green.withOpacity(0.65);
 Color fCD = Colors.grey.shade700;
 Color fCL = Colors.grey;
 
+var backgroundPrimaryColor = Color(0xFF0953AD);
+
 class AppColors {
   final Color primary;
   final Color background;
@@ -62,7 +64,7 @@ class AppColors {
     return AppColors(
       header: colorBlack,
       primary: headerCalendarColor,
-      background: Colors.white,
+      background: backgroundPrimaryColor,
       accent: const Color(0xFF17c063),
       disabled: Colors.black12,
       error: const Color(0xFFFF7466),
