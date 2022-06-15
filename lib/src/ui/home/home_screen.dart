@@ -99,45 +99,47 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildItemBottomBar({inActiveIcon, activeIcon, index, title, int quantity = 0}) {
-    int _currentIndex = homeController.index.value;
-    return Expanded(
-      child: TouchableOpacity(
-        onTap: () {
-          homeController.changeTab(index);
-        },
-        child: Container(
-          color: backgroundPrimaryColor,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Badge(
-                badgeContent: TextUI(
-                  '$quantity',
-                  color: colorGreen2,
-                  fontSize: 8.5.sp,
-                  fontWeight: FontWeight.w700,
-                ),
-                showBadge: quantity > 0,
-                badgeColor: colorGreen5,
-                child: Container(
-                  color: Colors.transparent,
-                  child: SvgPicture.asset(
-                    _currentIndex == index ? activeIcon : inActiveIcon,
-                    width: 21.sp,
-                    height: 21.sp,
+    return Obx(
+      () => Expanded(
+        child: TouchableOpacity(
+          onTap: () {
+            homeController.changeTab(index);
+          },
+          child: Container(
+            color: backgroundPrimaryColor,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Badge(
+                  badgeContent: TextUI(
+                    '$quantity',
+                    color: colorGreen2,
+                    fontSize: 8.5.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  showBadge: quantity > 0,
+                  badgeColor: colorGreen5,
+                  child: Container(
+                    color: Colors.transparent,
+                    child: SvgPicture.asset(
+                      homeController.index == index ? activeIcon : inActiveIcon,
+                      width: 21.sp,
+                      height: 21.sp,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 4.5.sp),
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 8.5.sp,
-                  color: _currentIndex == index ? colorGreen2 : colorGray1,
+                SizedBox(height: 4.5.sp),
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 9.sp,
+                    fontWeight: homeController.index == index ? FontWeight.w700 : FontWeight.w500,
+                    color: homeController.index == index ? colorWhite : colorWhite,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
