@@ -29,7 +29,6 @@ class TextUI extends StatelessWidget {
               fontWeight: fontWeight,
               color: color,
               height: height,
-              fontFamily: NUNITO_SANS,
             ),
             textAlign: textAlign)
         : Container(
@@ -41,7 +40,6 @@ class TextUI extends StatelessWidget {
                 fontWeight: fontWeight,
                 color: color,
                 height: height,
-                fontFamily: NUNITO_SANS,
               ),
               textAlign: textAlign,
             ),

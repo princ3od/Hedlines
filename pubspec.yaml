@@ -60,13 +60,13 @@ flutter:
     - assets/images/svg/
 
   fonts:
-    - family: Nunito
+    - family: SourceCodePro
       fonts:
-        - asset: assets/fonts/NunitoSans-Light.ttf
+        - asset: assets/fonts/SourceCodePro-Light.ttf
           weight: 300
-        - asset: assets/fonts/NunitoSans-Regular.ttf
+        - asset: assets/fonts/SourceCodePro-Regular.ttf
           weight: 400
-        - asset: assets/fonts/NunitoSans-SemiBold.ttf
+        - asset: assets/fonts/SourceCodePro-SemiBold.ttf
           weight: 600
-        - asset: assets/fonts/NunitoSans-Bold.ttf
+        - asset: assets/fonts/SourceCodePro-Bold.ttf
           weight: 700

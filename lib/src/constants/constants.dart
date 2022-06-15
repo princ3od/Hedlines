@@ -2,6 +2,8 @@ const INCH_TO_DP = 160;
 const DELAY_250_MS = 250;
 // Font Family
 const NUNITO_SANS = 'Nunito';
+const SOURCE_CODE_PRO = "SourceCodePro";
+const HEDLINES_FONT = SOURCE_CODE_PRO;
 
 //Animation Duration
 const ANIMATION_DURATION_500_MS = Duration(milliseconds: 500);

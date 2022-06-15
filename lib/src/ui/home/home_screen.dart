@@ -136,6 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontSize: 9.sp,
                     fontWeight: homeController.index == index ? FontWeight.w700 : FontWeight.w500,
                     color: homeController.index == index ? colorWhite : colorWhite,
+                    fontFamily: HEDLINES_FONT,
                   ),
                 ),
               ],

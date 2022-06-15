@@ -46,7 +46,7 @@ class AppTheme {
         bodyText2: TextStyle(color: appColors.contentText2),
       ),
       dividerColor: appColors.divider,
-      fontFamily: NUNITO_SANS,
+      fontFamily: HEDLINES_FONT,
     );
     return AppTheme(
       mode: mode,
