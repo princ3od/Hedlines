@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "549759952379",
+    "project_id": "hedlines-client",
+    "storage_bucket": "hedlines-client.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549759952379:android:b3eca55141651be747175e",
+        "android_client_info": {
+          "package_name": "com.example.hedlines"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549759952379-3hj565u2c25qef5j8bvmfct3of55haut.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC16PC9H9fwNHJpDqReD6GN_TLJA98Whrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "549759952379-3hj565u2c25qef5j8bvmfct3of55haut.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

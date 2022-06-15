@@ -6,6 +6,11 @@ class Strings {
   // Language
   static const String vietnamese = 'vietnamese';
   static const String english = 'english';
+
+  // Home
+  static const String home = 'home';
+  static const String search = 'search';
+  static const String profile = 'profile';
 }
 
 class MyI18n {

@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
       duration: ANIMATION_DURATION_1000_MS,
       child: Center(
         child: SvgPicture.asset(
-          AssetsHelper.assets_images_logo_hedlines_svg,
+          AssetsHelper.logo,
           color: logoBackgroundColor,
           height: 75.sp,
           width: 75.sp,
@@ -36,9 +36,6 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(ANIMATION_DURATION_500_MS, () {
       setState(() {
-        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-          systemNavigationBarColor: mCL,
-        ));
         var temp = backgroundPrimaryColor;
         backgroundColor = mCL;
         logoBackgroundColor = temp;

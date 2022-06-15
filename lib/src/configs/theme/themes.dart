@@ -11,10 +11,10 @@ class AppTheme {
   });
 
   factory AppTheme.light() {
-    final mode = ThemeMode.light;
+    const mode = ThemeMode.light;
     final appColors = AppColors.light();
     final themeData = ThemeData(
-      pageTransitionsTheme: PageTransitionsTheme(builders: {
+      pageTransitionsTheme: const PageTransitionsTheme(builders: {
         TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
         TargetPlatform.android: CupertinoPageTransitionsBuilder(),
       }),
@@ -32,7 +32,7 @@ class AppTheme {
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: appColors.background,
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarBrightness: Brightness.dark,
         ),
         iconTheme: IconThemeData(
@@ -56,7 +56,7 @@ class AppTheme {
   }
 
   factory AppTheme.dark() {
-    final mode = ThemeMode.dark;
+    const mode = ThemeMode.dark;
     final appColors = AppColors.dark();
     final themeData = ThemeData(
       brightness: Brightness.dark,
@@ -73,7 +73,7 @@ class AppTheme {
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: appColors.background,
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarBrightness: Brightness.dark,
         ),
         iconTheme: IconThemeData(

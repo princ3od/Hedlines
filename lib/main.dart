@@ -7,7 +7,7 @@ import 'package:i18n_extension/i18n_widget.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    systemNavigationBarColor: backgroundPrimaryColor,
+    systemNavigationBarColor: Colors.black,
   ));
 
   runApp(I18n(child: App()));
