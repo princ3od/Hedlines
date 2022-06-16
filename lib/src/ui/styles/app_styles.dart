@@ -172,21 +172,35 @@ final TextStyle text13w400cRed = TextStyle(
 );
 
 final TextStyle tex56w400Blue = TextStyle(
-  fontSize: 56.sp,
+  fontSize: 53.sp,
   fontWeight: FontWeight.w400,
   letterSpacing: 1,
   color: Color(0xff0953AD),
   fontStyle: FontStyle.normal,
 );
 final TextStyle tex20w400Blue = TextStyle(
-  fontSize: 20.sp,
+  fontSize: 17.sp,
   fontWeight: FontWeight.w400,
   color: Color(0xff0953AD),
   fontStyle: FontStyle.normal,
 );
 
 final TextStyle tex14w500Blue = TextStyle(
-  fontSize: 14.sp,
+  fontSize: 12.sp,
+  fontWeight: FontWeight.w500,
+  color: Color(0xff0953AD),
+  fontStyle: FontStyle.normal,
+);
+
+final TextStyle text24w700Blue = TextStyle(
+  fontSize: 21.sp,
+  fontWeight: FontWeight.w700,
+  color: Color(0xff0953AD),
+  fontStyle: FontStyle.normal,
+);
+
+final TextStyle text14w500Blue = TextStyle(
+  fontSize: 11.sp,
   fontWeight: FontWeight.w500,
   color: Color(0xff0953AD),
   fontStyle: FontStyle.normal,

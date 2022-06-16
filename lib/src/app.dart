@@ -9,6 +9,8 @@ import 'package:hedlines/src/routes/scaffold_wrapper.dart';
 import 'package:hedlines/src/ui/auth/auth_screen.dart';
 import 'package:hedlines/src/ui/home/home_screen.dart';
 import 'package:hedlines/src/ui/splash/splash_screen.dart';
+import 'package:hedlines/src/ui/topic/topic_screen.dart';
+import 'package:hedlines/src/ui/welcome/wellcome_screen.dart';
 import 'configs/lang/language_service.dart';
 import 'configs/theme/theme_service.dart';
 import 'configs/theme/themes.dart';
@@ -88,7 +90,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
             builder: (appController) {
               if (AppState.loaded == appController.appState.value) {
                 return ScaffoldWrapper(
-                  child: AuthenticationScreen(),
+                  child: TopicScreen(),
                 );
               }
               return ScaffoldWrapper(child: SplashScreen());

@@ -12,4 +12,13 @@ class AssetsHelper {
   static const String iconProfileActive = "assets/images/svg/profileActive_ico.svg";
   static const String iconSearch = "assets/images/svg/search_ico.svg";
   static const String iconSearchActive = "assets/images/svg/searchActive_ico.svg";
+
+  // Topic
+  static const String icongloble = "assets/images/svg/globe_ico.svg";
+  static const String iconairbalonhottravel = "assets/images/svg/air_baloon_hot_travel_ico.svg";
+  static const String iconemojismile = "assets/images/svg/emoji_smile_ico.svg";
+  static const String iconglobal = "assets/images/svg/global_ico.svg";
+  static const String iconmonitor = "assets/images/svg/monitor_ico.svg";
+  static const String icontrophy = "assets/images/svg/trophy_ico.svg";
+  static const String iconworkingbag = "assets/images/svg/working_bag_ico.svg";
 }

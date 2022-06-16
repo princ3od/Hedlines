@@ -54,14 +54,15 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
               height: 176.sp,
             ),
             InlineButton(
-                onTap: null,
-                onLongPress: null,
-                leading: SvgPicture.asset(
-                  AssetsHelper.logo,
-                  height: 25.sp,
-                  width: 25.sp,
-                ),
-                title: "Tiếp tục với Google")
+              onTap: null,
+              onLongPress: null,
+              leading: SvgPicture.asset(
+                AssetsHelper.icoGoogle,
+                height: 25.sp,
+                width: 25.sp,
+              ),
+              title: "Tiếp tục với Google",
+            )
           ],
         ),
       ),
