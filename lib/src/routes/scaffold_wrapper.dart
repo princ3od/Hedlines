@@ -58,15 +58,7 @@ class _ScaffoldWrapperState extends State<ScaffoldWrapper> {
   }
 
   Widget get _child {
-    return AppNavigator.currentRoute() == Routes.ROOT
-        ? Scaffold(
-            resizeToAvoidBottomInset: false,
-            extendBodyBehindAppBar: true,
-            extendBody: true,
-            appBar: appBarBrighnessDark(brightness: Brightness.light),
-            body: _getBody,
-          )
-        : _getBody;
+    return _getBody;
   }
 
   Widget get _getBody {

@@ -1,6 +1,9 @@
 class AssetsHelper {
   static const String logo = "assets/images/svg/logo_hedlines.svg";
 
+  //Auth
+  static const String icoGoogle = "assets/images/svg/google_ico.svg";
+
   //Home
 
   static const String iconHome = "assets/images/svg/home_ico.svg";

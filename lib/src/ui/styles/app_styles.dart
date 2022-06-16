@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
@@ -167,4 +169,25 @@ final TextStyle text13w400cRed = TextStyle(
   fontSize: 13.sp,
   fontWeight: FontWeight.w400,
   color: Color(0xffB31D1D),
+);
+
+final TextStyle tex64w400Blue = TextStyle(
+  fontSize: 64.sp,
+  fontWeight: FontWeight.w400,
+  letterSpacing: 1,
+  color: Color(0xff0953AD),
+  fontStyle: FontStyle.normal,
+);
+final TextStyle tex20w400Blue = TextStyle(
+  fontSize: 20.sp,
+  fontWeight: FontWeight.w400,
+  color: Color(0xff0953AD),
+  fontStyle: FontStyle.normal,
+);
+
+final TextStyle tex14w500Blue = TextStyle(
+  fontSize: 14.sp,
+  fontWeight: FontWeight.w500,
+  color: Color(0xff0953AD),
+  fontStyle: FontStyle.normal,
 );
