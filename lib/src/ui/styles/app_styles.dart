@@ -171,8 +171,8 @@ final TextStyle text13w400cRed = TextStyle(
   color: Color(0xffB31D1D),
 );
 
-final TextStyle tex64w400Blue = TextStyle(
-  fontSize: 64.sp,
+final TextStyle tex56w400Blue = TextStyle(
+  fontSize: 56.sp,
   fontWeight: FontWeight.w400,
   letterSpacing: 1,
   color: Color(0xff0953AD),

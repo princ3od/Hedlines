@@ -39,7 +39,9 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
             ),
             Text(
               "HEDLINE",
-              style: tex64w400Blue,
+              style: tex56w400Blue.copyWith(
+                letterSpacing: -6.sp,
+              ),
             ),
             SizedBox(
               height: 10.sp,
@@ -49,7 +51,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
               style: tex20w400Blue,
             ),
             SizedBox(
-              height: 212.sp,
+              height: 176.sp,
             ),
             InlineButton(
                 onTap: null,
