@@ -19,9 +19,9 @@ class _WellcomeScreenState extends State<WellcomeScreen> {
     Widget html = Html(
       data: """
 <div>
-    <span style="vertical-align: middle; color:blue;font-size:110%">Hãy xem những bài báo gợi ý cho bạn <br>tại</span>
+    <span style=" color:blue;font-size:110%">Hãy xem những bài báo gợi ý cho bạn <br>tại</span>
      <img src='asset:assets/images/svg/home_ico _light.svg' width='30'/>
-    <span style="vertical-align: middle; color:blue;font-size:110%">Trang chủ.</span>
+    <span style="color:blue;font-size:110%">Trang chủ.</span>
 </div>
 """,
     );
@@ -36,8 +36,16 @@ class _WellcomeScreenState extends State<WellcomeScreen> {
           child: Column(
             children: [
               SizedBox(
-                height: 62.sp,
+                height: 40.sp,
                 width: 261.sp,
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "Chào mừng <name>\nđến với Hedlines",
+                  style: text24w700Blue,
+                  textAlign: TextAlign.left,
+                ),
               ),
               SizedBox(
                 height: 14.sp,

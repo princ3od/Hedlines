@@ -55,7 +55,7 @@ class _TopicScreenState extends State<TopicScreen> {
           child: Column(
             children: [
               SizedBox(
-                height: 62.sp,
+                height: 40.sp,
                 width: 261.sp,
               ),
               Align(

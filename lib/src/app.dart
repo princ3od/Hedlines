@@ -90,7 +90,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
             builder: (appController) {
               if (AppState.loaded == appController.appState.value) {
                 return ScaffoldWrapper(
-                  child: TopicScreen(),
+                  child: WellcomeScreen(),
                 );
               }
               return ScaffoldWrapper(child: SplashScreen());
