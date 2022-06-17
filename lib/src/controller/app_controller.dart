@@ -7,6 +7,7 @@ import 'package:hedlines/src/constants/constants.dart';
 
 class AppController extends GetxController {
   var appState = AppState.loading.obs;
+  var isAuthenticated = false.obs;
 
   Future<void> _setUpData(BuildContext context) async {
     await Application().initialAppLication(context);

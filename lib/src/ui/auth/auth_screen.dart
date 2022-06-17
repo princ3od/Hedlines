@@ -1,4 +1,7 @@
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hedlines/src/constants/constants.dart';
+import 'package:hedlines/src/constants/sign_type.dart';
+import 'package:hedlines/src/controller/auth/auth_controller.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:hedlines/src/helper/utils/assets_helper.dart';
@@ -14,6 +17,7 @@ class AuthenticationScreen extends StatefulWidget {
 }
 
 class _AuthenticationScreenState extends State<AuthenticationScreen> {
+  AuthenticationController authController = AuthenticationController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,49 +25,56 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
       extendBodyBehindAppBar: true,
       appBar: appBarBrighnessDark(),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 77.sp,
-              width: double.infinity,
-            ),
-            SvgPicture.asset(
-              AssetsHelper.logo,
-              height: 75.sp,
-              width: 75.sp,
-            ),
-            SizedBox(
-              height: 10.sp,
-            ),
-            Text(
-              "HEDLINE",
-              style: tex56w400Blue.copyWith(
-                letterSpacing: -6.sp,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.sp),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 77.sp,
+                width: double.infinity,
               ),
-            ),
-            SizedBox(
-              height: 10.sp,
-            ),
-            Text(
-              "articles you want",
-              style: tex20w400Blue,
-            ),
-            SizedBox(
-              height: 176.sp,
-            ),
-            InlineButton(
-              onTap: null,
-              onLongPress: null,
-              leading: SvgPicture.asset(
-                AssetsHelper.icoGoogle,
-                height: 25.sp,
-                width: 25.sp,
+              SvgPicture.asset(
+                AssetsHelper.logo,
+                height: 75.sp,
+                width: 75.sp,
               ),
-              title: "Tiếp tục với Google",
-            )
-          ],
+              SizedBox(
+                height: 10.sp,
+              ),
+              Text(
+                "HEDLINE",
+                style: text56w400Blue.copyWith(
+                  letterSpacing: -6.sp,
+                ),
+              ),
+              SizedBox(
+                height: 10.sp,
+              ),
+              Text(
+                "articles you want",
+                style: text20w400Blue,
+              ),
+              SizedBox(
+                height: 176.sp,
+              ),
+              InlineButton(
+                mainAxisSize: MainAxisSize.min,
+                onTap: () {
+                  authController.onAuthentication(SignInType.google);
+                },
+                onLongPress: null,
+                horizontal: 16.sp,
+                leading: SvgPicture.asset(
+                  AssetsHelper.icoGoogle,
+                  height: 25.sp,
+                  width: 25.sp,
+                ),
+                title: "Tiếp tục với Google",
+              )
+            ],
+          ),
         ),
       ),
     );

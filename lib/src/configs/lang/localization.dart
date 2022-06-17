@@ -11,6 +11,11 @@ class Strings {
   static const String home = 'home';
   static const String search = 'search';
   static const String profile = 'profile';
+
+  //Dialog
+  static const String sureLogout = 'sureLogout';
+  static const String cancel = 'cancel';
+  static const String ok = 'ok';
 }
 
 class MyI18n {

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:hedlines/src/configs/lang/localization.dart';
 import 'package:hedlines/src/constants/slide_mode.dart';
 import 'package:hedlines/src/ui/common/app_bars/app_bar_brighness_dark.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_confirm_cancel.dart';
@@ -34,10 +35,10 @@ class _ScaffoldWrapperState extends State<ScaffoldWrapper> {
           await dialogAnimationWrapper(
             slideFrom: SlideMode.bot,
             child: DialogConfirmCancel(
-              bodyBefore: '{Strings.sureLogout.i18n}',
+              bodyBefore: Strings.sureLogout.i18n,
               bodyColor: colorGray1,
-              cancelText: '{Strings.cancel.i18n.toUpperCase()}',
-              confirmText: '{Strings.ok.i18n.toUpperCase()}',
+              cancelText: Strings.cancel.i18n.toUpperCase(),
+              confirmText: Strings.ok.i18n.toUpperCase(),
               onConfirmed: () {
                 AppNavigator.pop();
                 exit(0);
@@ -47,10 +48,6 @@ class _ScaffoldWrapperState extends State<ScaffoldWrapper> {
 
           return false;
         }
-        String descriptionDialog() {
-          return "Strings.descriptionCancelBookingExpert.i18n";
-        }
-
         return true;
       },
       child: _child,

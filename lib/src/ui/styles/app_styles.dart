@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hedlines/src/configs/theme/app_colors.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 
 final AppBar appBarCalendar = AppBar(
@@ -166,26 +167,26 @@ final TextStyle text13w400cFontGreen = TextStyle(
   color: colorFontGreen,
 );
 final TextStyle text13w400cRed = TextStyle(
-  fontSize: 13.sp,
+  fontSize: 10.5.sp,
   fontWeight: FontWeight.w400,
   color: Color(0xffB31D1D),
 );
 
-final TextStyle tex56w400Blue = TextStyle(
+final TextStyle text56w400Blue = TextStyle(
   fontSize: 53.sp,
   fontWeight: FontWeight.w400,
   letterSpacing: 1,
   color: Color(0xff0953AD),
   fontStyle: FontStyle.normal,
 );
-final TextStyle tex20w400Blue = TextStyle(
+final TextStyle text20w400Blue = TextStyle(
   fontSize: 17.sp,
   fontWeight: FontWeight.w400,
   color: Color(0xff0953AD),
   fontStyle: FontStyle.normal,
 );
 
-final TextStyle tex14w500Blue = TextStyle(
+final TextStyle text14w500Blue = TextStyle(
   fontSize: 12.sp,
   fontWeight: FontWeight.w500,
   color: Color(0xff0953AD),
@@ -199,9 +200,49 @@ final TextStyle text24w700Blue = TextStyle(
   fontStyle: FontStyle.normal,
 );
 
-final TextStyle text14w500Blue = TextStyle(
-  fontSize: 11.sp,
-  fontWeight: FontWeight.w500,
+final TextStyle text14w700Blue = TextStyle(
+  fontSize: 12.sp,
+  fontWeight: FontWeight.w700,
   color: Color(0xff0953AD),
+  fontStyle: FontStyle.normal,
+);
+
+final TextStyle text24w700Black = TextStyle(
+  fontSize: 21.sp,
+  fontWeight: FontWeight.w700,
+  color: colorBlack1,
+  fontStyle: FontStyle.normal,
+);
+
+final TextStyle text10w400Black = TextStyle(
+  fontSize: 8.5.sp,
+  fontWeight: FontWeight.w500,
+  color: colorBlack1,
+  fontStyle: FontStyle.normal,
+);
+final TextStyle text14w500Black = TextStyle(
+  fontSize: 12.sp,
+  fontWeight: FontWeight.w500,
+  color: colorBlack1,
+  fontStyle: FontStyle.normal,
+);
+
+final TextStyle text14w700White = TextStyle(
+  fontSize: 12.sp,
+  fontWeight: FontWeight.w500,
+  color: colorWhite,
+  fontStyle: FontStyle.normal,
+);
+
+final TextStyle text10w700White = TextStyle(
+  fontSize: 8.5.sp,
+  fontWeight: FontWeight.w700,
+  color: colorWhite,
+  fontStyle: FontStyle.normal,
+);
+final TextStyle text10w400Blue = TextStyle(
+  fontSize: 8.5.sp,
+  fontWeight: FontWeight.w400,
+  color: backgroundPrimaryColor,
   fontStyle: FontStyle.normal,
 );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
+import 'package:hedlines/src/controller/topic/topic_controller.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/helper/utils/assets_helper.dart';
 import 'package:hedlines/src/ui/common/app_bars/app_bar_brighness_dark.dart';
@@ -16,6 +18,9 @@ class TopicScreen extends StatefulWidget {
 }
 
 class _TopicScreenState extends State<TopicScreen> {
+  var topicController = Get.put(TopicController());
+  Set<String> topicChoose = {};
+  bool isError = false;
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> gridData = [
@@ -53,6 +58,7 @@ class _TopicScreenState extends State<TopicScreen> {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.sp),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 height: 40.sp,
@@ -77,7 +83,7 @@ class _TopicScreenState extends State<TopicScreen> {
                 ),
               ),
               SizedBox(
-                height: 57.sp,
+                height: 56.sp,
               ),
               Expanded(
                 flex: 3,
@@ -92,6 +98,12 @@ class _TopicScreenState extends State<TopicScreen> {
                   ),
                   itemBuilder: (BuildContext context, int index) {
                     return FieldConcern(
+                      onTap: () {
+                        String? topic = gridData[index]['lable'];
+                        if (topic != null) {
+                          _toggleTopic(topic);
+                        }
+                      },
                       iconFiledConcern: gridData[index]["image"] ?? AssetsHelper.logo,
                       lable: gridData[index]["lable"] ?? "Hedlines",
                     );
@@ -99,10 +111,26 @@ class _TopicScreenState extends State<TopicScreen> {
                 ),
               ),
               SizedBox(
-                height: 62.sp,
+                height: 4.sp,
+              ),
+              Visibility(
+                visible: isError,
+                child: Text(
+                  topicChoose.isEmpty ? "Bạn chưa chọn chủ đề nào." : "Bạn phải chọn ít nhất 2 chủ đề.",
+                  style: text13w400cRed,
+                ),
+              ),
+              SizedBox(
+                height: 25.sp,
               ),
               InlineButton(
-                onTap: null,
+                mainAxisSize: MainAxisSize.max,
+                onTap: () {
+                  _checkNumberSelectedTopic();
+                  if (!isError) {
+                    topicController.handelNagivateToHome(topicChoose);
+                  }
+                },
                 onLongPress: null,
                 leading: null,
                 title: "TIẾP TỤC",
@@ -117,5 +145,29 @@ class _TopicScreenState extends State<TopicScreen> {
         ),
       ),
     );
+  }
+
+  //internal function
+  _checkNumberSelectedTopic() {
+    if (topicChoose.isEmpty || topicChoose.length < 2) {
+      setState(() {
+        isError = true;
+      });
+    } else {
+      setState(() {
+        isError = false;
+      });
+    }
+  }
+
+  _toggleTopic(String topic) {
+    setState(() {
+      if (topicChoose.contains(topic)) {
+        topicChoose.remove(topic);
+      } else {
+        topicChoose.add(topic);
+      }
+    });
+    _checkNumberSelectedTopic();
   }
 }

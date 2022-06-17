@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
 import 'package:hedlines/src/constants/constants.dart';
+import 'package:hedlines/src/controller/home/home_tab/home_tab_controller.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/helper/utils/assets_helper.dart';
 
@@ -40,6 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
         backgroundColor = mCL;
         logoBackgroundColor = temp;
       });
+      HomeTabController.showDialogAnnouncement();
     });
     super.initState();
   }

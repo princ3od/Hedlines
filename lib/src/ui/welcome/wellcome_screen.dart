@@ -64,6 +64,7 @@ class _WellcomeScreenState extends State<WellcomeScreen> {
                 height: 62.sp,
               ),
               InlineButton(
+                mainAxisSize: MainAxisSize.max,
                 onTap: null,
                 onLongPress: null,
                 leading: null,

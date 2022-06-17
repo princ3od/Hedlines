@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 const INCH_TO_DP = 160;
 const DELAY_250_MS = 250;
 // Font Family

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hedlines/src/configs/lang/localization.dart';
@@ -11,10 +10,11 @@ import 'package:hedlines/src/ui/common/app_bars/app_bar_brighness_dark.dart';
 import 'package:hedlines/src/ui/common/badges/badge.dart';
 import 'package:hedlines/src/ui/common/buttons/touchable_opacity.dart';
 import 'package:hedlines/src/ui/common/text_ui/text_ui.dart';
-import 'package:hedlines/src/ui/home/screens/home_tab.dart';
+import 'package:hedlines/src/ui/home/screens/home_tab/home_tab.dart';
 import 'package:hedlines/src/ui/home/screens/profile_tab.dart';
 import 'package:hedlines/src/ui/home/screens/search_tab.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
+import 'package:hedlines/src/ui/home/widgets/home_overlay.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,7 +24,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
   final homeController = Get.put(HomeController());
   // ignore: prefer_final_fields
   List<Widget> _tabs = [
@@ -32,19 +32,58 @@ class _HomeScreenState extends State<HomeScreen> {
     const SearchTab(),
     const ProfileTab(),
   ];
+
+  late Animation<double> animation;
+  late AnimationController controller;
+
+  late final OverlayEntry overlayEntry;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(ANIMATION_DURATION_500_MS, () {
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        systemNavigationBarColor: Colors.black,
-      ));
+    controller = AnimationController(duration: ANIMATION_DURATION_1000_MS, vsync: this);
+    animation = CurvedAnimation(parent: controller, curve: Curves.linearToEaseOut)..addListener(() {});
+    overlayEntry = OverlayEntry(
+      builder: (context) {
+        final size = MediaQuery.of(context).size;
+        return SlideTransition(
+          position: Tween(begin: Offset(0, -1), end: Offset(0, 0)).animate(animation),
+          child: Container(
+            width: size.width,
+            height: size.height,
+            color: Colors.black.withOpacity(0.45),
+            child: HomeOverlay(
+              onTap: () {
+                controller.reverse().then((value) {
+                  overlayEntry.remove();
+                });
+              },
+            ),
+          ),
+        );
+      },
+    );
+
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      controller.forward();
+      _insertOverlay(context);
     });
+  }
+
+  void _insertOverlay(BuildContext context) {
+    return Overlay.of(context)?.insert(overlayEntry);
   }
 
   @override
   Widget build(BuildContext context) {
+    final pageView = PageView(
+      controller: homeController.pageController,
+      scrollDirection: Axis.horizontal,
+      children: [
+        ..._tabs,
+      ],
+    );
     return Scaffold(
       appBar: appBarBrighnessDark(),
       bottomNavigationBar: BottomAppBar(
@@ -88,14 +127,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      body: Stack(
-        children: [
-          GetBuilder<HomeController>(
-            builder: (controller) => _tabs[controller.index.value],
-          )
-        ],
-      ),
+      body: pageView,
     );
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   Widget _buildItemBottomBar({inActiveIcon, activeIcon, index, title, int quantity = 0}) {

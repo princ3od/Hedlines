@@ -9,4 +9,9 @@ Map<String, String> vietnamese = {
   Strings.home: 'Home',
   Strings.search: "Search",
   Strings.profile: "Profile",
+
+  //Dialog
+  Strings.sureLogout: 'Bạn có chắc chắn muốn đăng xuất?',
+  Strings.cancel: 'Hủy',
+  Strings.ok: 'Xác nhận',
 };

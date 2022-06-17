@@ -5,7 +5,7 @@ import 'package:hive/hive.dart';
 class BaseLocalData {
   static Future<void> initialBox() async {
     var path = await PathHelper.appDir;
-    Hive..init(path.path);
+    Hive.init(path.path);
     await Hive.openBox(StorageKey.BOX_USER);
   }
 }

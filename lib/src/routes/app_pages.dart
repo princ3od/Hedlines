@@ -64,6 +64,7 @@ class AppNavigator extends RouteObserver<PageRoute<dynamic>> {
   static Future push<T>(
     String route, {
     Object? arguments,
+    routeName,
   }) {
     return state.pushNamed(route, arguments: arguments);
   }

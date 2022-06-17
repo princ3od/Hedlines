@@ -11,7 +11,27 @@ class InlineButton extends StatefulWidget {
   String title;
   final Color? backgroundColor;
   final Color? textColor;
-  InlineButton({Key? key, required this.onTap, required this.onLongPress, required this.leading, required this.title, this.backgroundColor, this.textColor}) : super(key: key);
+  final TextStyle? textStyle;
+  final Color? borderColor;
+  final double? radius;
+  final double? horizontal;
+  final double? height;
+  final MainAxisSize mainAxisSize;
+  InlineButton({
+    Key? key,
+    required this.onTap,
+    required this.onLongPress,
+    required this.leading,
+    required this.title,
+    this.backgroundColor,
+    this.textColor,
+    this.borderColor,
+    this.textStyle,
+    this.radius,
+    this.horizontal,
+    this.height,
+    required this.mainAxisSize,
+  }) : super(key: key);
 
   @override
   State<InlineButton> createState() => _InlineButtonState();
@@ -24,27 +44,29 @@ class _InlineButtonState extends State<InlineButton> {
       onTap: widget.onTap,
       onLongPress: widget.onLongPress,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.sp),
-        height: 45.sp,
+        margin: EdgeInsets.zero,
+        padding: EdgeInsets.symmetric(horizontal: widget.horizontal ?? 8.sp),
+        height: widget.height ?? 45.sp,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5.sp),
+          borderRadius: BorderRadius.circular(widget.radius ?? 5.sp),
           color: widget.backgroundColor ?? Colors.transparent,
-          border: Border.all(color: Colors.blueAccent),
+          border: Border.all(color: widget.borderColor ?? Colors.blueAccent),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: widget.mainAxisSize,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            widget.leading ?? const SizedBox(),
-            const Spacer(),
-            Center(
-              child: Text(
-                widget.title,
-                style: tex14w500Blue.copyWith(
-                  color: widget.textColor ?? const Color(0xff0953AD),
-                ),
-              ),
+            if (widget.leading != null) widget.leading!,
+            if (widget.mainAxisSize == MainAxisSize.min) Spacer(),
+            Text(
+              widget.title,
+              style: widget.textStyle ??
+                  text14w500Blue.copyWith(
+                    color: widget.textColor ?? const Color(0xff0953AD),
+                  ),
+              overflow: TextOverflow.ellipsis,
             ),
-            const Spacer(),
+            if (widget.mainAxisSize == MainAxisSize.min) Spacer(),
           ],
         ),
       ),
