@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
+import 'package:hedlines/src/constants/args_key.dart';
+import 'package:hedlines/src/controller/home/home_tab/home_tab_controller.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/helper/utils/assets_helper.dart';
 import 'package:hedlines/src/model/fake_model/article_description.dart';
@@ -8,7 +11,7 @@ import 'package:hedlines/src/ui/home/screens/home_tab/widgets/icon_toogle.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
 
 class HomeContext extends StatelessWidget {
-  const HomeContext({
+  HomeContext({
     Key? key,
     required this.sizeScreen,
     required this.articleDescription,
@@ -16,6 +19,7 @@ class HomeContext extends StatelessWidget {
 
   final Size sizeScreen;
   final ArticleDescription articleDescription;
+  final HomeTabController homeTabController = Get.put(HomeTabController());
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +64,7 @@ class HomeContext extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 20.sp,
+                  height: 29.sp,
                 ),
                 ConstrainedBox(
                   constraints: BoxConstraints(
@@ -69,7 +73,13 @@ class HomeContext extends StatelessWidget {
                   ),
                   child: InlineButton(
                     mainAxisSize: MainAxisSize.min,
-                    onTap: () {},
+                    onTap: () {
+                      dynamic args = {
+                        AppArgsKey.initialUrl: articleDescription.articleUrl,
+                        AppArgsKey.title: "Xem tin (${articleDescription.estimateMinuteReadTime} phút đọc)",
+                      };
+                      homeTabController.handleTransactionPage(args);
+                    },
                     onLongPress: () {},
                     leading: null,
                     title: "Xem tin (${articleDescription.estimateMinuteReadTime} phút đọc)",
@@ -86,6 +96,7 @@ class HomeContext extends StatelessWidget {
               width: 76,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   const Spacer(),
                   IconToggleButton(
@@ -95,7 +106,7 @@ class HomeContext extends StatelessWidget {
                     activeColor: backgroundPrimaryColor,
                     inActiveColor: null,
                   ),
-                  Text("${articleDescription.numberOfFavorite}"),
+                  TextWrapper(text: articleDescription.numberOfFavorite.toString()),
                   const Spacer(),
                   IconToggleButton(
                     pathImage: AssetsHelper.iconShare,
@@ -104,7 +115,8 @@ class HomeContext extends StatelessWidget {
                     activeColor: null,
                     inActiveColor: null,
                   ),
-                  Text("${articleDescription.numberOfShare}"),
+                  TextWrapper(text: articleDescription.numberOfShare.toString()),
+                  // Text("${articleDescription.numberOfShare}"),
                   const Spacer(),
                   IconToggleButton(
                     pathImage: AssetsHelper.iconEllypsisVertical,
@@ -186,5 +198,24 @@ class HomeContext extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class TextWrapper extends StatelessWidget {
+  final String text;
+  const TextWrapper({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        width: 24.sp,
+        child: Center(
+          child: Text(
+            text,
+          ),
+        ));
   }
 }

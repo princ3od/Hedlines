@@ -22,6 +22,9 @@ class _HomeTabState extends State<HomeTab> {
           itemCount: 3,
           controller: homeTabController.pageController,
           scrollDirection: Axis.vertical,
+          onPageChanged: (index) {
+            homeTabController.indexChange(index);
+          },
           itemBuilder: (BuildContext context, int index) {
             return HomeContext(sizeScreen: sizeScreen, articleDescription: homeTabController.listArticleDescription[index]);
           },

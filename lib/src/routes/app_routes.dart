@@ -4,4 +4,5 @@ class Routes {
   static const HOME = '/home';
   static const TOPIC = '/topic';
   static const WELLCOME = '/wellcome';
+  static const ARTICLE_DETAIL = '/articleDelail';
 }

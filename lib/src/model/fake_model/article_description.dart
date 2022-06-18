@@ -1,4 +1,5 @@
 class ArticleDescription {
+  String articleUrl;
   String urlImage;
   DateTime publishedAt;
   String titleArticle;
@@ -10,6 +11,7 @@ class ArticleDescription {
   String sourceName;
   String topic;
   ArticleDescription({
+    required this.articleUrl,
     required this.urlImage,
     required this.publishedAt,
     required this.titleArticle,

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hedlines/src/routes/scaffold_wrapper.dart';
+import 'package:hedlines/src/ui/article_detail/article_detail_screen.dart';
 import 'package:hedlines/src/ui/auth/auth_screen.dart';
 import 'package:hedlines/src/ui/home/home_screen.dart';
 import 'package:hedlines/src/ui/splash/splash_screen.dart';
@@ -41,6 +42,11 @@ class AppNavigator extends RouteObserver<PageRoute<dynamic>> {
         return _buildRoute(
           settings,
           TopicScreen(),
+        );
+      case Routes.ARTICLE_DETAIL:
+        return _buildRoute(
+          settings,
+          ArticleDetailScreen(),
         );
       default:
         return _buildRoute(settings, App());
