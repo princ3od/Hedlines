@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hedlines/src/configs/theme/app_colors.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/routes/app_pages.dart';
 import 'package:hedlines/src/ui/common/buttons/touchable_opacity.dart';
@@ -124,7 +125,7 @@ class DialogConfirmCancel extends StatelessWidget {
                   child: Text(
                     confirmText ?? "Confirm".toUpperCase(),
                     style: TextStyle(
-                      color: colorGreen2,
+                      color: backgroundPrimaryColor,
                       fontSize: 13.sp,
                       fontWeight: FontWeight.w700,
                       shadows: hasTextShadow

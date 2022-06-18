@@ -7,7 +7,7 @@ class TopicController extends GetxController {
   void handelNagivateToHome(Set<String> topics) {
     _handelUserTopic(topics);
     _handelSetUpContext();
-    AppNavigator.push(Routes.HOME);
+    AppNavigator.pushNamedAndRemoveUntil(Routes.HOME);
   }
 
   void _handelUserTopic(Set<String> topics) {}
