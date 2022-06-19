@@ -12,10 +12,11 @@ import 'package:hedlines/src/ui/common/buttons/touchable_opacity.dart';
 import 'package:hedlines/src/ui/common/text_ui/text_ui.dart';
 import 'package:hedlines/src/ui/home/screens/home_tab/home_tab.dart';
 import 'package:hedlines/src/ui/home/screens/profile_tab.dart';
-import 'package:hedlines/src/ui/home/screens/search_tab.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/ui/home/widgets/home_overlay.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
+
+import 'screens/search_tab/search_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

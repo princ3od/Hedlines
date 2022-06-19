@@ -19,7 +19,6 @@ class AppTheme {
         TargetPlatform.android: CupertinoPageTransitionsBuilder(),
       }),
       brightness: Brightness.light,
-      primaryColorBrightness: Brightness.dark,
       primaryColor: appColors.primary,
       scaffoldBackgroundColor: appColors.background,
       snackBarTheme: SnackBarThemeData(
@@ -60,7 +59,6 @@ class AppTheme {
     final appColors = AppColors.dark();
     final themeData = ThemeData(
       brightness: Brightness.dark,
-      primaryColorBrightness: Brightness.dark,
       primaryColor: appColors.primary,
       scaffoldBackgroundColor: appColors.background,
       snackBarTheme: SnackBarThemeData(

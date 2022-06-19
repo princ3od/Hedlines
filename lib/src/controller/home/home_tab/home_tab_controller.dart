@@ -35,6 +35,7 @@ class HomeTabController extends GetxController {
   indexChange(int index) {}
 
   //asset listArticleDescription <=10;
+  // ignore: unused_element
   _addArticleDescription() {
     if (listArticleDescription.length <= 10) {
       var articleRemove = listArticleDescription.first;

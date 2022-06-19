@@ -1,5 +1,5 @@
 # hedlines
-### How to run? (Flutter version: 2.8.1)
+### How to run? (Flutter version: 2.10.1)
 
 Step 1:
 

@@ -6,13 +6,18 @@ class AuthService {
   static FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   Future<SocialModel?> signInWithGoogle() async {
     try {
+      print("step in to 9");
       await GoogleSignIn().signOut();
+      print("step in to 10");
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      print("step in to 12");
       final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
+      print("step in to 14");
       final OAuthCredential googleCredential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
+      print("step in to 19");
       final UserCredential firebaseUserCredential = await FirebaseAuth.instance.signInWithCredential(googleCredential);
 
       if (firebaseUserCredential.user == null) {

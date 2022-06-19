@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hedlines/src/constants/sign_type.dart';
 import 'package:hedlines/src/model/fake_model/social_model.dart';
