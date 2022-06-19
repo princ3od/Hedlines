@@ -71,7 +71,8 @@ class DialogSignOut extends StatelessWidget {
             height: 36.sp,
             child: InlineButton(
               onTap: () {
-                exit(0);
+                onConfirmed.call();
+                AppNavigator.pop();
               },
               onLongPress: null,
               leading: null,

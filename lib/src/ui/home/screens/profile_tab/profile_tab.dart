@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
+import 'package:hedlines/src/constants/app_state.dart';
 import 'package:hedlines/src/controller/home/profile_tab/profile_controller.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
+import 'package:hedlines/src/routes/app_routes.dart';
 import 'package:hedlines/src/ui/common/buttons/inline_button.dart';
 import 'package:hedlines/src/ui/home/screens/profile_tab/widgets/topic_reference.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
@@ -12,6 +14,7 @@ import 'package:hedlines/src/ui/styles/app_styles.dart';
 import '../../../../configs/lang/localization.dart';
 import '../../../../constants/constants.dart';
 import '../../../../constants/slide_mode.dart';
+import '../../../../controller/app_controller.dart';
 import '../../../../routes/app_pages.dart';
 import '../../../common/dialogs/dialog_confirm_cancel.dart';
 import '../../../common/dialogs/dialog_signOut.dart';
@@ -110,13 +113,12 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
                 height: 250.sp,
               ),
               InlineButton(
-                onTap: () async {
-                  await dialogAnimationWrapper(
+                onTap: () {
+                  dialogAnimationWrapper(
                     slideFrom: SlideMode.bot,
                     child: DialogSignOut(
                       onConfirmed: () {
-                        AppNavigator.pop();
-                        exit(0);
+                        profileController.signOut();
                       },
                       title: "Cảnh báo",
                       bodyText: "Bạn có chắc chắn\nđăng xuất?",
