@@ -1,11 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:hedlines/src/configs/lang/localization.dart';
 import 'package:hedlines/src/constants/slide_mode.dart';
-import 'package:hedlines/src/ui/common/app_bars/app_bar_brighness_dark.dart';
-import 'package:hedlines/src/ui/common/dialogs/dialog_confirm_cancel.dart';
+import 'package:hedlines/src/ui/common/dialogs/dialog_signOut.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_wrapper.dart';
-import 'package:hedlines/src/ui/styles/app_styles.dart';
+import '../configs/theme/app_colors.dart';
 import 'app_pages.dart';
 import 'app_routes.dart';
 
@@ -34,15 +32,15 @@ class _ScaffoldWrapperState extends State<ScaffoldWrapper> {
         if (!AppNavigator.canPop) {
           await dialogAnimationWrapper(
             slideFrom: SlideMode.bot,
-            child: DialogConfirmCancel(
-              bodyBefore: Strings.sureLogout.i18n,
-              bodyColor: colorGray1,
-              cancelText: Strings.cancel.i18n.toUpperCase(),
-              confirmText: Strings.ok.i18n.toUpperCase(),
+            child: DialogSignOut(
               onConfirmed: () {
                 AppNavigator.pop();
                 exit(0);
               },
+              title: "Cảnh báo",
+              bodyText: "Bạn có chắc chắn\nđăng xuất?",
+              bodyColor: backgroundPrimaryColor,
+              hasTextShadow: true,
             ),
           );
 

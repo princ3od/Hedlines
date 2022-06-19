@@ -6,6 +6,7 @@ import 'package:hedlines/src/routes/app_navigator_observer.dart';
 import 'package:hedlines/src/routes/app_pages.dart';
 import 'package:hedlines/src/routes/app_routes.dart';
 import 'package:hedlines/src/routes/scaffold_wrapper.dart';
+import 'package:hedlines/src/ui/auth/auth_screen.dart';
 import 'package:hedlines/src/ui/home/home_screen.dart';
 import 'package:hedlines/src/ui/splash/splash_screen.dart';
 import 'configs/lang/language_service.dart';
@@ -86,8 +87,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           home: GetBuilder<AppController>(
             builder: (appController) {
               if (AppState.loaded == appController.appState.value) {
-                // Widget child = appController.isAuthenticated.value ? const HomeScreen() : const AuthenticationScreen();
-                Widget child = const HomeScreen();
+                Widget child = appController.isAuthenticated.value ? const HomeScreen() : const AuthenticationScreen();
                 return ScaffoldWrapper(
                   child: child,
                 );

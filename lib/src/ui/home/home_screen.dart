@@ -11,7 +11,7 @@ import 'package:hedlines/src/ui/common/badges/badge.dart';
 import 'package:hedlines/src/ui/common/buttons/touchable_opacity.dart';
 import 'package:hedlines/src/ui/common/text_ui/text_ui.dart';
 import 'package:hedlines/src/ui/home/screens/home_tab/home_tab.dart';
-import 'package:hedlines/src/ui/home/screens/profile_tab.dart';
+import 'package:hedlines/src/ui/home/screens/profile_tab/profile_tab.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/ui/home/widgets/home_overlay.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';

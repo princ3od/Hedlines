@@ -68,6 +68,7 @@ class UserLocal {
       return AccountModel(
         id: '',
         fullname: '',
+        topicPreferences: [],
       );
     }
     return AccountModel.fromJson(_accountLocal);

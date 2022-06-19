@@ -253,3 +253,10 @@ final TextStyle text14w500Grey = TextStyle(
   color: Color(0xff999999),
   fontStyle: FontStyle.normal,
 );
+
+final TextStyle text16w600Blue = TextStyle(
+  fontSize: 12.5.sp,
+  fontWeight: FontWeight.w600,
+  color: Color(0xff0953AD),
+  fontStyle: FontStyle.normal,
+);

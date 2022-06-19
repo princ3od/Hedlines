@@ -9,6 +9,7 @@ class AccountModel {
   final String? createdAt;
   final String? modifiedAt;
   final String? avatar;
+  final List<String> topicPreferences;
   AccountModel({
     this.id,
     this.username,
@@ -18,6 +19,7 @@ class AccountModel {
     this.createdAt,
     this.modifiedAt,
     this.avatar,
+    required this.topicPreferences,
   });
 
   AccountModel copyWith({
@@ -38,6 +40,7 @@ class AccountModel {
       gender: gender ?? this.gender,
       createdAt: createdAt ?? this.createdAt,
       modifiedAt: modifiedAt ?? this.modifiedAt,
+      topicPreferences: [...topicPreferences],
     );
   }
 
@@ -51,6 +54,7 @@ class AccountModel {
       'createdAt': createdAt,
       'modifiedAt': modifiedAt,
       'avatar': avatar,
+      'topicPreferences': topicPreferences,
     };
   }
 
@@ -64,6 +68,7 @@ class AccountModel {
       createdAt: map['createdAt'],
       modifiedAt: map['modifiedAt'],
       avatar: map['avatar'],
+      topicPreferences: map['topicPreferences'],
     );
   }
 
@@ -74,6 +79,7 @@ class AccountModel {
       fullname: map['fullname'] ?? '',
       email: map['email'] ?? '',
       gender: map['gender'] ?? 2,
+      topicPreferences: map['topicPreferences'],
     );
   }
 

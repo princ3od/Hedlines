@@ -2,10 +2,12 @@ import 'dart:convert';
 
 class SocialModel {
   final String fullName;
-  final String? googleId;
+  final String googleId;
+  final String? googleAvatar;
   SocialModel({
     required this.fullName,
-    this.googleId,
+    required this.googleId,
+    this.googleAvatar,
   });
 
   SocialModel copyWith({
@@ -16,16 +18,19 @@ class SocialModel {
     return SocialModel(
       fullName: fullName ?? this.fullName,
       googleId: googleId ?? this.googleId,
+      googleAvatar: googleAvatar ?? this.googleAvatar,
     );
   }
 
   Map<String, dynamic> toMap() {
     Map<String, String> result = {
       'fullname': fullName,
+      'googleId': googleId,
+      'googleAvatar': googleAvatar ?? "",
     };
 
     if (googleId != null) {
-      result['googleID'] = googleId!;
+      result['googleID'] = googleId;
     }
 
     return result;
@@ -35,6 +40,7 @@ class SocialModel {
     return SocialModel(
       fullName: map['fullName'] ?? '',
       googleId: map['googleId'],
+      googleAvatar: map['googleAvatar'] ?? "",
     );
   }
 
@@ -44,7 +50,7 @@ class SocialModel {
 
   @override
   String toString() {
-    return 'SocialModel(fullName: $fullName,  googleId: $googleId)';
+    return 'SocialModel(fullName: $fullName,  googleId: $googleId), googleAvatar: $googleAvatar)';
   }
 
   @override
