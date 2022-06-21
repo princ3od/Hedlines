@@ -101,6 +101,22 @@ class UserModel {
     );
   }
 
+  factory UserModel.fromJson(String str) {
+    return UserModel(
+      id: json.decode(str)['id'],
+      username: json.decode(str)['username'],
+      fullname: json.decode(str)['fullname'],
+      email: json.decode(str)['email'],
+      createdAt: json.decode(str)['createdAt'] != null ? DateTime.parse(json.decode(str)['createdAt']) : null,
+      modifiedAt: json.decode(str)['modifiedAt'] != null ? DateTime.parse(json.decode(str)['modifiedAt']) : null,
+      avatar: json.decode(str)['avatar'],
+      preferences: json.decode(str)['preferences'],
+      lastVisted: json.decode(str)['lastVisted'] != null ? DateTime.parse(json.decode(str)['lastVisted']) : null,
+      liked: json.decode(str)['liked'] != null ? DateTimeHelper.convertTimeStampToDateTime(json.decode(str)['liked']) : null,
+      previous_viewed_article: json.decode(str)['previous_viewed_article'] != null ? StringHeler.convertMapStringToString(json.decode(str)['previous_viewed_article']) : null,
+    );
+  }
+
   factory UserModel.fromUpdateUser(Map<String, dynamic> map) {
     return UserModel(
       id: map['id'],
@@ -117,9 +133,10 @@ class UserModel {
     );
   }
 
-  String toJson() => json.encode(toMap());
-
-  factory UserModel.fromJson(String source) => UserModel.fromMap(json.decode(source));
+  String toJson() => json.encode(
+        toMap(),
+        toEncodable: DateTimeHelper.myDateSerializer,
+      );
 
   @override
   bool operator ==(Object other) {

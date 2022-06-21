@@ -4,6 +4,7 @@ import 'package:hedlines/src/constants/slide_mode.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_signOut.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_wrapper.dart';
 import '../configs/theme/app_colors.dart';
+import '../controller/app_controller.dart';
 import 'app_pages.dart';
 import 'app_routes.dart';
 
@@ -33,12 +34,13 @@ class _ScaffoldWrapperState extends State<ScaffoldWrapper> {
           await dialogAnimationWrapper(
             slideFrom: SlideMode.bot,
             child: DialogSignOut(
-              onConfirmed: () {
+              onConfirmed: () async {
+                await AppController.saveUserInfo();
                 AppNavigator.pop();
                 exit(0);
               },
               title: "Cảnh báo",
-              bodyText: "Bạn có chắc chắn\nđăng xuất?",
+              bodyText: "Bạn có chắc chắn\n muốn thoát app?",
               bodyColor: backgroundPrimaryColor,
               hasTextShadow: true,
             ),

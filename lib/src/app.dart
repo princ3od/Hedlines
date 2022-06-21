@@ -34,14 +34,14 @@ class _AppState extends State<App> with WidgetsBindingObserver {
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
+  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
     switch (state) {
       case AppLifecycleState.resumed:
         // App moved to foreground
         break;
       case AppLifecycleState.paused:
-        // App moved to background
-
+      // App moved to background
+      case AppLifecycleState.detached:
         break;
       default:
         break;
@@ -87,7 +87,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           home: GetBuilder<AppController>(
             builder: (appController) {
               if (AppState.loaded == appController.appState.value) {
-                Widget child = appController.isAuthenticated.value ? const HomeScreen() : const AuthenticationScreen();
+                Widget child = AppController.isAuthenticated.value ? const HomeScreen() : const AuthenticationScreen();
                 return ScaffoldWrapper(
                   child: child,
                 );

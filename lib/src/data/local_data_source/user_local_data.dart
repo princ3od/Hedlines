@@ -3,8 +3,33 @@ import 'package:hedlines/src/model/fake_model/account_model.dart';
 import 'package:hedlines/src/model/fake_model/account_remember.dart';
 import 'package:hive/hive.dart';
 
+import '../../helper/utils/path_helper.dart';
+
 class UserLocal {
-  var box = Hive.box(StorageKey.BOX_USER);
+  static late Box box;
+
+  static Future<void> initialBox() async {
+    var path = await PathHelper.appDir;
+    Hive.init(path.path);
+    box = await Hive.openBox(StorageKey.BOX_USER);
+  }
+
+  static Future<void> clearUserInfo() async {
+    // await box.deleteAll([StorageKey.BOX_USER]);
+    await box.clear();
+  }
+
+  static Future<UserModel?> getUserInfo() async {
+    var str = await box.get(StorageKey.BOX_USER);
+    if (str != null) {
+      return UserModel.fromJson(str);
+    }
+  }
+
+  Future<void> saveUserInfo(dynamic a) async {
+    await box.put(StorageKey.BOX_USER, a);
+  }
+
   void saveAccountRemember(String email, String pass, bool isExpert) {
     AccountRemember accountRemember;
     var _UserModel = box.get(StorageKey.LIST_ACCOUNT);

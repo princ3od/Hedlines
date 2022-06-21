@@ -36,7 +36,6 @@ class AuthService {
   Future signOut() async {
     await GoogleSignIn().signOut();
     await _firebaseAuth.signOut();
-    AppController().signOut();
   }
 
   static final AuthService _authService = AuthService._internal();

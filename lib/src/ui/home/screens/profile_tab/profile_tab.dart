@@ -119,8 +119,9 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
                   dialogAnimationWrapper(
                     slideFrom: SlideMode.bot,
                     child: DialogSignOut(
-                      onConfirmed: () {
-                        profileController.signOut();
+                      onConfirmed: () async {
+                        await profileController.signOut();
+                        await AppController().signOut();
                       },
                       title: "Cảnh báo",
                       bodyText: "Bạn có chắc chắn\nđăng xuất?",

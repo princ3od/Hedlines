@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:hedlines/src/configs/application.dart';
 import 'package:hedlines/src/constants/app_state.dart';
 import 'package:hedlines/src/constants/constants.dart';
+import 'package:hedlines/src/data/local_data_source/user_local_data.dart';
 import 'package:hedlines/src/model/fake_model/account_model.dart';
 import 'package:hedlines/src/routes/app_pages.dart';
 import 'package:hedlines/src/routes/app_routes.dart';
@@ -11,22 +12,42 @@ import 'package:hedlines/src/routes/app_routes.dart';
 class AppController extends GetxController {
   static Rxn<UserModel> userInfo = Rxn<UserModel>();
   var appState = AppState.loading.obs;
-  var isAuthenticated = false.obs;
+  static var isAuthenticated = false.obs;
 
   Future<void> _setUpData(BuildContext context) async {
     await Application().initialAppLication(context);
     await Future.delayed(ANIMATION_DURATION_4000_MS);
+    await getUserLocalStorageInfo();
     appState.value = AppState.loaded;
     update();
+  }
+
+  static Future getUserLocalStorageInfo() async {
+    print("26");
+    UserModel? userModel = await UserLocal.getUserInfo();
+    print(userInfo.value != null);
+    userInfo.value = userModel;
+    if (userModel != null) {
+      print(userModel.toJson());
+      isAuthenticated.value = true;
+    }
+  }
+
+  static Future<void> saveUserInfo() async {
+    if (userInfo.value != null) {
+      await UserLocal().saveUserInfo(userInfo.value?.toJson());
+    }
   }
 
   void setUpData(BuildContext context) {
     _setUpData(context);
   }
 
-  void signOut() {
+  Future<void> signOut() async {
+    await UserLocal.clearUserInfo();
     isAuthenticated.value = false;
-    AppNavigator.pushNamedAndRemoveUntil(Routes.AUTHENTICATION);
+    update();
+    // AppNavigator.pushNamedAndRemoveUntil(Routes.AUTHENTICATION);
   }
 
   static final AppController _singleton = AppController._internal();
