@@ -44,7 +44,6 @@ class _InlineButtonState extends State<InlineButton> {
       onTap: widget.onTap,
       onLongPress: widget.onLongPress,
       child: Container(
-        margin: EdgeInsets.zero,
         padding: EdgeInsets.symmetric(horizontal: widget.horizontal ?? 8.sp),
         height: widget.height ?? 45.sp,
         decoration: BoxDecoration(

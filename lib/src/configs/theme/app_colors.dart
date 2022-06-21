@@ -33,7 +33,7 @@ Color mCC = Colors.green.withOpacity(0.65);
 Color fCD = Colors.grey.shade700;
 Color fCL = Colors.grey;
 
-var backgroundPrimaryColor = Color(0xFF0953AD);
+var backgroundPrimaryColor = const Color(0xFF0953AD);
 
 class AppColors {
   final Color primary;

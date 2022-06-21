@@ -7,11 +7,11 @@ class UserLocal {
   var box = Hive.box(StorageKey.BOX_USER);
   void saveAccountRemember(String email, String pass, bool isExpert) {
     AccountRemember accountRemember;
-    var _accountModel = box.get(StorageKey.LIST_ACCOUNT);
-    if (_accountModel == null) {
+    var _UserModel = box.get(StorageKey.LIST_ACCOUNT);
+    if (_UserModel == null) {
       accountRemember = AccountRemember(account: <Account>[]);
     } else {
-      accountRemember = AccountRemember.fromJson(_accountModel);
+      accountRemember = AccountRemember.fromJson(_UserModel);
     }
     int indexOfRemember = accountRemember.account!.indexWhere((element) => element.email == email);
     if (indexOfRemember == -1) {
@@ -25,11 +25,11 @@ class UserLocal {
 
   void deleteAccountRemember(String email) {
     AccountRemember accountRemember;
-    var _accountModel = box.get(StorageKey.LIST_ACCOUNT);
-    if (_accountModel == null) {
+    var _UserModel = box.get(StorageKey.LIST_ACCOUNT);
+    if (_UserModel == null) {
       accountRemember = AccountRemember(account: <Account>[]);
     } else {
-      accountRemember = AccountRemember.fromJson(_accountModel);
+      accountRemember = AccountRemember.fromJson(_UserModel);
     }
     int indexOfRemember = accountRemember.account!.indexWhere((account) => account.email == email);
     if (indexOfRemember != -1) {
@@ -62,18 +62,19 @@ class UserLocal {
     await box.put(StorageKey.LOCALE, locale);
   }
 
-  AccountModel getUser() {
+  UserModel getUser() {
     var _accountLocal = box.get(StorageKey.ACCOUNT);
     if (_accountLocal == null) {
-      return AccountModel(
+      return UserModel(
         id: '',
         fullname: '',
+        preferences: [],
       );
     }
-    return AccountModel.fromJson(_accountLocal);
+    return UserModel.fromJson(_accountLocal);
   }
 
-  void saveAccount(AccountModel _accountModel) {
-    box.put(StorageKey.ACCOUNT, _accountModel.toJson());
+  void saveAccount(UserModel _UserModel) {
+    box.put(StorageKey.ACCOUNT, _UserModel.toJson());
   }
 }
