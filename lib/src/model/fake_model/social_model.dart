@@ -4,11 +4,8 @@ class SocialModel {
   final String fullName;
   final String googleId;
   final String? googleAvatar;
-  SocialModel({
-    required this.fullName,
-    required this.googleId,
-    this.googleAvatar,
-  });
+  final String? email;
+  SocialModel({required this.fullName, required this.googleId, this.googleAvatar, this.email});
 
   SocialModel copyWith({
     String? fullName,
@@ -19,6 +16,7 @@ class SocialModel {
       fullName: fullName ?? this.fullName,
       googleId: googleId ?? this.googleId,
       googleAvatar: googleAvatar ?? this.googleAvatar,
+      email: email ?? this.email,
     );
   }
 
@@ -27,6 +25,7 @@ class SocialModel {
       'fullname': fullName,
       'googleId': googleId,
       'googleAvatar': googleAvatar ?? "",
+      'email': email ?? "",
     };
 
     if (googleId != null) {
@@ -41,6 +40,7 @@ class SocialModel {
       fullName: map['fullName'] ?? '',
       googleId: map['googleId'],
       googleAvatar: map['googleAvatar'] ?? "",
+      email: map['email'] ?? "",
     );
   }
 

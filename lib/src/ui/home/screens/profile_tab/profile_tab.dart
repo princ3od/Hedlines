@@ -6,6 +6,7 @@ import 'package:hedlines/src/configs/theme/app_colors.dart';
 import 'package:hedlines/src/constants/app_state.dart';
 import 'package:hedlines/src/controller/home/profile_tab/profile_controller.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
+import 'package:hedlines/src/helper/utils/assets_helper.dart';
 import 'package:hedlines/src/routes/app_routes.dart';
 import 'package:hedlines/src/ui/common/buttons/inline_button.dart';
 import 'package:hedlines/src/ui/home/screens/profile_tab/widgets/topic_reference.dart';
@@ -41,7 +42,7 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
   @override
   void initState() {
     super.initState();
-    topicChoose = [...profileController.userModel.value.topicPreferences];
+    topicChoose = [...profileController.userModel.value.preferences];
     controller = AnimationController(duration: ANIMATION_DURATION_1000_MS, vsync: this);
     animation = CurvedAnimation(parent: controller, curve: Curves.linearToEaseOut)..addListener(() {});
     _overlayEntry = OverlayEntry(
@@ -90,7 +91,8 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
               Row(
                 children: [
                   CircleAvatar(
-                    backgroundImage: NetworkImage(profileController.userModel.value.avatar ?? ""),
+                    backgroundImage: NetworkImage(AppController.userInfo.value?.avatar ?? ""),
+                    foregroundImage: const AssetImage(AssetsHelper.iconHome),
                     radius: 20.sp,
                   ),
                   SizedBox(

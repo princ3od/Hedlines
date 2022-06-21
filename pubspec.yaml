@@ -35,6 +35,7 @@ dependencies:
     # Firebase
   firebase_core: 
   firebase_auth:
+  cloud_firestore: 
   
     # Authenticate
   google_sign_in: 
