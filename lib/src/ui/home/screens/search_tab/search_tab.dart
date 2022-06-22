@@ -32,10 +32,10 @@ class _SearchTabState extends State<SearchTab> {
                 return Container(
                   margin: EdgeInsets.symmetric(vertical: 4.sp),
                   padding: EdgeInsets.symmetric(horizontal: 13.sp),
-                  child: _buildSearchItem(controller.searchedArticles[index], index),
+                  child: _buildSearchItem(controller.searchedArticles.value![index], index),
                 );
               },
-              childCount: controller.searchedArticles.length,
+              childCount: controller.searchedArticles.value?.length,
             ),
           ),
         ),
@@ -59,22 +59,20 @@ class _SearchTabState extends State<SearchTab> {
                 height: 0.5.sp,
               ),
             if (index > 0) SizedBox(height: 4.sp),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  article.source["name"],
-                  style: text24w700Black,
-                ),
-                const Spacer(),
-                Text(
-                  DateFormat('dd-MM-yyyy').format(article.publishedAt),
-                  style: text14w500Grey,
-                ),
-              ],
+            Text(
+              article.title,
+              style: text14w500Black,
+              overflow: TextOverflow.ellipsis,
             ),
             SizedBox(
-              height: 16.sp,
+              height: 4.sp,
+            ),
+            Text(
+              DateFormat('dd-MM-yyyy').format(article.date),
+              style: text14w500Grey,
+            ),
+            SizedBox(
+              height: 8.sp,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -24,7 +24,7 @@ class HomeContext extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DateTime timeNow = DateTime.now();
-    Duration diff = timeNow.difference(articleDescription.publishedAt);
+    Duration diff = timeNow.difference(articleDescription.date);
     return SafeArea(
       child: Stack(
         children: [
