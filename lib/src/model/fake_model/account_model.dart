@@ -7,7 +7,7 @@ import '../../helper/utils/date_time_helper.dart';
 import '../../helper/utils/string_helper.dart';
 
 class UserModel {
-  final String? id;
+  String? id;
   final String? username;
   String? fullname;
   String? email;

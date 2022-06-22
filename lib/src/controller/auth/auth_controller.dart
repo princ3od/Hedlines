@@ -37,6 +37,8 @@ class AuthenticationController extends GetxController {
     socialModel.value = await AuthService().signInWithGoogle();
     if (socialModel.value != null) {
       UserModel? userInfo = await UserInfoService().getUserInfo(socialModel.value!);
+
+      print("###" + '${userInfo?.toJson()}');
       if (userInfo == null) {
         UserModel userModelInfo = UserModel.fromSocial(socialModel.value!);
         await UserInfoService().addUser(userModelInfo);

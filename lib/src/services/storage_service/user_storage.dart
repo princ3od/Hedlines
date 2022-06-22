@@ -12,20 +12,22 @@ class UserInfoService extends BaseService {
     await usersRef.doc(userModel.id).set(userModel.toMap());
   }
 
-  Future<UserModel?> getUserInfo(SocialModel socialModel) {
-    usersRef.doc(socialModel.googleId).get().then((DocumentSnapshot doc) {
+  Future<UserModel?> getUserInfo(SocialModel socialModel) async {
+    return await usersRef.doc(socialModel.googleId).get().then((DocumentSnapshot doc) {
+      print("snapshot: " + '${doc.data()}');
       if (doc.data() == null) {
         return null;
       }
 
       final data = doc.data() as Map<String, dynamic>;
-      return UserModel.fromMap(data);
+      var userModel = UserModel.fromMap(data);
+      userModel.id = socialModel.googleId;
+      return userModel;
     });
-    return Future.value(null);
   }
 
   Future<void> setUserTopics(Set<String> topics) async {
-    await usersRef.doc(AppController.userInfo.value!.id).update({
+    await usersRef.doc(AppController.userInfo.value?.id).update({
       'preferences': topics.toList(),
     });
   }
