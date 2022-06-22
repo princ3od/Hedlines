@@ -15,193 +15,171 @@ class HomeContext extends StatelessWidget {
   HomeContext({
     Key? key,
     required this.sizeScreen,
-    required this.articleDescription,
+    required this.article,
   }) : super(key: key);
 
   final Size sizeScreen;
-  final Article articleDescription;
+  final Article article;
   final HomeTabController homeTabController = Get.put(HomeTabController());
 
   @override
   Widget build(BuildContext context) {
     DateTime timeNow = DateTime.now();
-    Duration diff = timeNow.difference(articleDescription.date);
-    return SafeArea(
-      child: Stack(
-        children: [
-          Positioned(
-            top: 0,
-            left: 0,
-            child: Image.network(
-              articleDescription.thumbnail,
+    Duration diff = timeNow.difference(article.date);
+    return Stack(
+      children: [
+        Column(
+          children: [
+            Image.network(
+              article.thumbnail,
               width: sizeScreen.width,
-              height: 140.sp,
+              height: 180.sp,
               fit: BoxFit.cover,
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.sp),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 157.sp,
-                ),
-                Text("${diff.inHours} giờ trước", style: text10w400Black),
-                Text(
-                  articleDescription.title,
-                  style: text24w700Black,
-                ),
-                SizedBox(
-                  height: 8.sp,
-                ),
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxHeight: 100.sp,
-                  ),
-                  child: Text(
-                    articleDescription.description,
-                    style: text14w500Black,
-                  ),
-                ),
-                SizedBox(
-                  height: 29.sp,
-                ),
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxHeight: 37.sp,
-                    maxWidth: 140.sp,
-                  ),
-                  child: InlineButton(
-                    mainAxisSize: MainAxisSize.min,
-                    onTap: () {
-                      dynamic args = {
-                        AppArgsKey.initialUrl: articleDescription.url,
-                        AppArgsKey.title:
-                            "Xem tin (${articleDescription.estimateMinuteReadTime} phút đọc)",
-                      };
-                      homeTabController.toArticleDetial(args);
-                    },
-                    onLongPress: () {},
-                    leading: null,
-                    title:
-                        "Xem tin (${articleDescription.estimateMinuteReadTime} phút đọc)",
-                    backgroundColor: backgroundPrimaryColor,
-                    textStyle: text10w700White,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            top: sizeScreen.height - 314.sp,
-            left: sizeScreen.width - 76.sp,
-            child: SizedBox(
-              height: 234.sp,
-              width: 76.sp,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Spacer(),
-                  IconToggleButton(
-                    pathImage: AssetsHelper.iconHeart,
-                    onTap: () {},
-                    onLongPress: () {},
-                    activeColor: backgroundPrimaryColor,
-                    inActiveColor: null,
+                  Text("${diff.inHours} giờ trước", style: text10w400Black),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: 100.sp,
+                    ),
+                    child: Text(
+                      article.title,
+                      style: text24w700Black,
+                    ),
                   ),
-                  TextWrapper(
-                      text: articleDescription.numberOfFavorite.toString()),
-                  const Spacer(),
-                  IconToggleButton(
-                    pathImage: AssetsHelper.iconShare,
-                    onTap: () {},
-                    onLongPress: () {},
-                    activeColor: null,
-                    inActiveColor: null,
+                  const SizedBox(
+                    height: 8,
                   ),
-                  TextWrapper(
-                      text: articleDescription.numberOfShare.toString()),
-                  const Spacer(),
-                  IconToggleButton(
-                    pathImage: AssetsHelper.iconEllypsisVertical,
-                    onTap: () {},
-                    onLongPress: () {},
-                    activeColor: null,
-                    inActiveColor: null,
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: 100.sp,
+                    ),
+                    child: Text(
+                      article.description,
+                      style: text14w500Black,
+                    ),
                   ),
-                  const Spacer(),
-                  Text(
-                    "${articleDescription.source["name"]}",
-                    style: text14w700Blue,
-                    overflow: TextOverflow.ellipsis,
+                  const SizedBox(
+                    height: 32,
                   ),
-                  SizedBox(
-                    height: 4.sp,
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: 37.sp,
+                      maxWidth: 140.sp,
+                    ),
+                    child: InlineButton(
+                      mainAxisSize: MainAxisSize.min,
+                      onTap: () {
+                        dynamic args = {
+                          AppArgsKey.initialUrl: article.url,
+                          AppArgsKey.title:
+                              "Xem tin (${article.estimateMinuteReadTime} phút đọc)",
+                        };
+                        homeTabController.toArticleDetial(args);
+                      },
+                      onLongPress: () {},
+                      leading: null,
+                      title:
+                          "Xem tin (${article.estimateMinuteReadTime} phút đọc)",
+                      backgroundColor: backgroundPrimaryColor,
+                      textStyle: text10w700White,
+                    ),
                   ),
-                  Text(
-                    "${articleDescription.topic["vnese"]}",
-                    style: text10w400Black,
-                  ),
-                  const Spacer(),
                 ],
               ),
             ),
-          ),
-          Positioned(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0.sp),
-              child: SizedBox(
-                height: 234.sp,
-                child: Column(
-                  children: [
-                    const Spacer(),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 8, bottom: 16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              IconToggleButton(
+                pathImage: AssetsHelper.iconHeart,
+                onTap: () {},
+                onLongPress: () {},
+                activeColor: backgroundPrimaryColor,
+                inActiveColor: null,
+              ),
+              TextWrapper(text: article.numberOfFavorite.toString()),
+              const SizedBox(
+                height: 16,
+              ),
+              IconToggleButton(
+                pathImage: AssetsHelper.iconShare,
+                onTap: () {},
+                onLongPress: () {},
+                activeColor: null,
+                inActiveColor: null,
+              ),
+              TextWrapper(text: article.numberOfShare.toString()),
+              const SizedBox(
+                height: 16,
+              ),
+              IconToggleButton(
+                pathImage: AssetsHelper.iconEllypsisVertical,
+                onTap: () {},
+                onLongPress: () {},
+                activeColor: null,
+                inActiveColor: null,
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              Row(
+                children: [
+                  Container(
+                    width: 70.w,
+                    height: 24,
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 20,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 4),
+                            child: InlineButton(
+                              mainAxisSize: MainAxisSize.max,
+                              horizontal: 2.sp,
+                              onTap: null,
+                              onLongPress: null,
+                              leading: null,
+                              title: article.tags[0] + " " + index.toString(),
+                              textStyle: text10w400Blue,
+                            ),
+                          );
+                        }),
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        SizedBox(
-                          width: 72.sp,
-                          child: InlineButton(
-                            mainAxisSize: MainAxisSize.min,
-                            horizontal: 2.sp,
-                            height: 24.sp,
-                            onTap: null,
-                            onLongPress: null,
-                            leading: null,
-                            title: articleDescription.tags[0],
-                            textStyle: text10w400Blue,
-                          ),
+                        Text(
+                          "${article.source["name"]}",
+                          style: text14w700Blue,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        SizedBox(
-                          width: 8.sp,
+                        const SizedBox(
+                          height: 4,
                         ),
-                        SizedBox(
-                          width: 72.sp,
-                          child: InlineButton(
-                            mainAxisSize: MainAxisSize.min,
-                            horizontal: 2.sp,
-                            height: 24.sp,
-                            onTap: null,
-                            onLongPress: null,
-                            leading: null,
-                            title: articleDescription.tags[1],
-                            textStyle: text10w400Blue,
-                          ),
+                        Text(
+                          "${article.topic["vnese"]}",
+                          style: text10w400Black,
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 24.sp,
-                    )
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ),
-            top: sizeScreen.height - 314.sp,
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -7,6 +7,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     systemNavigationBarColor: Colors.black,
+    statusBarColor: Colors.transparent,
   ));
 
   runApp(I18n(child: const App()));

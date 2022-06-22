@@ -41,8 +41,7 @@ class _HomeTabState extends State<HomeTab> {
               },
               child: HomeContext(
                   sizeScreen: sizeScreen,
-                  articleDescription:
-                      homeTabController.listArticleDescription[index]),
+                  article: homeTabController.listArticleDescription[index]),
             );
           },
         );

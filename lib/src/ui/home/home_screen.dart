@@ -18,6 +18,7 @@ import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/ui/home/widgets/home_overlay.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
 
+import '../article_detail/article_detail_screen.dart';
 import 'screens/search_tab/search_tab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -78,58 +79,62 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBarBrighnessDark(),
-      bottomNavigationBar: BottomAppBar(
-        notchMargin: 0,
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        color: backgroundPrimaryColor,
-        elevation: .0,
-        child: Container(
-          height: 50.sp,
-          padding: EdgeInsets.symmetric(horizontal: 6.5.sp),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(
-                color: Theme.of(context).dividerColor,
-                width: .2,
+    return PageView(
+      children: [
+        Scaffold(
+          bottomNavigationBar: BottomAppBar(
+            notchMargin: 0,
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            color: backgroundPrimaryColor,
+            elevation: .0,
+            child: Container(
+              height: 50.sp,
+              padding: EdgeInsets.symmetric(horizontal: 6.5.sp),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(
+                    color: Theme.of(context).dividerColor,
+                    width: .2,
+                  ),
+                ),
+              ),
+              child: Row(
+                children: [
+                  _buildItemBottomBar(
+                    inActiveIcon: AssetsHelper.iconHome,
+                    activeIcon: AssetsHelper.iconHomeActive,
+                    index: 0,
+                    title: Strings.home.i18n,
+                  ),
+                  _buildItemBottomBar(
+                    inActiveIcon: AssetsHelper.iconSearch,
+                    activeIcon: AssetsHelper.iconSearchActive,
+                    index: 1,
+                    title: Strings.search.i18n,
+                  ),
+                  _buildItemBottomBar(
+                    inActiveIcon: AssetsHelper.iconProfile,
+                    activeIcon: AssetsHelper.iconProfileActive,
+                    index: 2,
+                    title: Strings.profile.i18n,
+                  ),
+                ],
               ),
             ),
           ),
-          child: Row(
-            children: [
-              _buildItemBottomBar(
-                inActiveIcon: AssetsHelper.iconHome,
-                activeIcon: AssetsHelper.iconHomeActive,
-                index: 0,
-                title: Strings.home.i18n,
-              ),
-              _buildItemBottomBar(
-                inActiveIcon: AssetsHelper.iconSearch,
-                activeIcon: AssetsHelper.iconSearchActive,
-                index: 1,
-                title: Strings.search.i18n,
-              ),
-              _buildItemBottomBar(
-                inActiveIcon: AssetsHelper.iconProfile,
-                activeIcon: AssetsHelper.iconProfileActive,
-                index: 2,
-                title: Strings.profile.i18n,
-              ),
+          body: PageView(
+            controller: homeController.pageController,
+            physics: NeverScrollableScrollPhysics(),
+            children: const [
+              HomeTab(),
+              SearchTab(),
+              ProfileTab(),
             ],
           ),
         ),
-      ),
-      body: PageView(
-        controller: homeController.pageController,
-        physics: NeverScrollableScrollPhysics(),
-        children: const [
-          HomeTab(),
-          SearchTab(),
-          ProfileTab(),
-        ],
-      ),
+        ArticleDetailScreen(),
+      ],
     );
   }
 

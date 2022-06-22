@@ -18,15 +18,15 @@ class ArticleDetailScreen extends StatefulWidget {
 }
 
 class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
-  final Completer<WebViewController> _controller = Completer<WebViewController>();
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
 
     return Scaffold(
-      extendBody: true,
-      extendBodyBehindAppBar: true,
       appBar: appBarTitleBack(
         title: args?[AppArgsKey.title] ?? "Hedlines",
         actions: [
@@ -44,7 +44,8 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
         ],
       ),
       body: WebView(
-        initialUrl: args?[AppArgsKey.initialUrl] ?? 'https://tuoitre.vn/the-gioi.htm',
+        initialUrl:
+            args?[AppArgsKey.initialUrl] ?? 'https://tuoitre.vn/the-gioi.htm',
         javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (WebViewController webViewController) {
           _controller.complete(webViewController);

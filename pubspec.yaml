@@ -27,34 +27,31 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  flutter_localizations:
-    sdk: flutter
+  cloud_firestore: null
+  cupertino_icons: ^1.0.2
+  dio: ^4.0.6
+  firebase_auth: null
+  firebase_core: null
   flutter:
     sdk: flutter
-
-    # Firebase
-  firebase_core: 
-  firebase_auth:
-  cloud_firestore: 
-  
-    # Authenticate
-  google_sign_in: 
-  cupertino_icons: ^1.0.2
+  flutter_html: ^2.2.1
+  flutter_launcher_icons: ^0.9.3
+  flutter_localizations:
+    sdk: flutter
+  flutter_svg: ^0.23.0
   get: ^4.0.0
+  google_sign_in: null
   hive: ^2.2.2
   i18n_extension: ^4.2.0
-  path_provider: ^2.0.11
-  flutter_svg: ^0.23.0
-  flutter_html: ^2.2.1
-  webview_flutter: ^2.1.0
   intl: ^0.17.0
-  flutter_launcher_icons: ^0.9.3
-  dio: ^4.0.6
+  path_provider: ^2.0.11
+  timeago: ^3.2.2
+  webview_flutter: ^2.1.0
 
 dev_dependencies:
+  flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
 
 flutter:
   uses-material-design: true

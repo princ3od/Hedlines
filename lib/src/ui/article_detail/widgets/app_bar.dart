@@ -22,11 +22,6 @@ AppBar appBarTitleBack({
   bool? isVisibleBackButton = true,
 }) {
   return AppBar(
-    systemOverlayStyle: SystemUiOverlayStyle(
-      statusBarColor: Colors.white,
-      statusBarBrightness: brightness ?? Theme.of(AppNavigator.context!).brightness,
-      statusBarIconBrightness: (brightness ?? Theme.of(AppNavigator.context!).brightness) == Brightness.dark ? Brightness.light : Brightness.dark,
-    ),
     elevation: elevation ?? 0.25,
     backgroundColor: backgroundColor ?? backgroundPrimaryColor,
     automaticallyImplyLeading: false,
