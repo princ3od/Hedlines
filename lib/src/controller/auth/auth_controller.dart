@@ -37,12 +37,12 @@ class AuthenticationController extends GetxController {
     socialModel.value = await AuthService().signInWithGoogle();
     if (socialModel.value != null) {
       UserModel? userInfo = await UserInfoService().getUserInfo(socialModel.value!);
-
-      print("###" + '${userInfo?.toJson()}');
       if (userInfo == null) {
         UserModel userModelInfo = UserModel.fromSocial(socialModel.value!);
         await UserInfoService().addUser(userModelInfo);
         AppController.userInfo.value = userModelInfo;
+      } else {
+        AppController.userInfo.value = userInfo;
       }
     }
     isLoading.value = false;
@@ -67,7 +67,7 @@ class AuthenticationController extends GetxController {
       if (AppController.userInfo.value!.preferences.isEmpty) {
         AppNavigator.push(Routes.TOPIC);
       } else {
-        AppNavigator.push(Routes.HOME);
+        AppNavigator.pushNamedAndRemoveUntil(Routes.HOME);
       }
     }
   }

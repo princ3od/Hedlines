@@ -13,7 +13,6 @@ class Application {
       // Initial language
       LanguageService().initialLanguage(context);
     } catch (error) {
-      print(error);
       debugPrint(error.toString());
     }
   }

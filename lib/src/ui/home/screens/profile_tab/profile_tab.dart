@@ -7,17 +7,12 @@ import 'package:hedlines/src/constants/app_state.dart';
 import 'package:hedlines/src/controller/home/profile_tab/profile_controller.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/helper/utils/assets_helper.dart';
-import 'package:hedlines/src/routes/app_routes.dart';
 import 'package:hedlines/src/ui/common/buttons/inline_button.dart';
 import 'package:hedlines/src/ui/home/screens/profile_tab/widgets/topic_reference.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
-
-import '../../../../configs/lang/localization.dart';
 import '../../../../constants/constants.dart';
 import '../../../../constants/slide_mode.dart';
 import '../../../../controller/app_controller.dart';
-import '../../../../routes/app_pages.dart';
-import '../../../common/dialogs/dialog_confirm_cancel.dart';
 import '../../../common/dialogs/dialog_signOut.dart';
 import '../../../common/dialogs/dialog_wrapper.dart';
 import 'widgets/profile_overlay.dart';
@@ -42,7 +37,10 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
   @override
   void initState() {
     super.initState();
-    topicChoose = [...profileController.userModel.value.preferences];
+
+    print("at profile tab init state");
+    print(AppController.userInfo.value?.toJson());
+    topicChoose = [...profileController.userModel.value!.preferences];
     controller = AnimationController(duration: ANIMATION_DURATION_1000_MS, vsync: this);
     animation = CurvedAnimation(parent: controller, curve: Curves.linearToEaseOut)..addListener(() {});
     _overlayEntry = OverlayEntry(
@@ -91,15 +89,15 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
               Row(
                 children: [
                   CircleAvatar(
-                    backgroundImage: NetworkImage(AppController.userInfo.value?.avatar ?? ""),
-                    foregroundImage: const AssetImage(AssetsHelper.iconHome),
+                    foregroundImage: NetworkImage(AppController.userInfo.value?.avatar ?? ""),
+                    backgroundImage: const AssetImage(AssetsHelper.iconAvatarHolder),
                     radius: 20.sp,
                   ),
                   SizedBox(
                     width: 16.sp,
                   ),
                   Text(
-                    profileController.userModel.value.fullname ?? "",
+                    profileController.userModel.value?.fullname ?? "",
                     style: text14w500Blue,
                   ),
                 ],

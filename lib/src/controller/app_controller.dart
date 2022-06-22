@@ -22,15 +22,13 @@ class AppController extends GetxController {
     update();
   }
 
-  static Future getUserLocalStorageInfo() async {
-    print("26");
+  Future getUserLocalStorageInfo() async {
     UserModel? userModel = await UserLocal.getUserInfo();
-    print(userInfo.value != null);
-    userInfo.value = userModel;
     if (userModel != null) {
-      print(userModel.toJson());
+      userInfo.value = userModel;
       isAuthenticated.value = true;
     }
+    update();
   }
 
   static Future<void> saveUserInfo() async {
@@ -47,7 +45,7 @@ class AppController extends GetxController {
     await UserLocal.clearUserInfo();
     isAuthenticated.value = false;
     update();
-    // AppNavigator.pushNamedAndRemoveUntil(Routes.AUTHENTICATION);
+    AppNavigator.pushNamedAndRemoveUntil(Routes.AUTHENTICATION);
   }
 
   static final AppController _singleton = AppController._internal();

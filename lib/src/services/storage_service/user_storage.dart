@@ -14,7 +14,6 @@ class UserInfoService extends BaseService {
 
   Future<UserModel?> getUserInfo(SocialModel socialModel) async {
     return await usersRef.doc(socialModel.googleId).get().then((DocumentSnapshot doc) {
-      print("snapshot: " + '${doc.data()}');
       if (doc.data() == null) {
         return null;
       }

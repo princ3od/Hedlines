@@ -48,6 +48,7 @@ dependencies:
   flutter_html: ^2.2.1
   webview_flutter: ^2.1.0
   intl: ^0.17.0
+  flutter_launcher_icons: ^0.9.3
 
 dev_dependencies:
   flutter_test:
@@ -75,3 +76,7 @@ flutter:
         - asset: assets/fonts/SourceCodePro-Bold.ttf
           weight: 700
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/app_icon.png"

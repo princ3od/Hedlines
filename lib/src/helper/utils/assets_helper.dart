@@ -16,6 +16,7 @@ class AssetsHelper {
   static const String iconFavourite = "assets/images/svg/favourite_ico.svg";
   static const String iconEllypsisVertical = "assets/images/svg/ellypsis_vertical_ico.svg";
   static const String iconShare = "assets/images/svg/share_ico.svg";
+  static const String iconAvatarHolder = "assets/icons/avatar_holder_ico.png";
 
   //HomeOverlay
   static const String iconSwipeUp = "assets/images/svg/swipe_up_ico.svg";
