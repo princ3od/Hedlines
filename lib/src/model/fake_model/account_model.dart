@@ -103,18 +103,19 @@ class UserModel {
   }
 
   factory UserModel.fromJson(String str) {
+    var data = json.decode(str);
     return UserModel(
-      id: json.decode(str)['id'],
-      username: json.decode(str)['username'],
-      fullname: json.decode(str)['fullname'],
-      email: json.decode(str)['email'],
-      createdAt: json.decode(str)['createdAt'] != null ? DateTime.parse(json.decode(str)['createdAt']) : null,
-      modifiedAt: json.decode(str)['modifiedAt'] != null ? DateTime.parse(json.decode(str)['modifiedAt']) : null,
-      avatar: json.decode(str)['avatar'],
-      preferences: json.decode(str)['preferences'],
-      lastVisted: json.decode(str)['lastVisted'] != null ? DateTime.parse(json.decode(str)['lastVisted']) : null,
-      liked: json.decode(str)['liked'] != null ? DateTimeHelper.convertTimeStampToDateTime(json.decode(str)['liked']) : null,
-      previous_viewed_article: json.decode(str)['previous_viewed_article'] != null ? StringHeler.convertMapStringToString(json.decode(str)['previous_viewed_article']) : null,
+      id: data['id'],
+      username: data['username'],
+      fullname: data['fullname'],
+      email: data['email'],
+      createdAt: data['createdAt'] != null ? DateTime.parse(data['createdAt']) : null,
+      modifiedAt: data['modifiedAt'] != null ? DateTime.parse(data['modifiedAt']) : null,
+      avatar: data['avatar'],
+      preferences: data['preferences'],
+      lastVisted: data['lastVisted'] != null ? DateTime.parse(data['lastVisted']) : null,
+      liked: data['liked'] != null ? DateTimeHelper.convertTimeStampToDateTime(data['liked']) : null,
+      previous_viewed_article: data['previous_viewed_article'] != null ? StringHeler.convertMapStringToString(data['previous_viewed_article']) : null,
     );
   }
 

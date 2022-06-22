@@ -22,7 +22,7 @@ class DateTimeHelper {
   }
 
   static bool isIsoDate(str) {
-    RegExp exp = new RegExp('/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/');
+    RegExp exp = RegExp('/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/');
     if (!exp.hasMatch(str)) return false;
     var d = DateTime.parse(str);
     return d.toIso8601String() == str;

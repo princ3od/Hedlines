@@ -21,13 +21,10 @@ class AuthenticationController extends GetxController {
         break;
 
       case SignInType.facebook:
-        // TODO: Handle this case.
         break;
       case SignInType.email:
-        // TODO: Handle this case.
         break;
       case SignInType.phone:
-        // TODO: Handle this case.
         break;
     }
   }

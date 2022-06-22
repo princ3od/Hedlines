@@ -17,8 +17,4 @@ class TopicController extends GetxController {
   }
 
   void _handelSetUpContext() {}
-  @override
-  void onInit() {
-    super.onInit();
-  }
 }

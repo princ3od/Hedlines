@@ -49,26 +49,19 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
         onWebViewCreated: (WebViewController webViewController) {
           _controller.complete(webViewController);
         },
-        onProgress: (int progress) {
-          print('WebView is loading (progress : $progress%)');
-        },
+        onProgress: (int progress) {},
         javascriptChannels: <JavascriptChannel>{
           _toasterJavascriptChannel(context),
         },
         navigationDelegate: (NavigationRequest request) {
           if (request.url.startsWith('https://www.youtube.com/')) {
-            print('blocking navigation to $request}');
             return NavigationDecision.prevent;
           }
-          print('allowing navigation to $request');
+
           return NavigationDecision.navigate;
         },
-        onPageStarted: (String url) {
-          print('Page started loading: $url');
-        },
-        onPageFinished: (String url) {
-          print('Page finished loading: $url');
-        },
+        onPageStarted: (String url) {},
+        onPageFinished: (String url) {},
         gestureNavigationEnabled: true,
         backgroundColor: const Color(0x00000000),
       ),

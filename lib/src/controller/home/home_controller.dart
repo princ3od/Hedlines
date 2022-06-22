@@ -10,10 +10,7 @@ class HomeController extends GetxController {
     super.onInit();
     pageController = PageController(
       initialPage: 0,
-    )..addListener(() {
-        index.value = pageController.page!.round();
-        update();
-      });
+    );
   }
 
   void changeTab(int value) {

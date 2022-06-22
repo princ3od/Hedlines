@@ -24,6 +24,7 @@ class UserLocal {
     if (str != null) {
       return UserModel.fromJson(str);
     }
+    return null;
   }
 
   Future<void> saveUserInfo(dynamic a) async {
@@ -32,11 +33,11 @@ class UserLocal {
 
   void saveAccountRemember(String email, String pass, bool isExpert) {
     AccountRemember accountRemember;
-    var _UserModel = box.get(StorageKey.LIST_ACCOUNT);
-    if (_UserModel == null) {
+    var _userModel = box.get(StorageKey.LIST_ACCOUNT);
+    if (_userModel == null) {
       accountRemember = AccountRemember(account: <Account>[]);
     } else {
-      accountRemember = AccountRemember.fromJson(_UserModel);
+      accountRemember = AccountRemember.fromJson(_userModel);
     }
     int indexOfRemember = accountRemember.account!.indexWhere((element) => element.email == email);
     if (indexOfRemember == -1) {
@@ -50,11 +51,11 @@ class UserLocal {
 
   void deleteAccountRemember(String email) {
     AccountRemember accountRemember;
-    var _UserModel = box.get(StorageKey.LIST_ACCOUNT);
-    if (_UserModel == null) {
+    var _userModel = box.get(StorageKey.LIST_ACCOUNT);
+    if (_userModel == null) {
       accountRemember = AccountRemember(account: <Account>[]);
     } else {
-      accountRemember = AccountRemember.fromJson(_UserModel);
+      accountRemember = AccountRemember.fromJson(_userModel);
     }
     int indexOfRemember = accountRemember.account!.indexWhere((account) => account.email == email);
     if (indexOfRemember != -1) {
@@ -99,7 +100,7 @@ class UserLocal {
     return UserModel.fromJson(_accountLocal);
   }
 
-  void saveAccount(UserModel _UserModel) {
-    box.put(StorageKey.ACCOUNT, _UserModel.toJson());
+  void saveAccount(UserModel _userModel) {
+    box.put(StorageKey.ACCOUNT, _userModel.toJson());
   }
 }

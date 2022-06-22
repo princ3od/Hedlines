@@ -38,8 +38,6 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
   void initState() {
     super.initState();
 
-    print("at profile tab init state");
-    print(AppController.userInfo.value?.toJson());
     topicChoose = [...profileController.userModel.value!.preferences];
     controller = AnimationController(duration: ANIMATION_DURATION_1000_MS, vsync: this);
     animation = CurvedAnimation(parent: controller, curve: Curves.linearToEaseOut)..addListener(() {});

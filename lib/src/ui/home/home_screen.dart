@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     final pageView = PageView(
       controller: homeController.pageController,
-      scrollDirection: Axis.horizontal,
+      physics: NeverScrollableScrollPhysics(),
       children: [
         ..._tabs,
       ],

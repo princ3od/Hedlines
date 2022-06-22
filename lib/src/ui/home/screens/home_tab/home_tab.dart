@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 import 'package:hedlines/src/controller/home/home_tab/home_tab_controller.dart';
 import 'package:hedlines/src/ui/home/screens/home_tab/widgets/home_context.dart';
 
+import '../../../../constants/args_key.dart';
+import '../../../common/gesture_detector/custom_gesture_detector.dart';
+
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
 
@@ -26,7 +29,16 @@ class _HomeTabState extends State<HomeTab> {
             homeTabController.indexChange(index);
           },
           itemBuilder: (BuildContext context, int index) {
-            return HomeContext(sizeScreen: sizeScreen, articleDescription: homeTabController.listArticleDescription[index]);
+            return CustomGestureDetector(
+              onSwipeLeft: () {
+                dynamic args = {
+                  AppArgsKey.initialUrl: homeTabController.listArticleDescription[index].articleUrl,
+                  AppArgsKey.title: "Xem tin (${homeTabController.listArticleDescription[index].estimateMinuteReadTime} phút đọc)",
+                };
+                homeTabController.handleTransactionPage(args);
+              },
+              child: HomeContext(sizeScreen: sizeScreen, articleDescription: homeTabController.listArticleDescription[index]),
+            );
           },
         );
       },
