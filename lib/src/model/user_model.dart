@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hedlines/src/model/social_model.dart';
 
@@ -19,7 +17,7 @@ class UserModel {
   final Map<String, DateTime>? liked;
   final Map<String, String>? previousViewedArticle;
 
-  List<dynamic> preferences = [];
+  List<String> preferences = [];
   UserModel({
     this.lastVisited,
     this.liked,
@@ -96,61 +94,13 @@ class UserModel {
       createdAt: (map['createdAt'] as Timestamp).toDate(),
       modifiedAt: (map['modifiedAt'] as Timestamp).toDate(),
       avatar: map['avatar'],
-      preferences: map['preferences'] ?? [],
+      preferences: List.from(map['preferences']),
       lastVisited: (map['last_visited'] as Timestamp).toDate(),
       liked: DateTimeHelper.convertTimeStampToDateTime(map['liked']),
       previousViewedArticle:
           StringHeler.convertMapStringToString(map['previous_viewed_article']),
     );
   }
-
-  factory UserModel.fromJson(String str) {
-    var data = json.decode(str);
-    return UserModel(
-      id: data['id'],
-      username: data['username'],
-      fullname: data['fullname'],
-      email: data['email'],
-      createdAt:
-          data['createdAt'] != null ? DateTime.parse(data['createdAt']) : null,
-      modifiedAt: data['modifiedAt'] != null
-          ? DateTime.parse(data['modifiedAt'])
-          : null,
-      avatar: data['avatar'],
-      preferences: data['preferences'],
-      lastVisited: data['last_visited'] != null
-          ? DateTime.parse(data['lastVisted'])
-          : null,
-      liked: data['liked'] != null
-          ? DateTimeHelper.convertTimeStampToDateTime(data['liked'])
-          : null,
-      previousViewedArticle: data['previous_viewed_article'] != null
-          ? StringHeler.convertMapStringToString(
-              data['previous_viewed_article'])
-          : null,
-    );
-  }
-
-  factory UserModel.fromUpdateUser(Map<String, dynamic> map) {
-    return UserModel(
-      id: map['id'],
-      username: map['username'] ?? '',
-      fullname: map['fullname'] ?? '',
-      email: map['email'] ?? '',
-      createdAt: map['createdAt'],
-      modifiedAt: map['modifiedAt'],
-      avatar: map['avatar'],
-      preferences: map['preferences'],
-      lastVisited: map['last_visited'],
-      liked: map['liked'],
-      previousViewedArticle: map['previous_viewed_article'],
-    );
-  }
-
-  String toJson() => json.encode(
-        toMap(),
-        toEncodable: DateTimeHelper.myDateSerializer,
-      );
 
   @override
   bool operator ==(Object other) {

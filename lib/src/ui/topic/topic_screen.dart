@@ -18,36 +18,14 @@ class TopicScreen extends StatefulWidget {
 
 class _TopicScreenState extends State<TopicScreen> {
   var topicController = Get.put(TopicController());
-  Set<String> topicChoose = {};
-  bool isError = false;
+  @override
+  void dispose() {
+    super.dispose();
+    Get.delete<TopicController>();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> gridData = [
-      {
-        'lable': "Kinh doanh",
-        'image': AssetsHelper.iconworkingbag,
-      },
-      {
-        'lable': 'Giải trí',
-        'image': AssetsHelper.iconemojismile,
-      },
-      {
-        'lable': 'Thời sự',
-        'image': AssetsHelper.iconglobal,
-      },
-      {
-        'lable': 'Du lịch',
-        'image': AssetsHelper.iconairbalonhottravel,
-      },
-      {
-        'lable': 'Thể thao',
-        'image': AssetsHelper.icontrophy,
-      },
-      {
-        'lable': 'Công nghệ',
-        'image': AssetsHelper.iconmonitor,
-      }
-    ];
     final orientation = MediaQuery.of(context).orientation;
     return Scaffold(
       extendBody: true,
@@ -86,61 +64,77 @@ class _TopicScreenState extends State<TopicScreen> {
               ),
               Expanded(
                 flex: 3,
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: gridData.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount:
-                        (orientation == Orientation.portrait) ? 3 : 5,
-                    mainAxisSpacing:
-                        (orientation == Orientation.portrait) ? 16.sp : 10.sp,
-                    crossAxisSpacing:
-                        (orientation == Orientation.portrait) ? 0.sp : 5.sp,
-                  ),
-                  itemBuilder: (BuildContext context, int index) {
-                    return FieldConcern(
-                      onTap: () {
-                        String? topic = gridData[index]['lable'];
-                        if (topic != null) {
-                          _toggleTopic(topic);
-                        }
-                      },
-                      iconFiledConcern:
-                          gridData[index]["image"] ?? AssetsHelper.logo,
-                      lable: gridData[index]["lable"] ?? "Hedlines",
-                    );
-                  },
+                child: Obx(
+                  () => (topicController.isLoading.value)
+                      ? Center(
+                          child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                  backgroundPrimaryColor)),
+                        )
+                      : GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: topicController.topics.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount:
+                                (orientation == Orientation.portrait) ? 3 : 5,
+                            mainAxisSpacing:
+                                (orientation == Orientation.portrait)
+                                    ? 16.sp
+                                    : 10.sp,
+                            crossAxisSpacing:
+                                (orientation == Orientation.portrait)
+                                    ? 0.sp
+                                    : 5.sp,
+                          ),
+                          itemBuilder: (BuildContext context, int index) {
+                            return FieldConcern(
+                              onTap: () {
+                                var topic = topicController.topics[index];
+                                topicController.selectTopic(topic);
+                              },
+                              iconFiledConcern: AssetsHelper.getTopicIcon(
+                                  topicController.topics[index]),
+                              lable: topicController.topics[index].name,
+                            );
+                          },
+                        ),
                 ),
               ),
               SizedBox(
                 height: 4.sp,
               ),
-              Visibility(
-                visible: isError,
-                child: Text(
-                  topicChoose.isEmpty
-                      ? "Bạn chưa chọn chủ đề nào."
-                      : "Bạn phải chọn ít nhất 2 chủ đề.",
-                  style: text13w400cRed,
+              Obx(
+                () => Visibility(
+                  visible: topicController.isError.value,
+                  child: Text(
+                    topicController.selectedTopics.isEmpty
+                        ? "Bạn chưa chọn chủ đề nào."
+                        : "Bạn phải chọn ít nhất 2 chủ đề.",
+                    style: text13w400cRed,
+                  ),
                 ),
               ),
               SizedBox(
                 height: 25.sp,
               ),
-              InlineButton(
-                mainAxisSize: MainAxisSize.max,
-                onTap: () {
-                  _checkNumberSelectedTopic();
-                  if (!isError) {
-                    topicController.handelNagivateToHome(topicChoose);
-                  }
-                },
-                onLongPress: null,
-                leading: null,
-                title: "TIẾP TỤC",
-                backgroundColor: backgroundPrimaryColor,
-                textColor: colorWhite,
+              Obx(
+                () => Visibility(
+                  visible: topicController.showNextButton.value,
+                  child: InlineButton(
+                    isLoading: topicController.isNavigating.value,
+                    mainAxisSize: MainAxisSize.max,
+                    onTap: () {
+                      topicController.handelNagivateToHome();
+                    },
+                    onLongPress: null,
+                    leading: null,
+                    title: "TIẾP TỤC",
+                    backgroundColor: backgroundPrimaryColor,
+                    textColor: colorWhite,
+                  ),
+                ),
               ),
               const Spacer(
                 flex: 2,
@@ -150,28 +144,5 @@ class _TopicScreenState extends State<TopicScreen> {
         ),
       ),
     );
-  }
-
-  _checkNumberSelectedTopic() {
-    if (topicChoose.isEmpty || topicChoose.length < 2) {
-      setState(() {
-        isError = true;
-      });
-    } else {
-      setState(() {
-        isError = false;
-      });
-    }
-  }
-
-  _toggleTopic(String topic) {
-    setState(() {
-      if (topicChoose.contains(topic)) {
-        topicChoose.remove(topic);
-      } else {
-        topicChoose.add(topic);
-      }
-    });
-    _checkNumberSelectedTopic();
   }
 }

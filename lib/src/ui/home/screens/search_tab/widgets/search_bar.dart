@@ -6,37 +6,11 @@ import 'package:hedlines/src/ui/common/buttons/inline_button.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
 
 import '../../../../../controller/home/search_tab/search_tab_controller.dart';
-import '../../../../../helper/utils/assets_helper.dart';
 
 class SearchBar extends StatelessWidget {
   final pink = const Color(0xFFFACCCC);
   final grey = const Color(0xFFF2F2F7);
-  final List<Map<String, String>> gridData = [
-    {
-      'lable': "Kinh doanh",
-      'image': AssetsHelper.iconworkingbag,
-    },
-    {
-      'lable': 'Giải trí',
-      'image': AssetsHelper.iconemojismile,
-    },
-    {
-      'lable': 'Thời sự',
-      'image': AssetsHelper.iconglobal,
-    },
-    {
-      'lable': 'Du lịch',
-      'image': AssetsHelper.iconairbalonhottravel,
-    },
-    {
-      'lable': 'Thể thao',
-      'image': AssetsHelper.icontrophy,
-    },
-    {
-      'lable': 'Công nghệ',
-      'image': AssetsHelper.iconmonitor,
-    }
-  ];
+
   final SearchTabController searchTabController = Get.find();
 
   SearchBar({Key? key}) : super(key: key);
@@ -100,7 +74,7 @@ class SearchBar extends StatelessWidget {
         onTap: null,
         onLongPress: null,
         leading: null,
-        title: gridData[index]["lable"] ?? "",
+        title: "123",
         mainAxisSize: MainAxisSize.min,
         textStyle: text10w400Blue,
       ),

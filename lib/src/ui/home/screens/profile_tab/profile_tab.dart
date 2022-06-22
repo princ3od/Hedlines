@@ -25,16 +25,6 @@ class _ProfileTabState extends State<ProfileTab>
     with SingleTickerProviderStateMixin {
   ProfileController profileController = Get.put(ProfileController());
 
-  final List<String> gridData = [
-    "Kinh doanh",
-    "Giải trí",
-    "Thời sự",
-    "Du lịch",
-    "Thể thao",
-    "Công nghệ"
-  ];
-  late List<String> topicChoose;
-  bool isShowSaveButton = true;
   late Animation<double> animation;
   late AnimationController controller;
 
@@ -42,8 +32,6 @@ class _ProfileTabState extends State<ProfileTab>
   @override
   void initState() {
     super.initState();
-
-    topicChoose = [...profileController.userModel.value!.preferences];
     controller =
         AnimationController(duration: ANIMATION_DURATION_1000_MS, vsync: this);
     animation =
@@ -106,7 +94,7 @@ class _ProfileTabState extends State<ProfileTab>
                     width: 16.sp,
                   ),
                   Text(
-                    profileController.userModel.value?.fullname ?? "",
+                    AppController.userInfo.value?.fullname ?? "",
                     style: text14w500Blue,
                   ),
                 ],
@@ -149,18 +137,24 @@ class _ProfileTabState extends State<ProfileTab>
         Positioned(
           top: 280.sp,
           left: 8.sp,
-          child: Opacity(
-            opacity: isShowSaveButton ? 1 : 0,
-            child: SizedBox(
-              width: 150.sp,
-              height: 35.sp,
-              child: InlineButton(
-                leading: null,
-                mainAxisSize: MainAxisSize.max,
-                onLongPress: null,
-                onTap: null,
-                title: "Lưu",
-                textStyle: text14w700Blue,
+          child: Obx(
+            () => Visibility(
+              visible: profileController.showSaveButton.value,
+              child: SizedBox(
+                width: 150.sp,
+                height: 35.sp,
+                child: InlineButton(
+                  textColor: backgroundPrimaryColor,
+                  isLoading: profileController.isSaving.value,
+                  leading: null,
+                  mainAxisSize: MainAxisSize.max,
+                  onLongPress: null,
+                  onTap: () {
+                    profileController.savePreferences();
+                  },
+                  title: "Lưu",
+                  textStyle: text14w700Blue,
+                ),
               ),
             ),
           ),
@@ -171,25 +165,29 @@ class _ProfileTabState extends State<ProfileTab>
           child: SizedBox(
             width: 213.sp,
             height: 100.sp,
-            child: GridView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: gridData.length,
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: (orientation == Orientation.portrait) ? 3 : 5,
-                mainAxisSpacing:
-                    (orientation == Orientation.portrait) ? 4.sp : 8.sp,
-                crossAxisSpacing:
-                    (orientation == Orientation.portrait) ? 2.sp : 5.sp,
-                childAspectRatio: 4 / 2,
+            child: Obx(
+              () => GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: profileController.topics.length,
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: (orientation == Orientation.portrait) ? 3 : 5,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 8,
+                  childAspectRatio: 4 / 2,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  return TopicReference(
+                    isUserReference: profileController.selectedTopics
+                        .contains(profileController.topics[index].id),
+                    mainAxisSize: MainAxisSize.max,
+                    title: profileController.topics[index].name,
+                    onTap: () => profileController.selectTopic(
+                      profileController.topics[index].id,
+                    ),
+                  );
+                },
               ),
-              itemBuilder: (BuildContext context, int index) {
-                return TopicReference(
-                  isUserReference: topicChoose.contains(gridData[index]),
-                  mainAxisSize: MainAxisSize.max,
-                  title: gridData[index],
-                );
-              },
             ),
           ),
         )
@@ -202,12 +200,4 @@ class _ProfileTabState extends State<ProfileTab>
     controller.dispose();
     super.dispose();
   }
-
-  // _toggleTopic(String topic) {
-  //   if (profileController.userModel.value.topicPreferences.contains(topic)) {
-  //     profileController.userModel.value.topicPreferences.remove(topic);
-  //   } else {
-  //     profileController.userModel.value.topicPreferences.add(topic);
-  //   }
-  // }
 }

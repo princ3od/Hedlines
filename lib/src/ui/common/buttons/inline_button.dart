@@ -17,6 +17,7 @@ class InlineButton extends StatefulWidget {
   final double? horizontal;
   final double? height;
   final MainAxisSize mainAxisSize;
+  final bool isLoading;
   InlineButton({
     Key? key,
     required this.onTap,
@@ -31,6 +32,7 @@ class InlineButton extends StatefulWidget {
     this.horizontal,
     this.height,
     required this.mainAxisSize,
+    this.isLoading = false,
   }) : super(key: key);
 
   @override
@@ -57,14 +59,23 @@ class _InlineButtonState extends State<InlineButton> {
           children: [
             if (widget.leading != null) widget.leading!,
             if (widget.mainAxisSize == MainAxisSize.min) const Spacer(),
-            Text(
-              widget.title,
-              style: widget.textStyle ??
-                  text14w500Blue.copyWith(
-                    color: widget.textColor ?? const Color(0xff0953AD),
+            widget.isLoading
+                ? SizedBox(
+                    width: 16,
+                    height: 16,
+                    child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                      widget.textColor ?? Colors.white,
+                    )),
+                  )
+                : Text(
+                    widget.title,
+                    style: widget.textStyle ??
+                        text14w500Blue.copyWith(
+                          color: widget.textColor ?? const Color(0xff0953AD),
+                        ),
+                    overflow: TextOverflow.ellipsis,
                   ),
-              overflow: TextOverflow.ellipsis,
-            ),
             if (widget.mainAxisSize == MainAxisSize.min) const Spacer(),
           ],
         ),

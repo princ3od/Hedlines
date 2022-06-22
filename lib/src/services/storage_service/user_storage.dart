@@ -27,9 +27,22 @@ class UserInfoService {
     });
   }
 
-  Future<void> setUserTopics(Set<String> topics) async {
+  Future<UserModel?> getUser(String id) async {
+    return await usersRef.doc(id).get().then((DocumentSnapshot doc) {
+      if (doc.data() == null) {
+        return null;
+      }
+
+      final data = doc.data() as Map<String, dynamic>;
+      var userModel = UserModel.fromMap(data);
+      userModel.id = id;
+      return userModel;
+    });
+  }
+
+  Future<void> setUserTopics(List<String> topics) async {
     await usersRef.doc(AppController.userInfo.value?.id).update({
-      'preferences': topics.toList(),
+      'preferences': topics,
     });
   }
 

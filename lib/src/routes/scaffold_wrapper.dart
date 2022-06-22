@@ -4,7 +4,6 @@ import 'package:hedlines/src/constants/slide_mode.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_sign_out.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_wrapper.dart';
 import '../configs/theme/app_colors.dart';
-import '../controller/app_controller.dart';
 import 'app_pages.dart';
 
 class ScaffoldWrapper extends StatefulWidget {
@@ -35,7 +34,6 @@ class _ScaffoldWrapperState extends State<ScaffoldWrapper> {
             slideFrom: SlideMode.bot,
             child: DialogSignOut(
               onConfirmed: () async {
-                await AppController.saveUserInfo();
                 AppNavigator.pop();
                 exit(0);
               },

@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../model/social_model.dart';
-import '../../model/user_model.dart';
 
 class AuthService {
   static final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -44,9 +43,5 @@ class AuthService {
   AuthService._internal();
   factory AuthService() {
     return _authService;
-  }
-
-  Future<UserModel?> getUserInfo(SocialModel socialModel) async {
-    return null;
   }
 }

@@ -1,13 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:hedlines/src/configs/application.dart';
 import 'package:hedlines/src/constants/app_state.dart';
 import 'package:hedlines/src/constants/constants.dart';
-import 'package:hedlines/src/data/local_data_source/user_local_data.dart';
 import 'package:hedlines/src/model/user_model.dart';
 import 'package:hedlines/src/routes/app_pages.dart';
 import 'package:hedlines/src/routes/app_routes.dart';
+
+import '../services/storage_service/user_storage.dart';
 
 class AppController extends GetxController {
   static Rxn<UserModel> userInfo = Rxn<UserModel>();
@@ -16,25 +19,20 @@ class AppController extends GetxController {
 
   Future<void> _setUpData(BuildContext context) async {
     await Application().initialAppLication(context);
-    await Future.delayed(ANIMATION_DURATION_4000_MS);
-    await getUserLocalStorageInfo();
+    await Future.delayed(ANIMATION_DURATION_3000_MS);
+    await checkLogin();
     appState.value = AppState.loaded;
     update();
   }
 
-  Future getUserLocalStorageInfo() async {
-    UserModel? userModel = await UserLocal.getUserInfo();
-    if (userModel != null) {
+  Future checkLogin() async {
+    if (FirebaseAuth.instance.currentUser != null) {
+      var userModel = await UserInfoService()
+          .getUser(FirebaseAuth.instance.currentUser!.uid);
       userInfo.value = userModel;
       isAuthenticated.value = true;
     }
     update();
-  }
-
-  static Future<void> saveUserInfo() async {
-    if (userInfo.value != null) {
-      await UserLocal().saveUserInfo(userInfo.value?.toJson());
-    }
   }
 
   void setUpData(BuildContext context) {
@@ -42,9 +40,9 @@ class AppController extends GetxController {
   }
 
   Future<void> signOut() async {
-    await UserLocal.clearUserInfo();
     isAuthenticated.value = false;
     update();
+    Get.deleteAll(force: true);
     AppNavigator.pushNamedAndRemoveUntil(Routes.authentication);
   }
 

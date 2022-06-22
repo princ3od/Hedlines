@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hedlines/src/data/local_data_source/user_local_data.dart';
+import 'package:hedlines/src/data/local_storage.dart';
 
 enum ThemeOptions { light, dark }
 
@@ -10,7 +10,8 @@ class ThemeService extends ChangeNotifier {
   static final systemBrightness = SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarBrightness: isSavedDarkMode() ? Brightness.light : Brightness.dark,
-    statusBarIconBrightness: isSavedDarkMode() ? Brightness.light : Brightness.dark,
+    statusBarIconBrightness:
+        isSavedDarkMode() ? Brightness.light : Brightness.dark,
   );
 
   switchStatusColor() {
@@ -29,11 +30,11 @@ class ThemeService extends ChangeNotifier {
   }
 
   static bool isSavedDarkMode() {
-    return UserLocal().isSavedDarkMode();
+    return LocalStorage().isSavedDarkMode();
   }
 
   void saveThemeMode(bool isDarkMode) async {
-    UserLocal().setDarkMode(isDarkMode);
+    LocalStorage().setDarkMode(isDarkMode);
   }
 
   void changeThemeMode() {

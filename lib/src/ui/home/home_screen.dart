@@ -30,12 +30,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   final homeController = Get.put(HomeController());
-  // ignore: prefer_final_fields
-  List<Widget> _tabs = [
-    const HomeTab(),
-    const SearchTab(),
-    const ProfileTab(),
-  ];
 
   late Animation<double> animation;
   late AnimationController controller;
@@ -84,13 +78,6 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    final pageView = PageView(
-      controller: homeController.pageController,
-      physics: NeverScrollableScrollPhysics(),
-      children: [
-        ..._tabs,
-      ],
-    );
     return Scaffold(
       appBar: appBarBrighnessDark(),
       bottomNavigationBar: BottomAppBar(
@@ -134,13 +121,22 @@ class _HomeScreenState extends State<HomeScreen>
           ),
         ),
       ),
-      body: pageView,
+      body: PageView(
+        controller: homeController.pageController,
+        physics: NeverScrollableScrollPhysics(),
+        children: const [
+          HomeTab(),
+          SearchTab(),
+          ProfileTab(),
+        ],
+      ),
     );
   }
 
   @override
   void dispose() {
     controller.dispose();
+    Get.delete<HomeController>();
     super.dispose();
   }
 
