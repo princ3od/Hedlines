@@ -1,5 +1,6 @@
 class DateTimeHelper {
-  static Map<String, DateTime> convertTimeStampToDateTime(Map<String, dynamic> map) {
+  static Map<String, DateTime> convertTimeStampToDateTime(
+      Map<String, dynamic> map) {
     Map<String, DateTime> result = {};
     map.forEach((key, value) {
       result[key] = value.toDate();
@@ -22,7 +23,7 @@ class DateTimeHelper {
   }
 
   static bool isIsoDate(str) {
-    RegExp exp = RegExp('/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/');
+    RegExp exp = RegExp('/d{4}-d{2}-d{2}Td{2}:d{2}:d{2}.d{3}Z/');
     if (!exp.hasMatch(str)) return false;
     var d = DateTime.parse(str);
     return d.toIso8601String() == str;

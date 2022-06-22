@@ -30,14 +30,19 @@ class _HomeTabState extends State<HomeTab> {
           },
           itemBuilder: (BuildContext context, int index) {
             return CustomGestureDetector(
-              onSwipeLeft: () {
+              onSwipeRight: () {
                 dynamic args = {
-                  AppArgsKey.initialUrl: homeTabController.listArticleDescription[index].url,
-                  AppArgsKey.title: "Xem tin (${homeTabController.listArticleDescription[index].estimateMinuteReadTime} phút đọc)",
+                  AppArgsKey.initialUrl:
+                      homeTabController.listArticleDescription[index].url,
+                  AppArgsKey.title:
+                      "Xem tin (${homeTabController.listArticleDescription[index].estimateMinuteReadTime} phút đọc)",
                 };
-                homeTabController.handleTransactionPage(args);
+                homeTabController.toArticleDetial(args);
               },
-              child: HomeContext(sizeScreen: sizeScreen, articleDescription: homeTabController.listArticleDescription[index]),
+              child: HomeContext(
+                  sizeScreen: sizeScreen,
+                  articleDescription:
+                      homeTabController.listArticleDescription[index]),
             );
           },
         );

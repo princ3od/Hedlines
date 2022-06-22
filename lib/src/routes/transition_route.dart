@@ -11,17 +11,19 @@ class AppMaterialPageRoute<T> extends MaterialPageRoute<T> {
   }) : super(builder: builder, settings: settings);
 
   @override
-  Duration get transitionDuration => Duration(
+  Duration get transitionDuration => const Duration(
         milliseconds: DELAY_250_MS,
       );
 
+  @override
   @protected
   bool get hasScopedWillPopCallback {
-    return [Routes.ROOT].contains(AppNavigator.currentRoute());
+    return [Routes.root].contains(AppNavigator.currentRoute());
   }
 
   @override
-  Widget buildTransitions(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+  Widget buildTransitions(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation, Widget child) {
     final PageTransitionsTheme theme = Theme.of(context).pageTransitionsTheme;
     return theme.buildTransitions<T>(
       this,

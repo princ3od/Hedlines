@@ -4,13 +4,13 @@ import 'package:dio/dio.dart';
 
 import '../../constants/api_gateway.dart';
 
-class ArticleSearcherRepository {
-  static final ArticleSearcherRepository _singleton =
-      ArticleSearcherRepository._internal();
-  factory ArticleSearcherRepository() {
+class ArticleRecommenderRepository {
+  static final ArticleRecommenderRepository _singleton =
+      ArticleRecommenderRepository._internal();
+  factory ArticleRecommenderRepository() {
     return _singleton;
   }
-  ArticleSearcherRepository._internal();
+  ArticleRecommenderRepository._internal();
 
   Future<List<Article>?> searchArticle(String keyword) async {
     Response response;

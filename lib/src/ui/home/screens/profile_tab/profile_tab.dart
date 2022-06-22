@@ -1,9 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
-import 'package:hedlines/src/constants/app_state.dart';
 import 'package:hedlines/src/controller/home/profile_tab/profile_controller.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/helper/utils/assets_helper.dart';
@@ -13,7 +10,7 @@ import 'package:hedlines/src/ui/styles/app_styles.dart';
 import '../../../../constants/constants.dart';
 import '../../../../constants/slide_mode.dart';
 import '../../../../controller/app_controller.dart';
-import '../../../common/dialogs/dialog_signOut.dart';
+import '../../../common/dialogs/dialog_sign_out.dart';
 import '../../../common/dialogs/dialog_wrapper.dart';
 import 'widgets/profile_overlay.dart';
 
@@ -24,10 +21,18 @@ class ProfileTab extends StatefulWidget {
   State<ProfileTab> createState() => _ProfileTabState();
 }
 
-class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateMixin {
+class _ProfileTabState extends State<ProfileTab>
+    with SingleTickerProviderStateMixin {
   ProfileController profileController = Get.put(ProfileController());
 
-  final List<String> gridData = ["Kinh doanh", "Giải trí", "Thời sự", "Du lịch", "Thể thao", "Công nghệ"];
+  final List<String> gridData = [
+    "Kinh doanh",
+    "Giải trí",
+    "Thời sự",
+    "Du lịch",
+    "Thể thao",
+    "Công nghệ"
+  ];
   late List<String> topicChoose;
   bool isShowSaveButton = true;
   late Animation<double> animation;
@@ -39,13 +44,17 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
     super.initState();
 
     topicChoose = [...profileController.userModel.value!.preferences];
-    controller = AnimationController(duration: ANIMATION_DURATION_1000_MS, vsync: this);
-    animation = CurvedAnimation(parent: controller, curve: Curves.linearToEaseOut)..addListener(() {});
+    controller =
+        AnimationController(duration: ANIMATION_DURATION_1000_MS, vsync: this);
+    animation =
+        CurvedAnimation(parent: controller, curve: Curves.linearToEaseOut)
+          ..addListener(() {});
     _overlayEntry = OverlayEntry(
       builder: (context) {
         final size = MediaQuery.of(context).size;
         return SlideTransition(
-          position: Tween(begin: Offset(0, -1), end: Offset(0, 0)).animate(animation),
+          position: Tween(begin: const Offset(0, -1), end: const Offset(0, 0))
+              .animate(animation),
           child: Container(
             width: size.width,
             height: size.height,
@@ -87,8 +96,10 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
               Row(
                 children: [
                   CircleAvatar(
-                    foregroundImage: NetworkImage(AppController.userInfo.value?.avatar ?? ""),
-                    backgroundImage: const AssetImage(AssetsHelper.iconAvatarHolder),
+                    foregroundImage: NetworkImage(
+                        AppController.userInfo.value?.avatar ?? ""),
+                    backgroundImage:
+                        const AssetImage(AssetsHelper.iconAvatarHolder),
                     radius: 20.sp,
                   ),
                   SizedBox(
@@ -166,8 +177,10 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: (orientation == Orientation.portrait) ? 3 : 5,
-                mainAxisSpacing: (orientation == Orientation.portrait) ? 4.sp : 8.sp,
-                crossAxisSpacing: (orientation == Orientation.portrait) ? 2.sp : 5.sp,
+                mainAxisSpacing:
+                    (orientation == Orientation.portrait) ? 4.sp : 8.sp,
+                crossAxisSpacing:
+                    (orientation == Orientation.portrait) ? 2.sp : 5.sp,
                 childAspectRatio: 4 / 2,
               ),
               itemBuilder: (BuildContext context, int index) {

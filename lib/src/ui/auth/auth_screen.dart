@@ -1,5 +1,4 @@
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hedlines/src/constants/constants.dart';
 import 'package:hedlines/src/constants/sign_type.dart';
 import 'package:hedlines/src/controller/auth/auth_controller.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';

@@ -17,19 +17,19 @@ Future dialogAnimationWrapper({
   barrierColor,
   timeForDismiss,
 }) {
-  var beginOffset = Offset(-1, 0);
+  var beginOffset = const Offset(-1, 0);
   switch (slideFrom) {
     case SlideMode.left:
-      beginOffset = Offset(-1, 0);
+      beginOffset = const Offset(-1, 0);
       break;
     case SlideMode.right:
-      beginOffset = Offset(1, 0);
+      beginOffset = const Offset(1, 0);
       break;
     case SlideMode.top:
-      beginOffset = Offset(0, -1);
+      beginOffset = const Offset(0, -1);
       break;
     default:
-      beginOffset = Offset(0, 1);
+      beginOffset = const Offset(0, 1);
       break;
   }
 
@@ -66,7 +66,8 @@ Future dialogAnimationWrapper({
     },
     transitionBuilder: (_, anim, __, child) {
       return SlideTransition(
-        position: Tween(begin: beginOffset, end: Offset(0, 0)).animate(anim),
+        position:
+            Tween(begin: beginOffset, end: const Offset(0, 0)).animate(anim),
         child: child,
       );
     },

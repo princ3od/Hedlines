@@ -6,14 +6,14 @@ import 'package:hedlines/src/ui/common/buttons/inline_button.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
 import 'package:flutter_html/flutter_html.dart';
 
-class WellcomeScreen extends StatefulWidget {
-  const WellcomeScreen({Key? key}) : super(key: key);
+class WelcomeScreen extends StatefulWidget {
+  const WelcomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<WellcomeScreen> createState() => _WellcomeScreenState();
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-class _WellcomeScreenState extends State<WellcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     Widget html = Html(
@@ -25,7 +25,6 @@ class _WellcomeScreenState extends State<WellcomeScreen> {
 </div>
 """,
     );
-    final orientation = MediaQuery.of(context).orientation;
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,

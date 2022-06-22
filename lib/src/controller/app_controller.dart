@@ -45,7 +45,7 @@ class AppController extends GetxController {
     await UserLocal.clearUserInfo();
     isAuthenticated.value = false;
     update();
-    AppNavigator.pushNamedAndRemoveUntil(Routes.AUTHENTICATION);
+    AppNavigator.pushNamedAndRemoveUntil(Routes.authentication);
   }
 
   static final AppController _singleton = AppController._internal();

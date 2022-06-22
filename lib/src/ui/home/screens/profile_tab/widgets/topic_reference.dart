@@ -3,6 +3,7 @@ import 'package:hedlines/src/configs/theme/app_colors.dart';
 import 'package:hedlines/src/ui/common/buttons/touchable_opacity.dart';
 import '../../../../styles/app_styles.dart';
 
+// ignore: must_be_immutable
 class TopicReference extends StatefulWidget {
   MainAxisSize? mainAxisSize;
   final String title;
@@ -55,15 +56,17 @@ class _TopicReferenceState extends State<TopicReference> {
           mainAxisSize: widget.mainAxisSize ?? MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (widget.mainAxisSize == MainAxisSize.max) Spacer(),
+            if (widget.mainAxisSize == MainAxisSize.max) const Spacer(),
             Text(
               widget.title,
               style: text10w400Blue.copyWith(
-                color: isSelected ? (widget.selectedTextColor ?? colorWhite) : (widget.unSelectedTextColor ?? const Color(0xff0953AD)),
+                color: isSelected
+                    ? (widget.selectedTextColor ?? colorWhite)
+                    : (widget.unSelectedTextColor ?? const Color(0xff0953AD)),
               ),
               overflow: TextOverflow.ellipsis,
             ),
-            if (widget.mainAxisSize == MainAxisSize.max) Spacer(),
+            if (widget.mainAxisSize == MainAxisSize.max) const Spacer(),
           ],
         ),
       ),

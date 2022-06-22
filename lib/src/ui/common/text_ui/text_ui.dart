@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hedlines/src/constants/constants.dart';
 
 class TextUI extends StatelessWidget {
   final String text;
@@ -10,15 +9,16 @@ class TextUI extends StatelessWidget {
   final TextAlign? textAlign;
   final double? height;
 
-  TextUI(
+  const TextUI(
     this.text, {
+    Key? key,
     this.fontSize = 18,
     this.fontWeight = FontWeight.normal,
     this.color = Colors.black,
     this.margin,
     this.textAlign,
     this.height,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

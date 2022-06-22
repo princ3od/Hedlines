@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
@@ -8,7 +6,7 @@ import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 final AppBar appBarCalendar = AppBar(
   backgroundColor: Colors.transparent,
   elevation: 0.0,
-  systemOverlayStyle: SystemUiOverlayStyle(
+  systemOverlayStyle: const SystemUiOverlayStyle(
     statusBarBrightness: Brightness.dark,
   ),
 );
@@ -169,41 +167,41 @@ final TextStyle text13w400cFontGreen = TextStyle(
 final TextStyle text13w400cRed = TextStyle(
   fontSize: 10.5.sp,
   fontWeight: FontWeight.w400,
-  color: Color(0xffB31D1D),
+  color: const Color(0xffB31D1D),
 );
 
 final TextStyle text56w400Blue = TextStyle(
   fontSize: 53.sp,
   fontWeight: FontWeight.w400,
   letterSpacing: 1,
-  color: Color(0xff0953AD),
+  color: const Color(0xff0953AD),
   fontStyle: FontStyle.normal,
 );
 final TextStyle text20w400Blue = TextStyle(
   fontSize: 17.sp,
   fontWeight: FontWeight.w400,
-  color: Color(0xff0953AD),
+  color: const Color(0xff0953AD),
   fontStyle: FontStyle.normal,
 );
 
 final TextStyle text14w500Blue = TextStyle(
   fontSize: 12.sp,
   fontWeight: FontWeight.w500,
-  color: Color(0xff0953AD),
+  color: const Color(0xff0953AD),
   fontStyle: FontStyle.normal,
 );
 
 final TextStyle text24w700Blue = TextStyle(
   fontSize: 21.sp,
   fontWeight: FontWeight.w700,
-  color: Color(0xff0953AD),
+  color: const Color(0xff0953AD),
   fontStyle: FontStyle.normal,
 );
 
 final TextStyle text14w700Blue = TextStyle(
   fontSize: 12.sp,
   fontWeight: FontWeight.w700,
-  color: Color(0xff0953AD),
+  color: const Color(0xff0953AD),
   fontStyle: FontStyle.normal,
 );
 
@@ -250,13 +248,13 @@ final TextStyle text10w400Blue = TextStyle(
 final TextStyle text14w500Grey = TextStyle(
   fontSize: 11.sp,
   fontWeight: FontWeight.w500,
-  color: Color(0xff999999),
+  color: const Color(0xff999999),
   fontStyle: FontStyle.normal,
 );
 
 final TextStyle text16w600Blue = TextStyle(
   fontSize: 12.5.sp,
   fontWeight: FontWeight.w600,
-  color: Color(0xff0953AD),
+  color: const Color(0xff0953AD),
   fontStyle: FontStyle.normal,
 );

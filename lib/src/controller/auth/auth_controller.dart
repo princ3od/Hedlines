@@ -33,7 +33,8 @@ class AuthenticationController extends GetxController {
     isLoading.value = true;
     socialModel.value = await AuthService().signInWithGoogle();
     if (socialModel.value != null) {
-      UserModel? userInfo = await UserInfoService().getUserInfo(socialModel.value!);
+      UserModel? userInfo =
+          await UserInfoService().getUserInfo(socialModel.value!);
       if (userInfo == null) {
         UserModel userModelInfo = UserModel.fromSocial(socialModel.value!);
         await UserInfoService().addUser(userModelInfo);
@@ -58,13 +59,13 @@ class AuthenticationController extends GetxController {
 
   _handelNaviation() {
     if (isAuthSuccess.value && AppController.userInfo.value == null) {
-      AppNavigator.push(Routes.TOPIC);
+      AppNavigator.push(Routes.topic);
     }
     if (isAuthSuccess.value && AppController.userInfo.value != null) {
       if (AppController.userInfo.value!.preferences.isEmpty) {
-        AppNavigator.push(Routes.TOPIC);
+        AppNavigator.push(Routes.topic);
       } else {
-        AppNavigator.pushNamedAndRemoveUntil(Routes.HOME);
+        AppNavigator.pushNamedAndRemoveUntil(Routes.home);
       }
     }
   }

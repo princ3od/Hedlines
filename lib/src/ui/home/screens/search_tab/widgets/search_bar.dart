@@ -38,6 +38,8 @@ class SearchBar extends StatelessWidget {
     }
   ];
   final SearchTabController searchTabController = Get.find();
+
+  SearchBar({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
@@ -68,7 +70,7 @@ class SearchBar extends StatelessWidget {
           SizedBox(
             height: 16.sp,
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 24.sp,
             child: ListView.builder(

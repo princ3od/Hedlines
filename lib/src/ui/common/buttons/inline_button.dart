@@ -56,7 +56,7 @@ class _InlineButtonState extends State<InlineButton> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (widget.leading != null) widget.leading!,
-            if (widget.mainAxisSize == MainAxisSize.min) Spacer(),
+            if (widget.mainAxisSize == MainAxisSize.min) const Spacer(),
             Text(
               widget.title,
               style: widget.textStyle ??
@@ -65,7 +65,7 @@ class _InlineButtonState extends State<InlineButton> {
                   ),
               overflow: TextOverflow.ellipsis,
             ),
-            if (widget.mainAxisSize == MainAxisSize.min) Spacer(),
+            if (widget.mainAxisSize == MainAxisSize.min) const Spacer(),
           ],
         ),
       ),

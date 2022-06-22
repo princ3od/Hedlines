@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
 import 'package:hedlines/src/controller/topic/topic_controller.dart';
@@ -92,9 +91,12 @@ class _TopicScreenState extends State<TopicScreen> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: gridData.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: (orientation == Orientation.portrait) ? 3 : 5,
-                    mainAxisSpacing: (orientation == Orientation.portrait) ? 16.sp : 10.sp,
-                    crossAxisSpacing: (orientation == Orientation.portrait) ? 0.sp : 5.sp,
+                    crossAxisCount:
+                        (orientation == Orientation.portrait) ? 3 : 5,
+                    mainAxisSpacing:
+                        (orientation == Orientation.portrait) ? 16.sp : 10.sp,
+                    crossAxisSpacing:
+                        (orientation == Orientation.portrait) ? 0.sp : 5.sp,
                   ),
                   itemBuilder: (BuildContext context, int index) {
                     return FieldConcern(
@@ -104,7 +106,8 @@ class _TopicScreenState extends State<TopicScreen> {
                           _toggleTopic(topic);
                         }
                       },
-                      iconFiledConcern: gridData[index]["image"] ?? AssetsHelper.logo,
+                      iconFiledConcern:
+                          gridData[index]["image"] ?? AssetsHelper.logo,
                       lable: gridData[index]["lable"] ?? "Hedlines",
                     );
                   },
@@ -116,7 +119,9 @@ class _TopicScreenState extends State<TopicScreen> {
               Visibility(
                 visible: isError,
                 child: Text(
-                  topicChoose.isEmpty ? "Bạn chưa chọn chủ đề nào." : "Bạn phải chọn ít nhất 2 chủ đề.",
+                  topicChoose.isEmpty
+                      ? "Bạn chưa chọn chủ đề nào."
+                      : "Bạn phải chọn ít nhất 2 chủ đề.",
                   style: text13w400cRed,
                 ),
               ),
@@ -137,7 +142,7 @@ class _TopicScreenState extends State<TopicScreen> {
                 backgroundColor: backgroundPrimaryColor,
                 textColor: colorWhite,
               ),
-              Spacer(
+              const Spacer(
                 flex: 2,
               ),
             ],

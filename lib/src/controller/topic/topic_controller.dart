@@ -9,7 +9,7 @@ class TopicController extends GetxController {
   Future<void> handelNagivateToHome(Set<String> topics) async {
     await _handelUserTopic(topics);
     _handelSetUpContext();
-    AppNavigator.pushNamedAndRemoveUntil(Routes.HOME);
+    AppNavigator.pushNamedAndRemoveUntil(Routes.home);
   }
 
   Future<void> _handelUserTopic(Set<String> topics) async {

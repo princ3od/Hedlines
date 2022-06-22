@@ -5,7 +5,11 @@ class SocialModel {
   final String googleId;
   final String? googleAvatar;
   final String? email;
-  SocialModel({required this.fullName, required this.googleId, this.googleAvatar, this.email});
+  SocialModel(
+      {required this.fullName,
+      required this.googleId,
+      this.googleAvatar,
+      this.email});
 
   SocialModel copyWith({
     String? fullName,
@@ -15,7 +19,7 @@ class SocialModel {
     return SocialModel(
       fullName: fullName ?? this.fullName,
       googleId: googleId ?? this.googleId,
-      googleAvatar: googleAvatar ?? this.googleAvatar,
+      googleAvatar: googleAvatar ?? googleAvatar,
       email: email ?? this.email,
     );
   }
@@ -28,9 +32,7 @@ class SocialModel {
       'email': email ?? "",
     };
 
-    if (googleId != null) {
-      result['googleID'] = googleId;
-    }
+    result['googleID'] = googleId;
 
     return result;
   }
@@ -46,7 +48,8 @@ class SocialModel {
 
   String toJson() => json.encode(toMap());
 
-  factory SocialModel.fromJson(String source) => SocialModel.fromMap(json.decode(source));
+  factory SocialModel.fromJson(String source) =>
+      SocialModel.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -57,7 +60,9 @@ class SocialModel {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is SocialModel && other.fullName == fullName && other.googleId == googleId;
+    return other is SocialModel &&
+        other.fullName == fullName &&
+        other.googleId == googleId;
   }
 
   @override

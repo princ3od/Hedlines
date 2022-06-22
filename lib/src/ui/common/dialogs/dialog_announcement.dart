@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
-import 'package:hedlines/src/routes/app_pages.dart';
 import 'package:hedlines/src/ui/common/buttons/touchable_opacity.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
 
@@ -63,8 +62,8 @@ class DialogAnnouncement extends StatelessWidget {
                     height: 1.36,
                   ),
                 )
-              : SizedBox(),
-          title != null ? SizedBox(height: 8.sp) : SizedBox(),
+              : const SizedBox(),
+          title != null ? SizedBox(height: 8.sp) : const SizedBox(),
           RichText(
             textAlign: beforeTextAlign,
             text: TextSpan(
@@ -85,7 +84,7 @@ class DialogAnnouncement extends StatelessWidget {
                           color: highlightColor,
                         ),
                       )
-                    : TextSpan(),
+                    : const TextSpan(),
                 TextSpan(
                   text: bodyAfter,
                   style: TextStyle(
@@ -97,7 +96,7 @@ class DialogAnnouncement extends StatelessWidget {
             ),
           ),
           SizedBox(height: 8.sp),
-          Container(
+          SizedBox(
             height: 48.sp,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -114,7 +113,7 @@ class DialogAnnouncement extends StatelessWidget {
                       shadows: hasTextShadow
                           ? <Shadow>[
                               Shadow(
-                                offset: Offset(2.0, 3.0),
+                                offset: const Offset(2.0, 3.0),
                                 blurRadius: 2.0,
                                 color: Colors.grey.shade300,
                               ),

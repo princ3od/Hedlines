@@ -22,7 +22,6 @@ class CustomGestureDetector extends StatefulWidget {
 class _CustomGestureDetectorState extends State<CustomGestureDetector> {
   @override
   Widget build(BuildContext context) {
-    int sensitivity = 100;
     return GestureDetector(
       child: widget.child,
       onHorizontalDragEnd: (dragEndDetails) {

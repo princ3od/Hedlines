@@ -1,19 +1,19 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hedlines/src/constants/slide_mode.dart';
-import 'package:hedlines/src/ui/common/dialogs/dialog_signOut.dart';
+import 'package:hedlines/src/ui/common/dialogs/dialog_sign_out.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_wrapper.dart';
 import '../configs/theme/app_colors.dart';
 import '../controller/app_controller.dart';
 import 'app_pages.dart';
-import 'app_routes.dart';
 
 class ScaffoldWrapper extends StatefulWidget {
   final Widget child;
 
-  ScaffoldWrapper({
+  const ScaffoldWrapper({
+    Key? key,
     required this.child,
-  });
+  }) : super(key: key);
 
   @override
   _ScaffoldWrapperState createState() => _ScaffoldWrapperState();

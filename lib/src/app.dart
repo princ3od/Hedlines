@@ -28,7 +28,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     DeviceOrientationHelper().setPortrait();
     appController.setUpData(context);
   }
@@ -71,7 +71,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           theme: AppTheme.light().data,
           darkTheme: AppTheme.dark().data,
           themeMode: ThemeService.currentTheme,
-          initialRoute: Routes.ROOT,
+          initialRoute: Routes.root,
           onGenerateRoute: (settings) {
             return AppNavigator().getRoute(settings);
           },
@@ -87,12 +87,14 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           home: GetBuilder<AppController>(
             builder: (appController) {
               if (AppState.loaded == appController.appState.value) {
-                Widget child = AppController.isAuthenticated.value ? const HomeScreen() : const AuthenticationScreen();
+                Widget child = AppController.isAuthenticated.value
+                    ? const HomeScreen()
+                    : const AuthenticationScreen();
                 return ScaffoldWrapper(
                   child: child,
                 );
               }
-              return ScaffoldWrapper(child: const SplashScreen());
+              return const ScaffoldWrapper(child: SplashScreen());
             },
           ),
         );

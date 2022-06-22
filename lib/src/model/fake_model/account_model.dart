@@ -17,13 +17,13 @@ class UserModel {
   final DateTime? modifiedAt;
   final DateTime? lastVisted;
   final Map<String, DateTime>? liked;
-  final Map<String, String>? previous_viewed_article;
+  final Map<String, String>? previousViewedArticle;
 
   List<dynamic> preferences = [];
   UserModel({
     this.lastVisted,
     this.liked,
-    this.previous_viewed_article,
+    this.previousViewedArticle,
     this.id,
     this.username,
     this.fullname,
@@ -65,9 +65,9 @@ class UserModel {
       'modifiedAt': modifiedAt,
       'avatar': avatar,
       'preferences': preferences,
-      'lastVisted': lastVisted,
+      'last_visited': lastVisted,
       'liked': liked,
-      'previous_viewed_article': previous_viewed_article,
+      'previous_viewed_article': previousViewedArticle,
     };
   }
 
@@ -80,9 +80,10 @@ class UserModel {
       avatar: socialModel.googleAvatar,
       createdAt: DateTime.now(),
       modifiedAt: DateTime.now(),
+      lastVisted: DateTime.now(),
       preferences: [],
       liked: {},
-      previous_viewed_article: {},
+      previousViewedArticle: {},
     );
   }
 
@@ -96,9 +97,10 @@ class UserModel {
       modifiedAt: (map['modifiedAt'] as Timestamp).toDate(),
       avatar: map['avatar'],
       preferences: map['preferences'] ?? [],
-      lastVisted: map['lastVisted'],
+      lastVisted: (map['last_visited'] as Timestamp).toDate(),
       liked: DateTimeHelper.convertTimeStampToDateTime(map['liked']),
-      previous_viewed_article: StringHeler.convertMapStringToString(map['previous_viewed_article']),
+      previousViewedArticle:
+          StringHeler.convertMapStringToString(map['previous_viewed_article']),
     );
   }
 
@@ -109,13 +111,23 @@ class UserModel {
       username: data['username'],
       fullname: data['fullname'],
       email: data['email'],
-      createdAt: data['createdAt'] != null ? DateTime.parse(data['createdAt']) : null,
-      modifiedAt: data['modifiedAt'] != null ? DateTime.parse(data['modifiedAt']) : null,
+      createdAt:
+          data['createdAt'] != null ? DateTime.parse(data['createdAt']) : null,
+      modifiedAt: data['modifiedAt'] != null
+          ? DateTime.parse(data['modifiedAt'])
+          : null,
       avatar: data['avatar'],
       preferences: data['preferences'],
-      lastVisted: data['lastVisted'] != null ? DateTime.parse(data['lastVisted']) : null,
-      liked: data['liked'] != null ? DateTimeHelper.convertTimeStampToDateTime(data['liked']) : null,
-      previous_viewed_article: data['previous_viewed_article'] != null ? StringHeler.convertMapStringToString(data['previous_viewed_article']) : null,
+      lastVisted: data['last_visited'] != null
+          ? DateTime.parse(data['lastVisted'])
+          : null,
+      liked: data['liked'] != null
+          ? DateTimeHelper.convertTimeStampToDateTime(data['liked'])
+          : null,
+      previousViewedArticle: data['previous_viewed_article'] != null
+          ? StringHeler.convertMapStringToString(
+              data['previous_viewed_article'])
+          : null,
     );
   }
 
@@ -129,9 +141,9 @@ class UserModel {
       modifiedAt: map['modifiedAt'],
       avatar: map['avatar'],
       preferences: map['preferences'],
-      lastVisted: map['lastVisted'],
+      lastVisted: map['last_visited'],
       liked: map['liked'],
-      previous_viewed_article: map['previous_viewed_article'],
+      previousViewedArticle: map['previous_viewed_article'],
     );
   }
 
@@ -144,11 +156,23 @@ class UserModel {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is UserModel && other.id == id && other.username == username && other.fullname == fullname && other.email == email && other.createdAt == createdAt && other.modifiedAt == modifiedAt;
+    return other is UserModel &&
+        other.id == id &&
+        other.username == username &&
+        other.fullname == fullname &&
+        other.email == email &&
+        other.createdAt == createdAt &&
+        other.modifiedAt == modifiedAt;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ username.hashCode ^ fullname.hashCode ^ email.hashCode ^ avatar.hashCode ^ createdAt.hashCode ^ modifiedAt.hashCode;
+    return id.hashCode ^
+        username.hashCode ^
+        fullname.hashCode ^
+        email.hashCode ^
+        avatar.hashCode ^
+        createdAt.hashCode ^
+        modifiedAt.hashCode;
   }
 }

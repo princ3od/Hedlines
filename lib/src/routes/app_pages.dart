@@ -5,7 +5,7 @@ import 'package:hedlines/src/ui/article_detail/article_detail_screen.dart';
 import 'package:hedlines/src/ui/auth/auth_screen.dart';
 import 'package:hedlines/src/ui/home/home_screen.dart';
 import 'package:hedlines/src/ui/topic/topic_screen.dart';
-import 'package:hedlines/src/ui/welcome/wellcome_screen.dart';
+import 'package:hedlines/src/ui/welcome/welcome_screen.dart';
 import '../app.dart';
 import 'app_navigator_observer.dart';
 import 'app_routes.dart';
@@ -15,40 +15,39 @@ class AppNavigator extends RouteObserver<PageRoute<dynamic>> {
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
   Route<dynamic> getRoute(RouteSettings settings) {
-    Map<String, dynamic>? arguments = _getArguments(settings);
     switch (settings.name) {
-      case Routes.ROOT:
+      case Routes.root:
         return _buildRoute(
           settings,
-          App(),
+          const App(),
         );
-      case Routes.AUTHENTICATION:
+      case Routes.authentication:
         return _buildRoute(
           settings,
-          AuthenticationScreen(),
+          const AuthenticationScreen(),
         );
-      case Routes.HOME:
+      case Routes.home:
         return _buildRoute(
           settings,
-          HomeScreen(),
+          const HomeScreen(),
         );
-      case Routes.WELLCOME:
+      case Routes.welcome:
         return _buildRoute(
           settings,
-          WellcomeScreen(),
+          const WelcomeScreen(),
         );
-      case Routes.TOPIC:
+      case Routes.topic:
         return _buildRoute(
           settings,
-          TopicScreen(),
+          const TopicScreen(),
         );
-      case Routes.ARTICLE_DETAIL:
+      case Routes.articleDetail:
         return _buildRoute(
           settings,
-          ArticleDetailScreen(),
+          const ArticleDetailScreen(),
         );
       default:
-        return _buildRoute(settings, App());
+        return _buildRoute(settings, const App());
     }
   }
 
@@ -60,10 +59,6 @@ class AppNavigator extends RouteObserver<PageRoute<dynamic>> {
       builder: (context) => ScaffoldWrapper(child: builder),
       settings: routeSettings,
     );
-  }
-
-  _getArguments(RouteSettings settings) {
-    return settings.arguments;
   }
 
   static Future push<T>(

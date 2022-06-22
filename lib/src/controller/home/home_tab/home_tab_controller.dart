@@ -26,9 +26,12 @@ class HomeTabController extends GetxController {
       initialPage: 0,
     );
     for (int i = 0; i < 10; i++) {
-      backupListArticleDescription.add(MockData.articles[MockData.articles.length - i - 1]);
+      backupListArticleDescription
+          .add(MockData.articles[MockData.articles.length - i - 1]);
     }
-    listArticleDescription.value = backupListArticleDescription.sublist(backupListArticleDescription.length - 10, backupListArticleDescription.length);
+    listArticleDescription.value = backupListArticleDescription.sublist(
+        backupListArticleDescription.length - 10,
+        backupListArticleDescription.length);
     update();
   }
 
@@ -48,7 +51,8 @@ class HomeTabController extends GetxController {
       if (indexOfRemove < 5) {
         _loadMoreArticleDescription(backupListArticleDescription.length);
       }
-      listArticleDescription.add(backupListArticleDescription[indexOfRemove - 1]);
+      listArticleDescription
+          .add(backupListArticleDescription[indexOfRemove - 1]);
     }
   }
 
@@ -57,9 +61,14 @@ class HomeTabController extends GetxController {
     //mock load more article
     await Future.delayed(ANIMATION_DURATION_2000_MS).then((value) {
       int begin = skip < MockData.articles.length - 1 ? skip : -1;
-      int end = skip + 10 <= MockData.articles.length - 1 ? skip + 10 : MockData.articles.length - 1;
+      int end = skip + 10 <= MockData.articles.length - 1
+          ? skip + 10
+          : MockData.articles.length - 1;
       if (begin != -1 && end > begin && !isEnd) {
-        backupListArticleDescription = [...MockData.articles.sublist(begin, end), ...backupListArticleDescription];
+        backupListArticleDescription = [
+          ...MockData.articles.sublist(begin, end),
+          ...backupListArticleDescription
+        ];
       } else {
         isEnd = true;
       }
@@ -75,7 +84,8 @@ class HomeTabController extends GetxController {
       child: DialogAnnouncement(
         title: "Thông báo",
         bodyBefore: "Bạn đã đọc hết tổng cộng",
-        bodyAfter: "bài viết, hãy tiếp tục các bài viết trong khi chúng tôi chuẩn bị nội dung cho bạn.",
+        bodyAfter:
+            "bài viết, hãy tiếp tục các bài viết trong khi chúng tôi chuẩn bị nội dung cho bạn.",
         highlightColor: Colors.red,
         highlightText: "10",
         bodyColor: colorBlack,
@@ -88,12 +98,7 @@ class HomeTabController extends GetxController {
     );
   }
 
-  //
-  void handleTransactionPage(dynamic args) {
-    _handleTransactionPage(args);
-  }
-
-  void _handleTransactionPage(dynamic args) {
-    AppNavigator.push(Routes.ARTICLE_DETAIL, arguments: args);
+  void toArticleDetial(dynamic args) {
+    AppNavigator.push(Routes.articleDetail, arguments: args);
   }
 }

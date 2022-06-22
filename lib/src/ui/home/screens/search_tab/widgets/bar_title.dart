@@ -11,15 +11,13 @@ class BarTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Text(
-            title,
-            style: style,
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        Text(
+          title,
+          style: style,
+        ),
+      ],
     );
   }
 }

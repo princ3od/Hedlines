@@ -1,11 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/routes/app_pages.dart';
 import 'package:hedlines/src/ui/common/buttons/inline_button.dart';
-import 'package:hedlines/src/ui/common/buttons/touchable_opacity.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
 
 class DialogSignOut extends StatelessWidget {
@@ -55,8 +52,8 @@ class DialogSignOut extends StatelessWidget {
                     height: 1.36,
                   ),
                 )
-              : SizedBox(),
-          title != null ? SizedBox(height: 8.sp) : SizedBox(),
+              : const SizedBox(),
+          title != null ? SizedBox(height: 8.sp) : const SizedBox(),
           SizedBox(height: 8.sp),
           bodyText != null
               ? Text(
@@ -64,7 +61,7 @@ class DialogSignOut extends StatelessWidget {
                   style: text14w500Blue,
                   textAlign: TextAlign.center,
                 )
-              : SizedBox(),
+              : const SizedBox(),
           SizedBox(height: 8.sp),
           SizedBox(
             width: 180.sp,

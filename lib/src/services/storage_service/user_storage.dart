@@ -1,11 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hedlines/src/model/fake_model/social_model.dart';
-import 'package:hedlines/src/services/base_service/base_service.dart';
 
 import '../../controller/app_controller.dart';
 import '../../model/fake_model/account_model.dart';
 
-class UserInfoService extends BaseService {
+class UserInfoService {
   CollectionReference usersRef = FirebaseFirestore.instance.collection('users');
 
   Future<void> addUser(UserModel userModel) async {
@@ -13,7 +12,10 @@ class UserInfoService extends BaseService {
   }
 
   Future<UserModel?> getUserInfo(SocialModel socialModel) async {
-    return await usersRef.doc(socialModel.googleId).get().then((DocumentSnapshot doc) {
+    return await usersRef
+        .doc(socialModel.googleId)
+        .get()
+        .then((DocumentSnapshot doc) {
       if (doc.data() == null) {
         return null;
       }

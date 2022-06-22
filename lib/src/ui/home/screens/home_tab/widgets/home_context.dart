@@ -48,7 +48,7 @@ class HomeContext extends StatelessWidget {
                 ),
                 Text("${diff.inHours} giờ trước", style: text10w400Black),
                 Text(
-                  "${articleDescription.title}",
+                  articleDescription.title,
                   style: text24w700Black,
                 ),
                 SizedBox(
@@ -76,13 +76,15 @@ class HomeContext extends StatelessWidget {
                     onTap: () {
                       dynamic args = {
                         AppArgsKey.initialUrl: articleDescription.url,
-                        AppArgsKey.title: "Xem tin (${articleDescription.estimateMinuteReadTime} phút đọc)",
+                        AppArgsKey.title:
+                            "Xem tin (${articleDescription.estimateMinuteReadTime} phút đọc)",
                       };
-                      homeTabController.handleTransactionPage(args);
+                      homeTabController.toArticleDetial(args);
                     },
                     onLongPress: () {},
                     leading: null,
-                    title: "Xem tin (${articleDescription.estimateMinuteReadTime} phút đọc)",
+                    title:
+                        "Xem tin (${articleDescription.estimateMinuteReadTime} phút đọc)",
                     backgroundColor: backgroundPrimaryColor,
                     textStyle: text10w700White,
                   ),
@@ -91,9 +93,11 @@ class HomeContext extends StatelessWidget {
             ),
           ),
           Positioned(
+            top: sizeScreen.height - 314.sp,
+            left: sizeScreen.width - 76.sp,
             child: SizedBox(
               height: 234.sp,
-              width: 76,
+              width: 76.sp,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -106,7 +110,8 @@ class HomeContext extends StatelessWidget {
                     activeColor: backgroundPrimaryColor,
                     inActiveColor: null,
                   ),
-                  TextWrapper(text: articleDescription.numberOfFavorite.toString()),
+                  TextWrapper(
+                      text: articleDescription.numberOfFavorite.toString()),
                   const Spacer(),
                   IconToggleButton(
                     pathImage: AssetsHelper.iconShare,
@@ -115,8 +120,8 @@ class HomeContext extends StatelessWidget {
                     activeColor: null,
                     inActiveColor: null,
                   ),
-                  TextWrapper(text: articleDescription.numberOfShare.toString()),
-                  // Text("${articleDescription.numberOfShare}"),
+                  TextWrapper(
+                      text: articleDescription.numberOfShare.toString()),
                   const Spacer(),
                   IconToggleButton(
                     pathImage: AssetsHelper.iconEllypsisVertical,
@@ -142,8 +147,6 @@ class HomeContext extends StatelessWidget {
                 ],
               ),
             ),
-            top: sizeScreen.height - 314.sp,
-            left: sizeScreen.width - 76.sp,
           ),
           Positioned(
             child: Padding(
