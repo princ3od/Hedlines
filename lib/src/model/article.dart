@@ -7,7 +7,7 @@ class Article {
   int estimateMinuteReadTime;
   int numberOfFavorite;
   int numberOfShare;
-  List<String> tags;
+  List<Map<String, String>> tags;
   Map<String, dynamic> source;
   Map<String, dynamic> topic;
   String author;
@@ -29,21 +29,21 @@ class Article {
     required this.topic,
   });
 
-  factory Article.fromMap(Map<String, dynamic> map) => Article(
-        url: map["url"] ?? "",
-        thumbnail: map["thumbnail"] ?? [],
-        date: DateTime.fromMillisecondsSinceEpoch(map["date"]),
-        title: map["title"] ?? "",
-        description: map["description"] ?? "",
-        estimateMinuteReadTime: map["estimateMinuteReadTime"] ?? 0,
-        numberOfFavorite: map["numberOfFavorite"] ?? 0,
-        numberOfShare: map["numberOfShare"] ?? 0,
-        tags: map["tags"] != null
-            ? List<String>.from(map["tags"].map((x) => x))
-            : [],
-        source: Map<String, dynamic>.from(map["source"]),
-        topic: Map<String, dynamic>.from(map["topic"]),
-        author: '',
-        id: '',
-      );
+  factory Article.fromMap(Map<String, dynamic> map) {
+    return Article(
+      url: map["url"] ?? "",
+      thumbnail: map["thumbnail"] ?? [],
+      date: DateTime.fromMillisecondsSinceEpoch(map["date"]),
+      title: map["title"] ?? "",
+      description: map["description"] ?? "",
+      estimateMinuteReadTime: map["readtime"] ?? 0,
+      numberOfFavorite: map["like_count"] ?? 0,
+      numberOfShare: map["share_count"] ?? 0,
+      tags: map["tags"] != null ? List.from(map["tags"].map((x) => x)) : [],
+      source: Map<String, dynamic>.from(map["source"]),
+      topic: Map<String, dynamic>.from(map["topic"]),
+      author: '',
+      id: '',
+    );
+  }
 }

@@ -134,7 +134,7 @@ class HomeContext extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 70.w,
                     height: 24,
                     child: ListView.builder(
@@ -149,7 +149,9 @@ class HomeContext extends StatelessWidget {
                               onTap: null,
                               onLongPress: null,
                               leading: null,
-                              title: article.tags[0] + " " + index.toString(),
+                              title: article.tags[0]["tag"]! +
+                                  " " +
+                                  index.toString(),
                               textStyle: text10w400Blue,
                             ),
                           );
