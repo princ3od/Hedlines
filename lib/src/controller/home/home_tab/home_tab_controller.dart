@@ -11,8 +11,8 @@ import 'package:hedlines/src/ui/common/dialogs/dialog_announcement.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_wrapper.dart';
 
 class HomeTabController extends GetxController {
-  List<ArticleDescription> backupListArticleDescription = [];
-  RxList<ArticleDescription> listArticleDescription = RxList<ArticleDescription>();
+  List<Article> backupListArticleDescription = [];
+  RxList<Article> listArticleDescription = RxList<Article>();
   bool isLoading = false;
   bool isEnd = false;
   late PageController pageController;

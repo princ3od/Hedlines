@@ -3,7 +3,7 @@ import 'package:hedlines/src/data/hard_data/mock_data.dart';
 import 'package:hedlines/src/model/fake_model/article_description.dart';
 
 class SearchTabController extends GetxController {
-  RxList<ArticleDescription> searchedArticles = RxList<ArticleDescription>();
+  RxList<Article> searchedArticles = RxList<Article>();
   @override
   void onInit() {
     super.onInit();

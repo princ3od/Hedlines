@@ -18,7 +18,7 @@ class HomeContext extends StatelessWidget {
   }) : super(key: key);
 
   final Size sizeScreen;
-  final ArticleDescription articleDescription;
+  final Article articleDescription;
   final HomeTabController homeTabController = Get.put(HomeTabController());
 
   @override
@@ -32,7 +32,7 @@ class HomeContext extends StatelessWidget {
             top: 0,
             left: 0,
             child: Image.network(
-              articleDescription.urlImage,
+              articleDescription.thumbnail,
               width: sizeScreen.width,
               height: 140.sp,
               fit: BoxFit.cover,
@@ -48,7 +48,7 @@ class HomeContext extends StatelessWidget {
                 ),
                 Text("${diff.inHours} giờ trước", style: text10w400Black),
                 Text(
-                  "${articleDescription.titleArticle}",
+                  "${articleDescription.title}",
                   style: text24w700Black,
                 ),
                 SizedBox(
@@ -59,7 +59,7 @@ class HomeContext extends StatelessWidget {
                     maxHeight: 100.sp,
                   ),
                   child: Text(
-                    articleDescription.textDescription,
+                    articleDescription.description,
                     style: text14w500Black,
                   ),
                 ),
@@ -75,7 +75,7 @@ class HomeContext extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     onTap: () {
                       dynamic args = {
-                        AppArgsKey.initialUrl: articleDescription.articleUrl,
+                        AppArgsKey.initialUrl: articleDescription.url,
                         AppArgsKey.title: "Xem tin (${articleDescription.estimateMinuteReadTime} phút đọc)",
                       };
                       homeTabController.handleTransactionPage(args);
@@ -127,14 +127,15 @@ class HomeContext extends StatelessWidget {
                   ),
                   const Spacer(),
                   Text(
-                    "${articleDescription.sourceName}",
+                    "${articleDescription.source["name"]}",
                     style: text14w700Blue,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(
                     height: 4.sp,
                   ),
                   Text(
-                    "${articleDescription.topic}",
+                    "${articleDescription.topic["vnese"]}",
                     style: text10w400Black,
                   ),
                   const Spacer(),

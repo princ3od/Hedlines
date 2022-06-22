@@ -32,7 +32,7 @@ class _HomeTabState extends State<HomeTab> {
             return CustomGestureDetector(
               onSwipeLeft: () {
                 dynamic args = {
-                  AppArgsKey.initialUrl: homeTabController.listArticleDescription[index].articleUrl,
+                  AppArgsKey.initialUrl: homeTabController.listArticleDescription[index].url,
                   AppArgsKey.title: "Xem tin (${homeTabController.listArticleDescription[index].estimateMinuteReadTime} phút đọc)",
                 };
                 homeTabController.handleTransactionPage(args);

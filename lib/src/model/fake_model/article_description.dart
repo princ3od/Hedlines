@@ -1,26 +1,27 @@
-class ArticleDescription {
-  String articleUrl;
-  String urlImage;
+class Article {
+  String url;
+  String thumbnail;
   DateTime publishedAt;
-  String titleArticle;
-  String textDescription;
+  String title;
+  String description;
   int estimateMinuteReadTime;
   int numberOfFavorite;
   int numberOfShare;
   List<String> tags;
-  String sourceName;
-  String topic;
-  ArticleDescription({
-    required this.articleUrl,
-    required this.urlImage,
+  Map<String, dynamic> source;
+  Map<String, dynamic> topic;
+
+  Article({
+    required this.url,
+    required this.thumbnail,
     required this.publishedAt,
-    required this.titleArticle,
-    required this.textDescription,
+    required this.title,
+    required this.description,
     required this.estimateMinuteReadTime,
     required this.numberOfFavorite,
     required this.numberOfShare,
     required this.tags,
-    required this.sourceName,
+    required this.source,
     required this.topic,
   });
 }

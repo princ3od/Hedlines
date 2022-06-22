@@ -43,7 +43,7 @@ class _SearchTabState extends State<SearchTab> {
     );
   }
 
-  Widget _buildSearchItem(ArticleDescription article, int index) {
+  Widget _buildSearchItem(Article article, int index) {
     return TouchableOpacity(
       child: SizedBox(
         width: 339.sp,
@@ -63,7 +63,7 @@ class _SearchTabState extends State<SearchTab> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  article.sourceName,
+                  article.source["name"],
                   style: text24w700Black,
                 ),
                 const Spacer(),
@@ -80,7 +80,7 @@ class _SearchTabState extends State<SearchTab> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.network(
-                  article.urlImage,
+                  article.thumbnail,
                   height: 85.sp,
                   width: 130.sp,
                   fit: BoxFit.cover,
@@ -90,7 +90,7 @@ class _SearchTabState extends State<SearchTab> {
                 ),
                 SizedBox(
                   child: Text(
-                    article.textDescription,
+                    article.description,
                     style: text14w500Grey,
                     overflow: TextOverflow.clip,
                   ),
