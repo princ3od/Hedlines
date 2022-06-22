@@ -1,6 +1,6 @@
 import 'package:hedlines/src/data/remote_data_source/status_code.dart';
-import 'package:hedlines/src/model/fake_model/article_description.dart';
 import 'package:dio/dio.dart';
+import 'package:hedlines/src/model/article.dart';
 
 import '../../constants/api_gateway.dart';
 

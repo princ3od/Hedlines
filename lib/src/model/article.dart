@@ -38,7 +38,9 @@ class Article {
         estimateMinuteReadTime: map["estimateMinuteReadTime"] ?? 0,
         numberOfFavorite: map["numberOfFavorite"] ?? 0,
         numberOfShare: map["numberOfShare"] ?? 0,
-        tags: map["tags"] != null ? List<String>.from(map["tags"].map((x) => x)) : [],
+        tags: map["tags"] != null
+            ? List<String>.from(map["tags"].map((x) => x))
+            : [],
         source: Map<String, dynamic>.from(map["source"]),
         topic: Map<String, dynamic>.from(map["topic"]),
         author: '',

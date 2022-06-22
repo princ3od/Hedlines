@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 import 'package:hedlines/src/constants/sign_type.dart';
 import 'package:hedlines/src/controller/app_controller.dart';
-import 'package:hedlines/src/model/fake_model/social_model.dart';
+import 'package:hedlines/src/model/user_model.dart';
+import 'package:hedlines/src/model/social_model.dart';
 import 'package:hedlines/src/routes/app_pages.dart';
 import 'package:hedlines/src/routes/app_routes.dart';
 import 'package:hedlines/src/services/auth_service/firebase_authentication.dart';
 
-import '../../model/fake_model/account_model.dart';
 import '../../services/storage_service/user_storage.dart';
 
 class AuthenticationController extends GetxController {

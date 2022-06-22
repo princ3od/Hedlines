@@ -4,11 +4,12 @@ import 'package:hedlines/src/configs/theme/app_colors.dart';
 import 'package:hedlines/src/constants/constants.dart';
 import 'package:hedlines/src/constants/slide_mode.dart';
 import 'package:hedlines/src/data/hard_data/mock_data.dart';
-import 'package:hedlines/src/model/fake_model/article_description.dart';
 import 'package:hedlines/src/routes/app_pages.dart';
 import 'package:hedlines/src/routes/app_routes.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_announcement.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_wrapper.dart';
+
+import '../../../model/article.dart';
 
 class HomeTabController extends GetxController {
   List<Article> backupListArticleDescription = [];

@@ -5,8 +5,9 @@ import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/ui/common/buttons/touchable_opacity.dart';
 import 'package:hedlines/src/ui/home/screens/search_tab/widgets/sliver_search_appbar.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
-import '../../../../model/fake_model/article_description.dart';
 import 'package:intl/intl.dart';
+
+import '../../../../model/article.dart';
 
 class SearchTab extends StatefulWidget {
   const SearchTab({Key? key}) : super(key: key);
@@ -32,7 +33,8 @@ class _SearchTabState extends State<SearchTab> {
                 return Container(
                   margin: EdgeInsets.symmetric(vertical: 4.sp),
                   padding: EdgeInsets.symmetric(horizontal: 13.sp),
-                  child: _buildSearchItem(controller.searchedArticles.value![index], index),
+                  child: _buildSearchItem(
+                      controller.searchedArticles.value![index], index),
                 );
               },
               childCount: controller.searchedArticles.value?.length,

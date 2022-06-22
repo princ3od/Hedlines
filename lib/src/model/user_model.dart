@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hedlines/src/model/fake_model/social_model.dart';
+import 'package:hedlines/src/model/social_model.dart';
 
-import '../../helper/utils/date_time_helper.dart';
-import '../../helper/utils/string_helper.dart';
+import '../helper/utils/date_time_helper.dart';
+import '../helper/utils/string_helper.dart';
 
 class UserModel {
   String? id;
@@ -15,13 +15,13 @@ class UserModel {
   //
   final DateTime? createdAt;
   final DateTime? modifiedAt;
-  final DateTime? lastVisted;
+  final DateTime? lastVisited;
   final Map<String, DateTime>? liked;
   final Map<String, String>? previousViewedArticle;
 
   List<dynamic> preferences = [];
   UserModel({
-    this.lastVisted,
+    this.lastVisited,
     this.liked,
     this.previousViewedArticle,
     this.id,
@@ -65,7 +65,7 @@ class UserModel {
       'modifiedAt': modifiedAt,
       'avatar': avatar,
       'preferences': preferences,
-      'last_visited': lastVisted,
+      'last_visited': lastVisited,
       'liked': liked,
       'previous_viewed_article': previousViewedArticle,
     };
@@ -80,7 +80,7 @@ class UserModel {
       avatar: socialModel.googleAvatar,
       createdAt: DateTime.now(),
       modifiedAt: DateTime.now(),
-      lastVisted: DateTime.now(),
+      lastVisited: DateTime.now().subtract(const Duration(days: 1)),
       preferences: [],
       liked: {},
       previousViewedArticle: {},
@@ -97,7 +97,7 @@ class UserModel {
       modifiedAt: (map['modifiedAt'] as Timestamp).toDate(),
       avatar: map['avatar'],
       preferences: map['preferences'] ?? [],
-      lastVisted: (map['last_visited'] as Timestamp).toDate(),
+      lastVisited: (map['last_visited'] as Timestamp).toDate(),
       liked: DateTimeHelper.convertTimeStampToDateTime(map['liked']),
       previousViewedArticle:
           StringHeler.convertMapStringToString(map['previous_viewed_article']),
@@ -118,7 +118,7 @@ class UserModel {
           : null,
       avatar: data['avatar'],
       preferences: data['preferences'],
-      lastVisted: data['last_visited'] != null
+      lastVisited: data['last_visited'] != null
           ? DateTime.parse(data['lastVisted'])
           : null,
       liked: data['liked'] != null
@@ -141,7 +141,7 @@ class UserModel {
       modifiedAt: map['modifiedAt'],
       avatar: map['avatar'],
       preferences: map['preferences'],
-      lastVisted: map['last_visited'],
+      lastVisited: map['last_visited'],
       liked: map['liked'],
       previousViewedArticle: map['previous_viewed_article'],
     );

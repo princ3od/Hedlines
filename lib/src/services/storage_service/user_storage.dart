@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hedlines/src/model/fake_model/social_model.dart';
 
 import '../../controller/app_controller.dart';
-import '../../model/fake_model/account_model.dart';
+import '../../model/social_model.dart';
+import '../../model/user_model.dart';
 
 class UserInfoService {
   CollectionReference usersRef = FirebaseFirestore.instance.collection('users');

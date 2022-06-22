@@ -152,7 +152,6 @@ class _TopicScreenState extends State<TopicScreen> {
     );
   }
 
-  //internal function
   _checkNumberSelectedTopic() {
     if (topicChoose.isEmpty || topicChoose.length < 2) {
       setState(() {

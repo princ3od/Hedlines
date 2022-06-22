@@ -5,7 +5,7 @@ import 'package:hedlines/src/configs/application.dart';
 import 'package:hedlines/src/constants/app_state.dart';
 import 'package:hedlines/src/constants/constants.dart';
 import 'package:hedlines/src/data/local_data_source/user_local_data.dart';
-import 'package:hedlines/src/model/fake_model/account_model.dart';
+import 'package:hedlines/src/model/user_model.dart';
 import 'package:hedlines/src/routes/app_pages.dart';
 import 'package:hedlines/src/routes/app_routes.dart';
 

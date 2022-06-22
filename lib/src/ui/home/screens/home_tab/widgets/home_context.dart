@@ -5,10 +5,11 @@ import 'package:hedlines/src/constants/args_key.dart';
 import 'package:hedlines/src/controller/home/home_tab/home_tab_controller.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/helper/utils/assets_helper.dart';
-import 'package:hedlines/src/model/fake_model/article_description.dart';
 import 'package:hedlines/src/ui/common/buttons/inline_button.dart';
 import 'package:hedlines/src/ui/home/screens/home_tab/widgets/icon_toogle.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
+
+import '../../../../../model/article.dart';
 
 class HomeContext extends StatelessWidget {
   HomeContext({

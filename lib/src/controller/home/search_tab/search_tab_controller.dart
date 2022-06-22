@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:hedlines/src/data/hard_data/mock_data.dart';
-import 'package:hedlines/src/model/fake_model/article_description.dart';
 
 import '../../../data/remote_data_source/article_searcher_repository.dart';
+import '../../../model/article.dart';
 
 class SearchTabController extends GetxController {
   Rxn<List<Article>> searchedArticles = Rxn<List<Article>>(null);

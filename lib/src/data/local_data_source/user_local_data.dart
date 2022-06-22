@@ -1,9 +1,9 @@
 import 'package:hedlines/src/constants/storage_key.dart';
-import 'package:hedlines/src/model/fake_model/account_model.dart';
-import 'package:hedlines/src/model/fake_model/account_remember.dart';
 import 'package:hive/hive.dart';
 
 import '../../helper/utils/path_helper.dart';
+import '../../model/account_remember.dart';
+import '../../model/user_model.dart';
 
 class UserLocal {
   static late Box box;
@@ -39,7 +39,8 @@ class UserLocal {
     } else {
       accountRemember = AccountRemember.fromJson(_userModel);
     }
-    int indexOfRemember = accountRemember.account!.indexWhere((element) => element.email == email);
+    int indexOfRemember = accountRemember.account!
+        .indexWhere((element) => element.email == email);
     if (indexOfRemember == -1) {
       accountRemember.account!.add(Account(
         email: email,
@@ -57,7 +58,8 @@ class UserLocal {
     } else {
       accountRemember = AccountRemember.fromJson(_userModel);
     }
-    int indexOfRemember = accountRemember.account!.indexWhere((account) => account.email == email);
+    int indexOfRemember = accountRemember.account!
+        .indexWhere((account) => account.email == email);
     if (indexOfRemember != -1) {
       accountRemember.account!.removeAt(indexOfRemember);
       box.put(StorageKey.LIST_ACCOUNT, accountRemember.toJson());
