@@ -8,7 +8,6 @@ import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/helper/utils/assets_helper.dart';
 import 'package:hedlines/src/ui/common/buttons/inline_button.dart';
 import 'package:hedlines/src/ui/common/full_screen_image/full_screen_image.dart';
-import 'package:hedlines/src/ui/home/screens/home_tab/widgets/icon_toogle.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
 import 'package:intl/intl.dart';
 import 'package:like_button/like_button.dart';

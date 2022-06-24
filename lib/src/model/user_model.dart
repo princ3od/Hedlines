@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hedlines/src/model/social_model.dart';
 
 import '../helper/utils/date_time_helper.dart';
-import '../helper/utils/string_helper.dart';
 
 class UserModel {
   String? id;
@@ -104,23 +103,11 @@ class UserModel {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is UserModel &&
-        other.id == id &&
-        other.username == username &&
-        other.fullname == fullname &&
-        other.email == email &&
-        other.createdAt == createdAt &&
-        other.modifiedAt == modifiedAt;
+    return other is UserModel && other.id == id && other.username == username && other.fullname == fullname && other.email == email && other.createdAt == createdAt && other.modifiedAt == modifiedAt;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^
-        username.hashCode ^
-        fullname.hashCode ^
-        email.hashCode ^
-        avatar.hashCode ^
-        createdAt.hashCode ^
-        modifiedAt.hashCode;
+    return id.hashCode ^ username.hashCode ^ fullname.hashCode ^ email.hashCode ^ avatar.hashCode ^ createdAt.hashCode ^ modifiedAt.hashCode;
   }
 }

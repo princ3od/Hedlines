@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hedlines/src/constants/constants.dart';
 import 'package:hedlines/src/controller/home/home_tab/home_tab_controller.dart';
 import 'package:hedlines/src/ui/home/screens/home_tab/widgets/home_context.dart';
 import 'package:shimmer/shimmer.dart';
@@ -34,18 +33,13 @@ class _HomeTabState extends State<HomeTab> {
           scrollDirection: Axis.vertical,
           onPageChanged: homeTabController.onPageChanged,
           itemBuilder: (BuildContext context, int index) {
-            if (homeTabController.articles.isNotEmpty &&
-                index < homeTabController.articles.length) {
-              return HomeContext(
-                  sizeScreen: sizeScreen,
-                  article: homeTabController.articles[index]);
+            if (homeTabController.articles.isNotEmpty && index < homeTabController.articles.length) {
+              return HomeContext(sizeScreen: sizeScreen, article: homeTabController.articles[index]);
             }
             return Shimmer.fromColors(
               baseColor: Colors.grey[300]!,
               highlightColor: Colors.grey[100]!,
-              child: HomeContext(
-                  sizeScreen: sizeScreen,
-                  article: homeTabController.currentArticle),
+              child: HomeContext(sizeScreen: sizeScreen, article: homeTabController.currentArticle),
             );
           },
         );

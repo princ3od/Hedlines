@@ -87,9 +87,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           home: GetBuilder<AppController>(
             builder: (appController) {
               if (AppState.loaded == appController.appState.value) {
-                Widget child = AppController.isAuthenticated.value
-                    ? const HomeScreen()
-                    : const AuthenticationScreen();
+                Widget child = AppController.isAuthenticated.value ? const HomeScreen() : const AuthenticationScreen();
                 return ScaffoldWrapper(
                   child: child,
                 );

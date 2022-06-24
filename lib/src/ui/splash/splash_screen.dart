@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:hedlines/src/configs/theme/app_colors.dart';
-import 'package:hedlines/src/constants/constants.dart';
-import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
-import 'package:hedlines/src/helper/utils/assets_helper.dart';
-import 'dart:math' as math;
+import 'package:flutter_svg/flutter_svg.dart';
+import '../../configs/theme/app_colors.dart';
+import '../../constants/constants.dart';
+import '../../helper/utils/assets_helper.dart';
+import '../common/app_bars/app_bar_brighness_dark.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -14,45 +13,61 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
   Color backgroundColor = backgroundPrimaryColor;
   Color logoBackgroundColor = mCL;
+  late AnimationController _controller;
+  bool isShowLoadingEffect = false;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: appBarBrighnessDark(),
+      extendBodyBehindAppBar: true,
+      body: AnimatedContainer(
+        color: backgroundColor,
+        duration: ANIMATION_DURATION_500_MS,
+        child: Center(
+          child: isShowLoadingEffect
+              ? AnimatedBuilder(
+                  animation: _controller,
+                  builder: (context, child) => ClipPath(
+                    clipper: MyClip(_controller.value),
+                    child: SvgPicture.asset(
+                      AssetsHelper.logo,
+                      color: logoBackgroundColor,
+                      width: MediaQuery.of(context).size.width * 0.25,
+                    ),
+                  ),
+                )
+              : SvgPicture.asset(
+                  AssetsHelper.logo,
+                  color: logoBackgroundColor,
+                  width: MediaQuery.of(context).size.width * 0.25,
+                ),
+        ),
+      ),
+    );
+  }
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 2000),
-    );
-    Future.delayed(ANIMATION_DURATION_500_MS, () {
+    Future.delayed(ANIMATION_DURATION_2000_MS, () {
       setState(() {
+        isShowLoadingEffect = true;
         var temp = backgroundPrimaryColor;
         backgroundColor = mCL;
         logoBackgroundColor = temp;
       });
+    }).then((value) {
+      _controller.forward();
     });
-  }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      color: backgroundColor,
-      duration: ANIMATION_DURATION_1000_MS,
-      child: Center(
-        child: SvgPicture.asset(
-          AssetsHelper.logo,
-          color: logoBackgroundColor,
-          height: 75.sp,
-          width: 75.sp,
-        ),
-      ),
+    _controller = AnimationController(
+      value: 0.0,
+      duration: Duration(seconds: 4),
+      upperBound: 1,
+      lowerBound: -1,
+      vsync: this,
     );
   }
 }
@@ -64,8 +79,9 @@ class MyClip extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path path = Path();
     path.moveTo(0, size.height);
-    path.lineTo(size.width, size.height - move);
-    path.lineTo(0, size.height - move);
+    path.lineTo(size.width, size.height);
+    path.lineTo(size.width, size.height - size.height * move);
+    path.lineTo(0, size.height - size.height * move);
     path.close();
     return path;
   }
