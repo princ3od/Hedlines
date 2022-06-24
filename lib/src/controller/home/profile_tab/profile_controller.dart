@@ -30,6 +30,7 @@ class ProfileController extends GetxController {
 
   savePreferences() async {
     isSaving.value = true;
+    showSaveButton.value = false;
     await UserInfoService().setUserTopics(selectedTopics);
     AppController.userInfo.value?.preferences = selectedTopics;
     isSaving.value = false;

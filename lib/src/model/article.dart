@@ -7,11 +7,12 @@ class Article {
   int estimateMinuteReadTime;
   int numberOfFavorite;
   int numberOfShare;
-  List<Map<String, String>> tags;
+  List<dynamic> tags;
   Map<String, dynamic> source;
   Map<String, dynamic> topic;
   String author;
   String id;
+  bool isLiked;
 
   Article({
     required this.id,
@@ -27,23 +28,25 @@ class Article {
     required this.tags,
     required this.source,
     required this.topic,
+    this.isLiked = true,
   });
 
   factory Article.fromMap(Map<String, dynamic> map) {
     return Article(
+      id: map['id'] as String,
       url: map["url"] ?? "",
-      thumbnail: map["thumbnail"] ?? [],
+      thumbnail: map["thumbnail"] ?? '',
       date: DateTime.fromMillisecondsSinceEpoch(map["date"]),
       title: map["title"] ?? "",
       description: map["description"] ?? "",
       estimateMinuteReadTime: map["readtime"] ?? 0,
       numberOfFavorite: map["like_count"] ?? 0,
       numberOfShare: map["share_count"] ?? 0,
-      tags: map["tags"] != null ? List.from(map["tags"].map((x) => x)) : [],
+      tags: map["tags"] != null ? List.from((map["tags"]).map((x) => x)) : [],
       source: Map<String, dynamic>.from(map["source"]),
       topic: Map<String, dynamic>.from(map["topic"]),
-      author: '',
-      id: '',
+      author: map["author"] ?? "",
+      isLiked: map["is_liked"] ?? false,
     );
   }
 }

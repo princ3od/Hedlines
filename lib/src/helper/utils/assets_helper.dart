@@ -29,4 +29,6 @@ class AssetsHelper {
   // Topic
   static String getTopicIcon(Topic topic) =>
       "assets/images/svg/${topic.id}.svg";
+
+  static String placeholderThumbnail = "assets/images/placeholder.jpg";
 }

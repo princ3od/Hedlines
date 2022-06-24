@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen>
   void initState() {
     super.initState();
     controller =
-        AnimationController(duration: ANIMATION_DURATION_1000_MS, vsync: this);
+        AnimationController(duration: ANIMATION_DURATION_500_MS, vsync: this);
     animation =
         CurvedAnimation(parent: controller, curve: Curves.linearToEaseOut)
           ..addListener(() {});

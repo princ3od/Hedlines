@@ -97,8 +97,6 @@ class UserModel {
       preferences: List.from(map['preferences']),
       lastVisited: (map['last_visited'] as Timestamp).toDate(),
       liked: DateTimeHelper.convertTimeStampToDateTime(map['liked']),
-      previousViewedArticle:
-          StringHeler.convertMapStringToString(map['previous_viewed_article']),
     );
   }
 

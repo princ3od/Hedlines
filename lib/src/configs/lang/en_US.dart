@@ -16,4 +16,5 @@ Map<String, String> english = {
   Strings.sureLogout: 'Are you sure you want to logout?',
   Strings.cancel: 'Cancel',
   Strings.ok: 'Ok',
+  Strings.startSearch: 'Start search',
 };

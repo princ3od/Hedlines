@@ -74,7 +74,7 @@ class _ProfileTabState extends State<ProfileTab>
               SizedBox(
                 height: 61.sp,
               ),
-              Text(
+              const Text(
                 "Hồ sơ",
                 style: text24w700Blue,
               ),
@@ -102,7 +102,7 @@ class _ProfileTabState extends State<ProfileTab>
               SizedBox(
                 height: 27.sp,
               ),
-              Text(
+              const Text(
                 "Chủ đề của tôi",
                 style: text16w600Blue,
               ),

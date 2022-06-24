@@ -1,11 +1,11 @@
 {
-    "name": "hedlines",
-    "short_name": "hedlines",
+    "name": "Hedlines",
+    "short_name": "Hedlines",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "articles you want",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

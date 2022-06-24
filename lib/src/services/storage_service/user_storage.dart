@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hedlines/src/model/article.dart';
 
 import '../../controller/app_controller.dart';
 import '../../model/social_model.dart';
@@ -44,6 +45,17 @@ class UserInfoService {
     await usersRef.doc(AppController.userInfo.value?.id).update({
       'preferences': topics,
     });
+  }
+
+  Future<void> setPreviousViewedArticle(Article? article) async {
+    if (article == null) {
+      return;
+    }
+    await usersRef.doc(AppController.userInfo.value?.id).set({
+      'previous_viewed_articles': {
+        article.topic["id"]: article.id,
+      }
+    }, SetOptions(merge: true));
   }
 
   static final UserInfoService _authService = UserInfoService._internal();
