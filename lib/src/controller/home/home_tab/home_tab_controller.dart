@@ -54,13 +54,20 @@ class HomeTabController extends GetxController {
     isLoading.value = false;
   }
 
-  likeArticle(bool isLiked) async {
+  likeArticle(bool isLiked, {Article? article}) async {
     if (isLiked) {
-      await UserInfoService().unlikeArticle(currentArticle!);
+      await UserInfoService().unlikeArticle(article ?? currentArticle!);
     } else {
-      await UserInfoService().likeArticle(currentArticle!);
+      await UserInfoService().likeArticle(article ?? currentArticle!);
     }
-    articles[currentIndex].isLiked = isLiked;
-    articles[currentIndex].numberOfFavorite += isLiked ? -1 : 1;
+    if (article != null) {
+      Article? articleInCurrentSection =
+          articles.firstWhereOrNull((e) => e.id == article.id);
+      articleInCurrentSection?.isLiked = !isLiked;
+      articleInCurrentSection?.numberOfFavorite += (isLiked ? -1 : 1);
+    } else {
+      articles[currentIndex].isLiked = !isLiked;
+      articles[currentIndex].numberOfFavorite += isLiked ? -1 : 1;
+    }
   }
 }

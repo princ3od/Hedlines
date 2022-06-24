@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hedlines/src/data/remote_data_source/status_code.dart';
 
 import '../../constants/api_gateway.dart';
@@ -30,7 +31,10 @@ class ArticleFetcher {
     Response response;
     var dio = Dio();
     String path = ApiGateway.baseURL + ApiGateway.articlesFetcher;
-    var body = {"article_id": id};
+    var body = {
+      "article_id": id,
+      "user_id": FirebaseAuth.instance.currentUser!.uid
+    };
     response = await dio.post(path, data: body);
     if (response.statusCode == StatusCode.ok) {
       return Article.fromMap(response.data);

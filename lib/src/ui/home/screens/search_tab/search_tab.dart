@@ -25,46 +25,53 @@ class _SearchTabState extends State<SearchTab> {
   final SearchTabController controller = Get.put(SearchTabController());
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverPersistentHeader(
-          delegate: SliverSearchAppBar(),
-          pinned: true,
-        ),
-        GetBuilder<SearchTabController>(builder: (controller) {
-          if (controller.searchedArticles.value!.isEmpty &&
-              !controller.isLoading.value) {
-            return SliverToBoxAdapter(
-              child: _buidSearchEmpty(),
-            );
-          }
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onPanDown: (_) {
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      child: CustomScrollView(
+        slivers: [
+          SliverPersistentHeader(
+            delegate: SliverSearchAppBar(),
+            pinned: true,
+          ),
+          GetBuilder<SearchTabController>(builder: (controller) {
+            if (controller.searchedArticles.value!.isEmpty &&
+                !controller.isLoading.value) {
+              return SliverToBoxAdapter(
+                child: _buidSearchEmpty(),
+              );
+            }
 
-          return SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return controller.isLoading.value
-                    ? Shimmer.fromColors(
-                        baseColor: Colors.grey[300]!,
-                        highlightColor: Colors.grey[100]!,
-                        child: Container(
+            return SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return controller.isLoading.value
+                      ? Shimmer.fromColors(
+                          baseColor: Colors.grey[300]!,
+                          highlightColor: Colors.grey[100]!,
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 4.sp),
+                            padding: EdgeInsets.symmetric(horizontal: 13.sp),
+                            child: _buildSearchItem(
+                                controller.searchedArticles.value![index],
+                                index),
+                          ),
+                        )
+                      : Container(
                           margin: EdgeInsets.symmetric(vertical: 4.sp),
                           padding: EdgeInsets.symmetric(horizontal: 13.sp),
                           child: _buildSearchItem(
                               controller.searchedArticles.value![index], index),
-                        ),
-                      )
-                    : Container(
-                        margin: EdgeInsets.symmetric(vertical: 4.sp),
-                        padding: EdgeInsets.symmetric(horizontal: 13.sp),
-                        child: _buildSearchItem(
-                            controller.searchedArticles.value![index], index),
-                      );
-              },
-              childCount: controller.searchedArticles.value?.length ?? 0,
-            ),
-          );
-        }),
-      ],
+                        );
+                },
+                childCount: controller.searchedArticles.value?.length ?? 0,
+              ),
+            );
+          }),
+        ],
+      ),
     );
   }
 

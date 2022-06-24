@@ -182,7 +182,8 @@ class _HomeContextState extends State<HomeContext> {
                     ),
                     isLiked: widget.article?.isLiked ?? false,
                     onTap: (isLiked) async {
-                      homeTabController.likeArticle(isLiked);
+                      homeTabController.likeArticle(isLiked,
+                          article: widget.article);
                       return !isLiked;
                     },
                     likeBuilder: (bool isLiked) {
