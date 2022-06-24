@@ -27,8 +27,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
   final homeController = Get.put(HomeController());
 
   late Animation<double> animation;
@@ -39,17 +38,13 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   void initState() {
     super.initState();
-    controller =
-        AnimationController(duration: ANIMATION_DURATION_1000_MS, vsync: this);
-    animation =
-        CurvedAnimation(parent: controller, curve: Curves.linearToEaseOut)
-          ..addListener(() {});
+    controller = AnimationController(duration: ANIMATION_DURATION_500_MS, vsync: this);
+    animation = CurvedAnimation(parent: controller, curve: Curves.linearToEaseOut)..addListener(() {});
     overlayEntry = OverlayEntry(
       builder: (context) {
         final size = MediaQuery.of(context).size;
         return SlideTransition(
-          position:
-              Tween(begin: Offset(0, -1), end: Offset(0, 0)).animate(animation),
+          position: Tween(begin: Offset(0, -1), end: Offset(0, 0)).animate(animation),
           child: Container(
             width: size.width,
             height: size.height,
@@ -144,8 +139,7 @@ class _HomeScreenState extends State<HomeScreen>
     super.dispose();
   }
 
-  Widget _buildItemBottomBar(
-      {inActiveIcon, activeIcon, index, title, int quantity = 0}) {
+  Widget _buildItemBottomBar({inActiveIcon, activeIcon, index, title, int quantity = 0}) {
     return Obx(
       () => Expanded(
         child: TouchableOpacity(
@@ -181,11 +175,8 @@ class _HomeScreenState extends State<HomeScreen>
                   title,
                   style: TextStyle(
                     fontSize: 9.sp,
-                    fontWeight: homeController.index == index
-                        ? FontWeight.w700
-                        : FontWeight.w500,
-                    color:
-                        homeController.index == index ? colorWhite : colorWhite,
+                    fontWeight: homeController.index == index ? FontWeight.w700 : FontWeight.w500,
+                    color: homeController.index == index ? colorWhite : colorWhite,
                     fontFamily: HEDLINES_FONT,
                   ),
                 ),

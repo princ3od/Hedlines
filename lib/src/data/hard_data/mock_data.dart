@@ -13,7 +13,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -29,7 +31,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -45,7 +49,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -61,7 +67,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -77,7 +85,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -93,7 +103,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -109,7 +121,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -125,7 +139,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -141,7 +157,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -157,7 +175,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -173,7 +193,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -189,7 +211,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -205,7 +229,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -221,7 +247,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -237,7 +265,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -253,7 +283,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -269,7 +301,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -285,7 +319,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -301,7 +337,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -317,7 +355,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -333,7 +373,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -349,7 +391,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -365,7 +409,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -381,7 +427,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -397,7 +445,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -413,7 +463,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -429,7 +481,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -445,7 +499,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -461,7 +517,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -477,7 +535,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -493,7 +553,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -509,7 +571,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -525,7 +589,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -541,7 +607,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -557,7 +625,9 @@ class MockData {
         estimateMinuteReadTime: 8,
         numberOfFavorite: 0,
         numberOfShare: 0,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',
@@ -573,7 +643,9 @@ class MockData {
         estimateMinuteReadTime: 5,
         numberOfFavorite: 20,
         numberOfShare: 10,
-        tags: ["COVID-19", "Thời sự", "Nhanh"],
+        tags: [
+          {"id": "1", "tag": "Tin tức"}
+        ],
         source: {"id": "tuoitrenews", "name": "Tuoitrenews"},
         topic: {"id": "123", "vnese": "Thời sự"},
         author: '',

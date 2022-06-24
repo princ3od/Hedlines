@@ -1,105 +1,52 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hedlines/src/configs/theme/app_colors.dart';
-import 'package:hedlines/src/constants/constants.dart';
-import 'package:hedlines/src/constants/slide_mode.dart';
-import 'package:hedlines/src/data/hard_data/mock_data.dart';
-import 'package:hedlines/src/routes/app_pages.dart';
-import 'package:hedlines/src/routes/app_routes.dart';
-import 'package:hedlines/src/ui/common/dialogs/dialog_announcement.dart';
-import 'package:hedlines/src/ui/common/dialogs/dialog_wrapper.dart';
+import 'package:hedlines/src/data/remote_data_source/article_recommender_repository.dart';
+import 'package:hedlines/src/services/storage_service/user_storage.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 import '../../../model/article.dart';
 
 class HomeTabController extends GetxController {
-  List<Article> backupListArticleDescription = [];
-  RxList<Article> listArticleDescription = RxList<Article>();
-  bool isLoading = false;
-  bool isEnd = false;
+  var articles = <Article>[];
+  var currentIndex = 0;
+  var isLoading = false.obs;
   late PageController pageController;
 
-  get colorGray1 => null;
-
+  Article? get currentArticle =>
+      (articles.isNotEmpty) ? articles[currentIndex] : null;
   @override
-  void onInit() {
+  Future<void> onInit() async {
     super.onInit();
+    isLoading.value = true;
     pageController = PageController(
       initialPage: 0,
     );
-    for (int i = 0; i < 10; i++) {
-      backupListArticleDescription
-          .add(MockData.articles[MockData.articles.length - i - 1]);
-    }
-    listArticleDescription.value = backupListArticleDescription.sublist(
-        backupListArticleDescription.length - 10,
-        backupListArticleDescription.length);
+    timeago.setLocaleMessages('vi', timeago.ViMessages());
+    articles = await ArticleRecommenderRepository()
+            .fetchArticles(FirebaseAuth.instance.currentUser!.uid) ??
+        [];
     update();
+    isLoading.value = false;
   }
 
-  indexChange(int index) {}
-
-  //asset listArticleDescription <=10;
-  // ignore: unused_element
-  _addArticleDescription() {
-    if (listArticleDescription.length <= 10) {
-      var articleRemove = listArticleDescription.first;
-      listArticleDescription.remove(articleRemove);
-      int indexOfRemove = backupListArticleDescription.indexOf(articleRemove);
-      if (indexOfRemove == 0) {
-        showDialogAnnouncement();
-        return;
-      }
-      if (indexOfRemove < 5) {
-        _loadMoreArticleDescription(backupListArticleDescription.length);
-      }
-      listArticleDescription
-          .add(backupListArticleDescription[indexOfRemove - 1]);
+  onPageChanged(int index) async {
+    if (index < articles.length) {
+      currentIndex = index;
+    } else {
+      await loadMoreArticles();
     }
+    await UserInfoService().setPreviousViewedArticle(currentArticle);
   }
 
-  _loadMoreArticleDescription(int skip) async {
-    isLoading = true;
-    //mock load more article
-    await Future.delayed(ANIMATION_DURATION_2000_MS).then((value) {
-      int begin = skip < MockData.articles.length - 1 ? skip : -1;
-      int end = skip + 10 <= MockData.articles.length - 1
-          ? skip + 10
-          : MockData.articles.length - 1;
-      if (begin != -1 && end > begin && !isEnd) {
-        backupListArticleDescription = [
-          ...MockData.articles.sublist(begin, end),
-          ...backupListArticleDescription
-        ];
-      } else {
-        isEnd = true;
-      }
-    });
-    isLoading = false;
-    update();
-  }
-
-  //show announcement user readied all article
-  showDialogAnnouncement() async {
-    await dialogAnimationWrapper(
-      slideFrom: SlideMode.bot,
-      child: DialogAnnouncement(
-        title: "Thông báo",
-        bodyBefore: "Bạn đã đọc hết tổng cộng",
-        bodyAfter:
-            "bài viết, hãy tiếp tục các bài viết trong khi chúng tôi chuẩn bị nội dung cho bạn.",
-        highlightColor: Colors.red,
-        highlightText: "10",
-        bodyColor: colorBlack,
-        confirmText: "Xác nhận",
-        beforeTextAlign: TextAlign.justify,
-        onConfirmed: () {
-          AppNavigator.pop();
-        },
-      ),
+  loadMoreArticles() async {
+    isLoading.value = true;
+    articles.addAll(
+      await ArticleRecommenderRepository()
+              .fetchArticles(FirebaseAuth.instance.currentUser!.uid) ??
+          [],
     );
-  }
-
-  void toArticleDetial(dynamic args) {
-    AppNavigator.push(Routes.articleDetail, arguments: args);
+    update();
+    isLoading.value = false;
   }
 }

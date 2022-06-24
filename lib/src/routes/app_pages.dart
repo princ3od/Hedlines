@@ -46,6 +46,7 @@ class AppNavigator extends RouteObserver<PageRoute<dynamic>> {
           settings,
           const ArticleDetailScreen(),
         );
+
       default:
         return _buildRoute(settings, const App());
     }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hedlines/src/configs/lang/localization.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/ui/common/buttons/inline_button.dart';
@@ -31,7 +32,7 @@ class SearchBar extends StatelessWidget {
               focusedBorder: _border(Colors.amber),
               border: _border(backgroundPrimaryColor),
               enabledBorder: _border(backgroundPrimaryColor),
-              hintText: 'Start search',
+              hintText: Strings.startSearch.i18n,
               contentPadding: const EdgeInsets.symmetric(vertical: 20),
               prefixIcon: const Icon(
                 Icons.search,
@@ -49,7 +50,7 @@ class SearchBar extends StatelessWidget {
             height: 24.sp,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 6,
+                itemCount: searchTabController.topics.length,
                 itemBuilder: (context, index) {
                   return SizedBox(
                     child: _buildListItem(index),
@@ -74,7 +75,7 @@ class SearchBar extends StatelessWidget {
         onTap: null,
         onLongPress: null,
         leading: null,
-        title: "123",
+        title: searchTabController.topics[index].name,
         mainAxisSize: MainAxisSize.min,
         textStyle: text10w400Blue,
       ),

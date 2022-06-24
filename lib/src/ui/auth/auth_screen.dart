@@ -53,7 +53,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
               SizedBox(
                 height: 10.sp,
               ),
-              Text(
+              const Text(
                 AppStrings.slogan,
                 style: text20w400Blue,
               ),
