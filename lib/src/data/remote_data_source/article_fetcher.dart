@@ -19,7 +19,21 @@ class ArticleFetcher {
     var body = {"topic_id": topic.id};
     response = await dio.post(path, data: body);
     if (response.statusCode == StatusCode.ok) {
-      return (response.data["data"] as List).map((e) => Article.fromMap(e)).toList();
+      return (response.data["data"] as List)
+          .map((e) => Article.fromMap(e))
+          .toList();
+    }
+    return null;
+  }
+
+  Future<Article?> fetchArticle(String id) async {
+    Response response;
+    var dio = Dio();
+    String path = ApiGateway.baseURL + ApiGateway.articlesFetcher;
+    var body = {"article_id": id};
+    response = await dio.post(path, data: body);
+    if (response.statusCode == StatusCode.ok) {
+      return Article.fromMap(response.data);
     }
     return null;
   }

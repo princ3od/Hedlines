@@ -12,6 +12,7 @@ import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../model/article.dart';
+import '../../../article_view/article_view_screen.dart';
 
 class SearchTab extends StatefulWidget {
   const SearchTab({Key? key}) : super(key: key);
@@ -93,6 +94,9 @@ class _SearchTabState extends State<SearchTab> {
 
   Widget _buildSearchItem(Article article, int index) {
     return TouchableOpacity(
+      onTap: () {
+        controller.onOpenArticle(article.id);
+      },
       child: SizedBox(
         width: 339.sp,
         height: 136.sp,

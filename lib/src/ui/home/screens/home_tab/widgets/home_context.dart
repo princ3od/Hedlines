@@ -22,10 +22,12 @@ class HomeContext extends StatefulWidget {
     Key? key,
     required this.sizeScreen,
     required this.article,
+    this.onToDetail,
   }) : super(key: key);
 
   final Size sizeScreen;
   final Article? article;
+  final Function? onToDetail;
 
   @override
   State<HomeContext> createState() => _HomeContextState();
@@ -58,10 +60,7 @@ class _HomeContextState extends State<HomeContext> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       stops: const [0.0, 0.4],
-                      colors: [
-                        Colors.black.withOpacity(.75),
-                        Colors.transparent
-                      ],
+                      colors: [Colors.grey.withOpacity(.9), Colors.transparent],
                     ).createShader(
                         Rect.fromLTRB(0, 0, rect.width, rect.height));
                   },
@@ -145,11 +144,12 @@ class _HomeContextState extends State<HomeContext> {
                     ),
                     child: InlineButton(
                       mainAxisSize: MainAxisSize.min,
-                      onTap: () {
-                        HomeController homeController =
-                            Get.find<HomeController>();
-                        homeController.toArticleDetail();
-                      },
+                      onTap: widget.onToDetail ??
+                          () {
+                            HomeController homeController =
+                                Get.find<HomeController>();
+                            homeController.toArticleDetail();
+                          },
                       onLongPress: () {},
                       leading: null,
                       title:

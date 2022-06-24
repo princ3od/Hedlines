@@ -7,6 +7,7 @@ import 'package:hedlines/src/services/storage_service/topic_storage.dart';
 import '../../../data/remote_data_source/article_fetcher.dart';
 import '../../../data/remote_data_source/article_searcher_repository.dart';
 import '../../../model/article.dart';
+import '../../../ui/article_view/article_view_screen.dart';
 
 class SearchTabController extends GetxController {
   Rxn<List<Article>> searchedArticles = Rxn<List<Article>>([]);
@@ -55,5 +56,17 @@ class SearchTabController extends GetxController {
       isCardEnabled[i] = false;
     }
     update();
+  }
+
+  Future<void> onOpenArticle(String id) async {
+    Article? _article = await ArticleFetcher().fetchArticle(id);
+    if (_article != null) {
+      Get.to(
+        () => ArticleViewScreen(
+          article: _article,
+        ),
+        transition: Transition.rightToLeft,
+      );
+    }
   }
 }

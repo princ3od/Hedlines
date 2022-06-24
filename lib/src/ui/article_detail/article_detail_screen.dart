@@ -9,10 +9,13 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:async';
 
 import '../../controller/home/home_controller.dart';
+import '../../model/article.dart';
 
 class ArticleDetailScreen extends StatefulWidget {
-  const ArticleDetailScreen({Key? key}) : super(key: key);
-
+  const ArticleDetailScreen({Key? key, this.article, this.onBack})
+      : super(key: key);
+  final Article? article;
+  final Function? onBack;
   @override
   State<ArticleDetailScreen> createState() => _ArticleDetailScreenState();
 }
@@ -20,18 +23,19 @@ class ArticleDetailScreen extends StatefulWidget {
 class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
+  HomeTabController homeTabController = Get.find<HomeTabController>();
 
   @override
   Widget build(BuildContext context) {
-    HomeTabController homeTabController = Get.find<HomeTabController>();
-    var article = homeTabController.currentArticle;
+    var article = widget.article ?? homeTabController.currentArticle;
     return Scaffold(
       appBar: appBarTitleBack(
         title: article?.title ?? "Hedlines",
-        onBackPressed: () {
-          HomeController homeController = Get.find<HomeController>();
-          homeController.toHomeScreen();
-        },
+        onBackPressed: widget.onBack ??
+            () {
+              HomeController homeController = Get.find<HomeController>();
+              homeController.toHomeScreen();
+            },
         actions: [
           LikeButton(
             size: 32,
