@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hedlines/src/helper/utils/date_time_helper.dart';
+
 class Article {
   String url;
   String thumbnail;
@@ -45,6 +48,26 @@ class Article {
       tags: map["tags"] != null ? List.from((map["tags"]).map((x) => x)) : [],
       source: Map<String, dynamic>.from(map["source"]),
       topic: Map<String, dynamic>.from(map["topic"]),
+      author: map["author"] ?? "",
+      isLiked: map["is_liked"] ?? false,
+    );
+  }
+
+  factory Article.fromMapFireStore(Map<String, dynamic> map) {
+    print(map);
+    return Article(
+      id: map['id'] as String,
+      url: map["url"] ?? "",
+      thumbnail: map["thumbnail"] ?? '',
+      date: (map["date"] as Timestamp).toDate(),
+      title: map["title"] ?? "",
+      description: map["description"] ?? "",
+      estimateMinuteReadTime: map["readtime"] ?? 0,
+      numberOfFavorite: map["like_count"] ?? 0,
+      numberOfShare: map["share_count"] ?? 0,
+      tags: [],
+      source: {},
+      topic: {},
       author: map["author"] ?? "",
       isLiked: map["is_liked"] ?? false,
     );

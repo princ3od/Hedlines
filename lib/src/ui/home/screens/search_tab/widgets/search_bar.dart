@@ -4,9 +4,11 @@ import 'package:hedlines/src/configs/lang/localization.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/ui/common/buttons/inline_button.dart';
+import 'package:hedlines/src/ui/home/screens/search_tab/widgets/list_topic.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
 
 import '../../../../../controller/home/search_tab/search_tab_controller.dart';
+import '../../../../common/buttons/touchable_opacity.dart';
 
 class SearchBar extends StatelessWidget {
   final pink = const Color(0xFFFACCCC);
@@ -25,6 +27,7 @@ class SearchBar extends StatelessWidget {
       child: Column(
         children: [
           TextFormField(
+            controller: searchTabController.textEditingController,
             decoration: InputDecoration(
               filled: true,
               fillColor: Colors.white,
@@ -41,6 +44,9 @@ class SearchBar extends StatelessWidget {
             ),
             onChanged: searchTabController.onSearchTextChange,
             onFieldSubmitted: (value) {},
+            onTap: () {
+              searchTabController.onSearchForcus();
+            },
           ),
           SizedBox(
             height: 16.sp,
@@ -48,15 +54,9 @@ class SearchBar extends StatelessWidget {
           SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 24.sp,
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: searchTabController.topics.length,
-                itemBuilder: (context, index) {
-                  return SizedBox(
-                    child: _buildListItem(index),
-                    width: 80.sp,
-                  );
-                }),
+            child: ListTopic(
+              searchTabController: searchTabController,
+            ),
           )
         ],
       ),
@@ -67,18 +67,4 @@ class SearchBar extends StatelessWidget {
         borderSide: BorderSide(width: 1.sp, color: color),
         borderRadius: BorderRadius.circular(5.sp),
       );
-
-  Widget _buildListItem(int index) {
-    return Container(
-      margin: index != 0 ? EdgeInsets.only(left: 8.sp) : EdgeInsets.zero,
-      child: InlineButton(
-        onTap: null,
-        onLongPress: null,
-        leading: null,
-        title: searchTabController.topics[index].name,
-        mainAxisSize: MainAxisSize.min,
-        textStyle: text10w400Blue,
-      ),
-    );
-  }
 }
