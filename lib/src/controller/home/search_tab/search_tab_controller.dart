@@ -21,7 +21,9 @@ class SearchTabController extends GetxController {
     update();
     searchedArticles.value = MockData.articles.sublist(0, 4);
     topics.value = await TopicService().getTopics();
-    isCardEnabled.value = List.generate(topics.value!.length, (index) => false).toList();
+    isCardEnabled.value =
+        List.generate(topics.value!.length, (index) => index == 0).toList();
+    onTopicClick(0);
     isLoading.value = false;
     update();
   }
@@ -43,7 +45,6 @@ class SearchTabController extends GetxController {
     update();
     ArticleFetcher().searchArticleByTopic(topic).then((value) {
       searchedArticles.value = value;
-      print(searchedArticles.value?.length);
       isLoading.value = false;
       update();
     });
@@ -51,7 +52,7 @@ class SearchTabController extends GetxController {
 
   void onSearchForcus() {
     for (int i = 0; i < isCardEnabled.length; i++) {
-      isCardEnabled.value[i] = false;
+      isCardEnabled[i] = false;
     }
     update();
   }

@@ -41,7 +41,7 @@ class _TopicScreenState extends State<TopicScreen> {
                 height: 40.sp,
                 width: 261.sp,
               ),
-              Align(
+              const Align(
                 alignment: Alignment.topLeft,
                 child: Text(
                   "Bạn quan tâm về\nchủ đề gì?",
@@ -52,7 +52,7 @@ class _TopicScreenState extends State<TopicScreen> {
               SizedBox(
                 height: 14.sp,
               ),
-              Align(
+              const Align(
                 alignment: Alignment.topLeft,
                 child: Text(
                   "Chọn 2 trong 6 chủ đề dưới đây.",

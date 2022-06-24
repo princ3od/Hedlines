@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hedlines/src/helper/utils/date_time_helper.dart';
 
 class Article {
   String url;
@@ -54,7 +53,6 @@ class Article {
   }
 
   factory Article.fromMapFireStore(Map<String, dynamic> map) {
-    print(map);
     return Article(
       id: map['id'] as String,
       url: map["url"] ?? "",

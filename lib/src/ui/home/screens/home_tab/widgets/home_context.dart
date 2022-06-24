@@ -18,7 +18,7 @@ import 'package:timeago/timeago.dart' as timeago;
 import '../../../../../model/article.dart';
 
 class HomeContext extends StatefulWidget {
-  HomeContext({
+  const HomeContext({
     Key? key,
     required this.sizeScreen,
     required this.article,

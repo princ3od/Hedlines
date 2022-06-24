@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hedlines/src/controller/home/home_tab/home_tab_controller.dart';
-import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
-import 'package:hedlines/src/helper/utils/assets_helper.dart';
 import 'package:hedlines/src/ui/article_detail/widgets/app_bar.dart';
-import 'package:hedlines/src/ui/common/buttons/touchable_opacity.dart';
-import 'package:hedlines/src/ui/styles/app_styles.dart';
 import 'package:like_button/like_button.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'dart:async';
 
-import '../../configs/theme/app_colors.dart';
 import '../../controller/home/home_controller.dart';
 
 class ArticleDetailScreen extends StatefulWidget {

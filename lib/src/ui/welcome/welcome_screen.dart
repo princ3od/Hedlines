@@ -38,7 +38,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 height: 40.sp,
                 width: 261.sp,
               ),
-              Align(
+              const Align(
                 alignment: Alignment.topLeft,
                 child: Text(
                   "Chào mừng <name>\nđến với Hedlines",

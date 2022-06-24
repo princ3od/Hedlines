@@ -12,7 +12,8 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
   Color backgroundColor = backgroundPrimaryColor;
   Color logoBackgroundColor = mCL;
   late AnimationController _controller;
@@ -64,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
     _controller = AnimationController(
       value: 0.0,
-      duration: Duration(seconds: 4),
+      duration: const Duration(seconds: 4),
       upperBound: 1,
       lowerBound: -1,
       vsync: this,

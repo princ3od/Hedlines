@@ -3,12 +3,9 @@ import 'package:get/get.dart';
 import 'package:hedlines/src/configs/lang/localization.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
-import 'package:hedlines/src/ui/common/buttons/inline_button.dart';
 import 'package:hedlines/src/ui/home/screens/search_tab/widgets/list_topic.dart';
-import 'package:hedlines/src/ui/styles/app_styles.dart';
 
 import '../../../../../controller/home/search_tab/search_tab_controller.dart';
-import '../../../../common/buttons/touchable_opacity.dart';
 
 class SearchBar extends StatelessWidget {
   final pink = const Color(0xFFFACCCC);

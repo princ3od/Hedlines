@@ -31,7 +31,8 @@ class _SearchTabState extends State<SearchTab> {
           pinned: true,
         ),
         GetBuilder<SearchTabController>(builder: (controller) {
-          if (controller.searchedArticles.value!.isEmpty && !controller.isLoading.value) {
+          if (controller.searchedArticles.value!.isEmpty &&
+              !controller.isLoading.value) {
             return SliverToBoxAdapter(
               child: _buidSearchEmpty(),
             );
@@ -47,13 +48,15 @@ class _SearchTabState extends State<SearchTab> {
                         child: Container(
                           margin: EdgeInsets.symmetric(vertical: 4.sp),
                           padding: EdgeInsets.symmetric(horizontal: 13.sp),
-                          child: _buildSearchItem(controller.searchedArticles.value![index], index),
+                          child: _buildSearchItem(
+                              controller.searchedArticles.value![index], index),
                         ),
                       )
                     : Container(
                         margin: EdgeInsets.symmetric(vertical: 4.sp),
                         padding: EdgeInsets.symmetric(horizontal: 13.sp),
-                        child: _buildSearchItem(controller.searchedArticles.value![index], index),
+                        child: _buildSearchItem(
+                            controller.searchedArticles.value![index], index),
                       );
               },
               childCount: controller.searchedArticles.value?.length ?? 0,
@@ -70,7 +73,7 @@ class _SearchTabState extends State<SearchTab> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
+        const SizedBox(
           height: 120,
         ),
         SvgPicture.asset(
@@ -127,6 +130,14 @@ class _SearchTabState extends State<SearchTab> {
                   height: 85.sp,
                   width: 130.sp,
                   fit: BoxFit.cover,
+                  errorBuilder: (context, url, error) {
+                    return Image.asset(
+                      AssetsHelper.placeholderThumbnail,
+                      height: 85.sp,
+                      width: 130.sp,
+                      fit: BoxFit.cover,
+                    );
+                  },
                 ),
                 SizedBox(
                   width: 8.sp,

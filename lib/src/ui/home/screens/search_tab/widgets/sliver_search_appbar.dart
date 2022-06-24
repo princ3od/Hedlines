@@ -8,8 +8,10 @@ import 'search_bar.dart';
 
 class SliverSearchAppBar extends SliverPersistentHeaderDelegate {
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    var adjustedShrinkOffset = shrinkOffset > minExtent ? minExtent : shrinkOffset;
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    var adjustedShrinkOffset =
+        shrinkOffset > minExtent ? minExtent : shrinkOffset;
     double offset = (minExtent - adjustedShrinkOffset) * 0.5;
     double topPadding = MediaQuery.of(context).padding.top + 16.sp;
     return Stack(children: [
@@ -47,13 +49,14 @@ class SliverSearchAppBar extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 280;
+  double get maxExtent => 300;
 
   @override
-  double get minExtent => 180;
+  double get minExtent => 200;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
-    return oldDelegate.maxExtent != maxExtent || oldDelegate.minExtent != minExtent;
+    return oldDelegate.maxExtent != maxExtent ||
+        oldDelegate.minExtent != minExtent;
   }
 }
