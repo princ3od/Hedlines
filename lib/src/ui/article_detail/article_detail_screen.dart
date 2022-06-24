@@ -14,6 +14,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:async';
 
 import '../../configs/theme/app_colors.dart';
+import '../../controller/home/home_controller.dart';
 
 class ArticleDetailScreen extends StatefulWidget {
   const ArticleDetailScreen({Key? key}) : super(key: key);
@@ -33,6 +34,10 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
     return Scaffold(
       appBar: appBarTitleBack(
         title: article?.title ?? "Hedlines",
+        onBackPressed: () {
+          HomeController homeController = Get.find<HomeController>();
+          homeController.toHomeScreen();
+        },
         actions: [
           LikeButton(
             size: 32,

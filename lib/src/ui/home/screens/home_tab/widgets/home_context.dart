@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
+import 'package:hedlines/src/controller/home/home_controller.dart';
 import 'package:hedlines/src/controller/home/home_tab/home_tab_controller.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/helper/utils/assets_helper.dart';
@@ -43,39 +44,57 @@ class _HomeContextState extends State<HomeContext> {
             GestureDetector(
               onTap: () {
                 Get.to(FullImageScreen(
-                  tag: widget.article?.thumbnail ?? 'https://source.unsplash.com/random',
-                  imageURL: widget.article?.thumbnail ?? 'https://source.unsplash.com/random',
+                  tag: widget.article?.thumbnail ??
+                      'https://source.unsplash.com/random',
+                  imageURL: widget.article?.thumbnail ??
+                      'https://source.unsplash.com/random',
                 ));
               },
               child: Hero(
                 tag: widget.article?.url ?? Random().nextInt(100).toString(),
-                child: Image.network(
-                  widget.article?.thumbnail ?? 'https://source.unsplash.com/random',
-                  width: widget.sizeScreen.width,
-                  height: 180.sp,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, url, error) {
-                    return Image.asset(
-                      AssetsHelper.placeholderThumbnail,
-                      width: widget.sizeScreen.width,
-                      height: 180.sp,
-                      fit: BoxFit.cover,
-                    );
+                child: ShaderMask(
+                  shaderCallback: (rect) {
+                    return LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: const [0.0, 0.4],
+                      colors: [
+                        Colors.black.withOpacity(.75),
+                        Colors.transparent
+                      ],
+                    ).createShader(
+                        Rect.fromLTRB(0, 0, rect.width, rect.height));
                   },
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) {
-                      return child;
-                    }
-                    return Shimmer.fromColors(
-                      baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!,
-                      child: Container(
-                        height: 180.sp,
+                  blendMode: BlendMode.srcOver,
+                  child: Image.network(
+                    widget.article?.thumbnail ??
+                        'https://source.unsplash.com/random',
+                    width: widget.sizeScreen.width,
+                    height: 180.sp,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, url, error) {
+                      return Image.asset(
+                        AssetsHelper.placeholderThumbnail,
                         width: widget.sizeScreen.width,
-                        color: Colors.grey[300]!,
-                      ),
-                    );
-                  },
+                        height: 180.sp,
+                        fit: BoxFit.cover,
+                      );
+                    },
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      }
+                      return Shimmer.fromColors(
+                        baseColor: Colors.grey[300]!,
+                        highlightColor: Colors.grey[100]!,
+                        child: Container(
+                          height: 180.sp,
+                          width: widget.sizeScreen.width,
+                          color: Colors.grey[300]!,
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ),
@@ -92,19 +111,28 @@ class _HomeContextState extends State<HomeContext> {
                     },
                     child: Text(
                         showDateInDetial
-                            ? DateFormat('EEEE, dd/MM/yyyy - HH:mm').format(widget.article?.date ?? DateTime.now().subtract(const Duration(hours: 8)))
-                            : timeago.format(widget.article?.date ?? DateTime.now().subtract(const Duration(hours: 8)), locale: 'vi'),
+                            ? DateFormat('EEEE, dd/MM/yyyy - HH:mm').format(
+                                widget.article?.date ??
+                                    DateTime.now()
+                                        .subtract(const Duration(hours: 8)))
+                            : timeago.format(
+                                widget.article?.date ??
+                                    DateTime.now()
+                                        .subtract(const Duration(hours: 8)),
+                                locale: 'vi'),
                         style: text12w400Black),
                   ),
                   Text(
-                    widget.article?.title ?? 'Nga nói Ukraine phải chấp thuận mọi yêu cầu để hòa bình',
+                    widget.article?.title ??
+                        'Nga nói Ukraine phải chấp thuận mọi yêu cầu để hòa bình',
                     style: text24w700Black,
                   ),
                   const SizedBox(
                     height: 8,
                   ),
                   Text(
-                    widget.article?.description ?? "Phát ngôn viện Điện Kremlin Peskov nói Ukraine phải chấp thuận mọi yêu cầu của Nga nếu muốn dừng chiến sự kéo dài 4 tháng.",
+                    widget.article?.description ??
+                        "Phát ngôn viện Điện Kremlin Peskov nói Ukraine phải chấp thuận mọi yêu cầu của Nga nếu muốn dừng chiến sự kéo dài 4 tháng.",
                     style: text14w500Black,
                   ),
                   const SizedBox(
@@ -117,10 +145,15 @@ class _HomeContextState extends State<HomeContext> {
                     ),
                     child: InlineButton(
                       mainAxisSize: MainAxisSize.min,
-                      onTap: () {},
+                      onTap: () {
+                        HomeController homeController =
+                            Get.find<HomeController>();
+                        homeController.toArticleDetail();
+                      },
                       onLongPress: () {},
                       leading: null,
-                      title: "Xem tin (${widget.article?.estimateMinuteReadTime ?? 2} phút đọc)",
+                      title:
+                          "Xem tin (${widget.article?.estimateMinuteReadTime ?? 2} phút đọc)",
                       backgroundColor: backgroundPrimaryColor,
                       textStyle: text10w700White,
                     ),
@@ -140,17 +173,23 @@ class _HomeContextState extends State<HomeContext> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   LikeButton(
-                    circleColor: CircleColor(start: backgroundPrimaryColor, end: backgroundPrimaryColor),
+                    circleColor: CircleColor(
+                        start: backgroundPrimaryColor,
+                        end: backgroundPrimaryColor),
                     bubblesColor: BubblesColor(
                       dotPrimaryColor: backgroundPrimaryColor,
                       dotSecondaryColor: backgroundPrimaryColor,
                     ),
-                    onTap: (tapped) async {
-                      return !tapped;
+                    isLiked: widget.article?.isLiked ?? false,
+                    onTap: (isLiked) async {
+                      homeTabController.likeArticle(isLiked);
+                      return !isLiked;
                     },
                     likeBuilder: (bool isLiked) {
                       return Icon(
-                        isLiked ? Icons.favorite_rounded : Icons.favorite_border_outlined,
+                        isLiked
+                            ? Icons.favorite_rounded
+                            : Icons.favorite_border_outlined,
                         color: backgroundPrimaryColor,
                         size: 32,
                       );
@@ -159,7 +198,8 @@ class _HomeContextState extends State<HomeContext> {
                     countPostion: CountPostion.bottom,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     countBuilder: (int? count, bool isLiked, String text) {
-                      var color = isLiked ? backgroundPrimaryColor : Colors.grey;
+                      var color =
+                          isLiked ? backgroundPrimaryColor : Colors.grey;
 
                       return Text(
                         text,
@@ -177,13 +217,16 @@ class _HomeContextState extends State<HomeContext> {
                 children: [
                   LikeButton(
                     size: 32,
-                    circleColor: CircleColor(start: backgroundPrimaryColor, end: backgroundPrimaryColor),
+                    circleColor: CircleColor(
+                        start: backgroundPrimaryColor,
+                        end: backgroundPrimaryColor),
                     bubblesColor: BubblesColor(
                       dotPrimaryColor: backgroundPrimaryColor,
                       dotSecondaryColor: backgroundPrimaryColor,
                     ),
                     onTap: (tapped) async {
-                      Share.share('${widget.article!.title} - ${widget.article!.url}');
+                      Share.share(
+                          '${widget.article!.title} - ${widget.article!.url}');
                       return true;
                     },
                     isLiked: widget.article?.isLiked ?? false,
@@ -218,7 +261,8 @@ class _HomeContextState extends State<HomeContext> {
                               onTap: null,
                               onLongPress: null,
                               leading: null,
-                              title: widget.article?.tags[index]["tag"] ?? "Urkaine",
+                              title: widget.article?.tags[index]["tag"] ??
+                                  "Urkaine",
                               textStyle: text10w400Blue,
                             ),
                           );

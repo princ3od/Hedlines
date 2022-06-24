@@ -27,7 +27,8 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   final homeController = Get.put(HomeController());
 
   late Animation<double> animation;
@@ -38,13 +39,17 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(duration: ANIMATION_DURATION_500_MS, vsync: this);
-    animation = CurvedAnimation(parent: controller, curve: Curves.linearToEaseOut)..addListener(() {});
+    controller =
+        AnimationController(duration: ANIMATION_DURATION_500_MS, vsync: this);
+    animation =
+        CurvedAnimation(parent: controller, curve: Curves.linearToEaseOut)
+          ..addListener(() {});
     overlayEntry = OverlayEntry(
       builder: (context) {
         final size = MediaQuery.of(context).size;
         return SlideTransition(
-          position: Tween(begin: Offset(0, -1), end: Offset(0, 0)).animate(animation),
+          position:
+              Tween(begin: Offset(0, -1), end: Offset(0, 0)).animate(animation),
           child: Container(
             width: size.width,
             height: size.height,
@@ -73,62 +78,68 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      children: [
-        Scaffold(
-          bottomNavigationBar: BottomAppBar(
-            notchMargin: 0,
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            color: backgroundPrimaryColor,
-            elevation: .0,
-            child: Container(
-              height: 50.sp,
-              padding: EdgeInsets.symmetric(horizontal: 6.5.sp),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                    color: Theme.of(context).dividerColor,
-                    width: .2,
+    return Obx(
+      () => PageView(
+        controller: homeController.articlePageController,
+        physics: homeController.canNavigateToArticleDetail.value
+            ? ClampingScrollPhysics()
+            : NeverScrollableScrollPhysics(),
+        children: [
+          Scaffold(
+            bottomNavigationBar: BottomAppBar(
+              notchMargin: 0,
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              color: backgroundPrimaryColor,
+              elevation: .0,
+              child: Container(
+                height: 50.sp,
+                padding: EdgeInsets.symmetric(horizontal: 6.5.sp),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  border: Border(
+                    top: BorderSide(
+                      color: Theme.of(context).dividerColor,
+                      width: .2,
+                    ),
                   ),
                 ),
-              ),
-              child: Row(
-                children: [
-                  _buildItemBottomBar(
-                    inActiveIcon: AssetsHelper.iconHome,
-                    activeIcon: AssetsHelper.iconHomeActive,
-                    index: 0,
-                    title: Strings.home.i18n,
-                  ),
-                  _buildItemBottomBar(
-                    inActiveIcon: AssetsHelper.iconSearch,
-                    activeIcon: AssetsHelper.iconSearchActive,
-                    index: 1,
-                    title: Strings.search.i18n,
-                  ),
-                  _buildItemBottomBar(
-                    inActiveIcon: AssetsHelper.iconProfile,
-                    activeIcon: AssetsHelper.iconProfileActive,
-                    index: 2,
-                    title: Strings.profile.i18n,
-                  ),
-                ],
+                child: Row(
+                  children: [
+                    _buildItemBottomBar(
+                      inActiveIcon: AssetsHelper.iconHome,
+                      activeIcon: AssetsHelper.iconHomeActive,
+                      index: 0,
+                      title: Strings.home.i18n,
+                    ),
+                    _buildItemBottomBar(
+                      inActiveIcon: AssetsHelper.iconSearch,
+                      activeIcon: AssetsHelper.iconSearchActive,
+                      index: 1,
+                      title: Strings.search.i18n,
+                    ),
+                    _buildItemBottomBar(
+                      inActiveIcon: AssetsHelper.iconProfile,
+                      activeIcon: AssetsHelper.iconProfileActive,
+                      index: 2,
+                      title: Strings.profile.i18n,
+                    ),
+                  ],
+                ),
               ),
             ),
+            body: PageView(
+              controller: homeController.pageController,
+              physics: NeverScrollableScrollPhysics(),
+              children: const [
+                HomeTab(),
+                SearchTab(),
+                ProfileTab(),
+              ],
+            ),
           ),
-          body: PageView(
-            controller: homeController.pageController,
-            physics: NeverScrollableScrollPhysics(),
-            children: const [
-              HomeTab(),
-              SearchTab(),
-              ProfileTab(),
-            ],
-          ),
-        ),
-        ArticleDetailScreen(),
-      ],
+          ArticleDetailScreen(),
+        ],
+      ),
     );
   }
 
@@ -139,7 +150,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     super.dispose();
   }
 
-  Widget _buildItemBottomBar({inActiveIcon, activeIcon, index, title, int quantity = 0}) {
+  Widget _buildItemBottomBar(
+      {inActiveIcon, activeIcon, index, title, int quantity = 0}) {
     return Obx(
       () => Expanded(
         child: TouchableOpacity(
@@ -164,7 +176,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   child: Container(
                     color: Colors.transparent,
                     child: SvgPicture.asset(
-                      homeController.index == index ? activeIcon : inActiveIcon,
+                      homeController.tabIndex == index
+                          ? activeIcon
+                          : inActiveIcon,
                       width: 21.sp,
                       height: 21.sp,
                     ),
@@ -175,8 +189,12 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   title,
                   style: TextStyle(
                     fontSize: 9.sp,
-                    fontWeight: homeController.index == index ? FontWeight.w700 : FontWeight.w500,
-                    color: homeController.index == index ? colorWhite : colorWhite,
+                    fontWeight: homeController.tabIndex == index
+                        ? FontWeight.w700
+                        : FontWeight.w500,
+                    color: homeController.tabIndex == index
+                        ? colorWhite
+                        : colorWhite,
                     fontFamily: HEDLINES_FONT,
                   ),
                 ),

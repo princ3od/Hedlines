@@ -58,6 +58,36 @@ class UserInfoService {
     }, SetOptions(merge: true));
   }
 
+  Future<void> likeArticle(Article article) async {
+    await usersRef.doc(AppController.userInfo.value?.id).set({
+      'liked_articles': {
+        article.id: article.date,
+      }
+    }, SetOptions(merge: true));
+    var articleRef =
+        FirebaseFirestore.instance.collection('articles').doc(article.id);
+    await articleRef.set({
+      'liked_by': {
+        AppController.userInfo.value?.id: DateTime.now(),
+      }
+    }, SetOptions(merge: true));
+  }
+
+  Future<void> unlikeArticle(Article article) async {
+    await usersRef.doc(AppController.userInfo.value?.id).set({
+      'liked_articles': {
+        article.id: FieldValue.delete(),
+      }
+    }, SetOptions(merge: true));
+    var articleRef =
+        FirebaseFirestore.instance.collection('articles').doc(article.id);
+    await articleRef.set({
+      'liked_by': {
+        AppController.userInfo.value?.id: FieldValue.delete(),
+      }
+    }, SetOptions(merge: true));
+  }
+
   static final UserInfoService _authService = UserInfoService._internal();
 
   UserInfoService._internal();
