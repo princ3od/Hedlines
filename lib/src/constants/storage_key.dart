@@ -7,4 +7,5 @@ class StorageKey {
   // In Box - User
   static const String isDarkMode = "isDarkMode";
   static const String locale = "locale";
+  static const String isFirstOpen = "isFirstOpen";
 }

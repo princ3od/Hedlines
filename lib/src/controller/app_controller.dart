@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hedlines/src/configs/application.dart';
 import 'package:hedlines/src/constants/app_state.dart';
 import 'package:hedlines/src/constants/constants.dart';
+import 'package:hedlines/src/data/local_storage.dart';
 import 'package:hedlines/src/model/user_model.dart';
 import 'package:hedlines/src/routes/app_pages.dart';
 import 'package:hedlines/src/routes/app_routes.dart';
@@ -41,6 +42,7 @@ class AppController extends GetxController {
     isAuthenticated.value = false;
     update();
     Get.deleteAll(force: true);
+    LocalStorage.setFirstOpen(true);
     AppNavigator.pushNamedAndRemoveUntil(Routes.authentication);
   }
 

@@ -20,6 +20,14 @@ class LocalStorage {
     box.put(StorageKey.isDarkMode, value);
   }
 
+  static bool isFirstOpen() {
+    return box.get(StorageKey.isFirstOpen) ?? true;
+  }
+
+  static void setFirstOpen(bool value) {
+    box.put(StorageKey.isFirstOpen, value);
+  }
+
   String getLocale() {
     return box.get(StorageKey.locale) ?? 'vi';
   }

@@ -7,6 +7,7 @@ import 'package:hedlines/src/configs/lang/localization.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
 import 'package:hedlines/src/constants/constants.dart';
 import 'package:hedlines/src/controller/home/home_controller.dart';
+import 'package:hedlines/src/data/local_storage.dart';
 import 'package:hedlines/src/helper/utils/assets_helper.dart';
 import 'package:hedlines/src/ui/common/badges/badge.dart';
 import 'package:hedlines/src/ui/common/buttons/touchable_opacity.dart';
@@ -39,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   void initState() {
     super.initState();
+    if (!LocalStorage.isFirstOpen()) return;
     controller =
         AnimationController(duration: ANIMATION_DURATION_500_MS, vsync: this);
     animation =

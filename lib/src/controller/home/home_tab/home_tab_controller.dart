@@ -5,6 +5,7 @@ import 'package:hedlines/src/data/remote_data_source/article_recommender_reposit
 import 'package:hedlines/src/services/storage_service/user_storage.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
+import '../../../data/local_storage.dart';
 import '../../../model/article.dart';
 
 class HomeTabController extends GetxController {
@@ -31,6 +32,9 @@ class HomeTabController extends GetxController {
   }
 
   onPageChanged(int index) async {
+    if (LocalStorage.isFirstOpen()) {
+      LocalStorage.setFirstOpen(false);
+    }
     if (index < articles.length) {
       currentIndex = index;
     } else {
