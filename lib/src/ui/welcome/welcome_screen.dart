@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
+import 'package:hedlines/src/controller/app_controller.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/ui/common/app_bars/app_bar_brighness_dark.dart';
 import 'package:hedlines/src/ui/common/buttons/inline_button.dart';
@@ -38,10 +39,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 height: 40.sp,
                 width: 261.sp,
               ),
-              const Align(
+              Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  "Chào mừng <name>\nđến với Hedlines",
+                  'Chào mừng ${AppController.userInfo.value?.fullname ?? "bạn"}\nđến với Hedlines',
                   style: text24w700Blue,
                   textAlign: TextAlign.left,
                 ),

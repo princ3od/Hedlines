@@ -15,6 +15,7 @@ class HomeController extends GetxController {
     );
     articlePageController = PageController(
       initialPage: 0,
+      keepPage: true,
     );
   }
 

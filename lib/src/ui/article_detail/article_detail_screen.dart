@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hedlines/src/controller/home/home_tab/home_tab_controller.dart';
@@ -24,7 +26,9 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
   HomeTabController homeTabController = Get.find<HomeTabController>();
-
+  final Set<Factory<EagerGestureRecognizer>> gestureRecognizers = [
+    Factory(() => EagerGestureRecognizer()),
+  ].toSet();
   @override
   Widget build(BuildContext context) {
     var article = widget.article ?? homeTabController.currentArticle;
@@ -63,6 +67,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
         ],
       ),
       body: WebView(
+        gestureRecognizers: gestureRecognizers,
         initialUrl: article?.url ?? "https://www.se.uit.edu.vn",
         javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (WebViewController webViewController) {
