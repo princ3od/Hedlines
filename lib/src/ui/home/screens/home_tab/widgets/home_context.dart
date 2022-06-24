@@ -76,15 +76,13 @@ class HomeContext extends StatelessWidget {
                       onTap: () {
                         dynamic args = {
                           AppArgsKey.initialUrl: article.url,
-                          AppArgsKey.title:
-                              "Xem tin (${article.estimateMinuteReadTime} phút đọc)",
+                          AppArgsKey.title: "Xem tin (${article.estimateMinuteReadTime} phút đọc)",
                         };
                         homeTabController.toArticleDetial(args);
                       },
                       onLongPress: () {},
                       leading: null,
-                      title:
-                          "Xem tin (${article.estimateMinuteReadTime} phút đọc)",
+                      title: "Xem tin (${article.estimateMinuteReadTime} phút đọc)",
                       backgroundColor: backgroundPrimaryColor,
                       textStyle: text10w700White,
                     ),
@@ -134,7 +132,7 @@ class HomeContext extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 70.w,
                     height: 24,
                     child: ListView.builder(
