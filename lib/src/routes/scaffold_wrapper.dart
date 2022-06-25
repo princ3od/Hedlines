@@ -1,9 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hedlines/src/constants/slide_mode.dart';
+import 'package:hedlines/src/controller/home/home_controller.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_sign_out.dart';
 import 'package:hedlines/src/ui/common/dialogs/dialog_wrapper.dart';
 import '../configs/theme/app_colors.dart';
+import '../constants/constants.dart';
+import '../controller/home/home_tab/home_tab_controller.dart';
 import 'app_pages.dart';
 
 class ScaffoldWrapper extends StatefulWidget {
@@ -29,6 +33,27 @@ class _ScaffoldWrapperState extends State<ScaffoldWrapper> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
+        HomeTabController homeTabController = Get.find<HomeTabController>();
+        HomeController homeController = Get.find<HomeController>();
+        if (homeController.articlePageController.page == 1) {
+          homeController.toHomeScreen();
+          return false;
+        }
+        if (homeController.tabIndex > 0) {
+          homeController.pageController.animateToPage(0,
+              duration: ANIMATION_DURATION_500_MS,
+              curve: Curves.linearToEaseOut);
+          homeController.tabIndex.value = 0;
+          return false;
+        }
+        if (homeTabController.currentIndex > 0) {
+          homeTabController.pageController.animateToPage(0,
+              duration: ANIMATION_DURATION_500_MS,
+              curve: Curves.linearToEaseOut);
+          homeTabController.currentIndex = 0;
+          homeController.canNavigateToArticleDetail.value = true;
+          return false;
+        }
         if (!AppNavigator.canPop) {
           await dialogAnimationWrapper(
             slideFrom: SlideMode.bot,

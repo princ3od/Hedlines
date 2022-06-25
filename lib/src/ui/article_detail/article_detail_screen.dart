@@ -26,6 +26,7 @@ class _ArticleDetailScreenState extends State<ArticleDetailScreen> {
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
   HomeTabController homeTabController = Get.find<HomeTabController>();
+  // ignore: prefer_collection_literals
   final Set<Factory<EagerGestureRecognizer>> gestureRecognizers = [
     Factory(() => EagerGestureRecognizer()),
   ].toSet();

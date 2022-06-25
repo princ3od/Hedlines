@@ -7,7 +7,6 @@ import 'package:hedlines/src/configs/lang/localization.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
 import 'package:hedlines/src/constants/constants.dart';
 import 'package:hedlines/src/controller/home/home_controller.dart';
-import 'package:hedlines/src/controller/home/home_tab/home_tab_controller.dart';
 import 'package:hedlines/src/data/local_storage.dart';
 import 'package:hedlines/src/helper/utils/assets_helper.dart';
 import 'package:hedlines/src/ui/common/badges/badge.dart';
@@ -69,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen>
       },
     );
 
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       controller.forward();
       _insertOverlay(context);
     });
@@ -81,86 +80,67 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        HomeTabController homeTabController = Get.find<HomeTabController>();
-        if (homeController.tabIndex > 0) {
-          homeController.pageController.animateToPage(0,
-              duration: ANIMATION_DURATION_500_MS,
-              curve: Curves.linearToEaseOut);
-          homeController.tabIndex.value = 0;
-          return false;
-        }
-        if (homeTabController.currentIndex > 0) {
-          homeTabController.pageController.animateToPage(0,
-              duration: ANIMATION_DURATION_500_MS,
-              curve: Curves.linearToEaseOut);
-          return false;
-        }
-        return true;
-      },
-      child: Obx(
-        () => PageView(
-          controller: homeController.articlePageController,
-          physics: homeController.canNavigateToArticleDetail.value
-              ? ClampingScrollPhysics()
-              : NeverScrollableScrollPhysics(),
-          children: [
-            Scaffold(
-              bottomNavigationBar: BottomAppBar(
-                notchMargin: 0,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                color: backgroundPrimaryColor,
-                elevation: .0,
-                child: Container(
-                  height: 50.sp,
-                  padding: EdgeInsets.symmetric(horizontal: 6.5.sp),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    border: Border(
-                      top: BorderSide(
-                        color: Theme.of(context).dividerColor,
-                        width: .2,
-                      ),
+    return Obx(
+      () => PageView(
+        controller: homeController.articlePageController,
+        physics: homeController.canNavigateToArticleDetail.value
+            ? ClampingScrollPhysics()
+            : NeverScrollableScrollPhysics(),
+        children: [
+          Scaffold(
+            bottomNavigationBar: BottomAppBar(
+              notchMargin: 0,
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              color: backgroundPrimaryColor,
+              elevation: .0,
+              child: Container(
+                height: 50.sp,
+                padding: EdgeInsets.symmetric(horizontal: 6.5.sp),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  border: Border(
+                    top: BorderSide(
+                      color: Theme.of(context).dividerColor,
+                      width: .2,
                     ),
                   ),
-                  child: Row(
-                    children: [
-                      _buildItemBottomBar(
-                        inActiveIcon: AssetsHelper.iconHome,
-                        activeIcon: AssetsHelper.iconHomeActive,
-                        index: 0,
-                        title: Strings.home.i18n,
-                      ),
-                      _buildItemBottomBar(
-                        inActiveIcon: AssetsHelper.iconSearch,
-                        activeIcon: AssetsHelper.iconSearchActive,
-                        index: 1,
-                        title: Strings.search.i18n,
-                      ),
-                      _buildItemBottomBar(
-                        inActiveIcon: AssetsHelper.iconProfile,
-                        activeIcon: AssetsHelper.iconProfileActive,
-                        index: 2,
-                        title: Strings.profile.i18n,
-                      ),
-                    ],
-                  ),
+                ),
+                child: Row(
+                  children: [
+                    _buildItemBottomBar(
+                      inActiveIcon: AssetsHelper.iconHome,
+                      activeIcon: AssetsHelper.iconHomeActive,
+                      index: 0,
+                      title: Strings.home.i18n,
+                    ),
+                    _buildItemBottomBar(
+                      inActiveIcon: AssetsHelper.iconSearch,
+                      activeIcon: AssetsHelper.iconSearchActive,
+                      index: 1,
+                      title: Strings.search.i18n,
+                    ),
+                    _buildItemBottomBar(
+                      inActiveIcon: AssetsHelper.iconProfile,
+                      activeIcon: AssetsHelper.iconProfileActive,
+                      index: 2,
+                      title: Strings.profile.i18n,
+                    ),
+                  ],
                 ),
               ),
-              body: PageView(
-                controller: homeController.pageController,
-                physics: NeverScrollableScrollPhysics(),
-                children: const [
-                  HomeTab(),
-                  SearchTab(),
-                  ProfileTab(),
-                ],
-              ),
             ),
-            ArticleDetailScreen(),
-          ],
-        ),
+            body: PageView(
+              controller: homeController.pageController,
+              physics: NeverScrollableScrollPhysics(),
+              children: const [
+                HomeTab(),
+                SearchTab(),
+                ProfileTab(),
+              ],
+            ),
+          ),
+          ArticleDetailScreen(),
+        ],
       ),
     );
   }

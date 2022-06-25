@@ -70,4 +70,13 @@ class HomeTabController extends GetxController {
       articles[currentIndex].numberOfFavorite += isLiked ? -1 : 1;
     }
   }
+
+  refreshArticles() async {
+    isLoading.value = true;
+    articles = await ArticleRecommenderRepository()
+            .fetchArticles(FirebaseAuth.instance.currentUser!.uid) ??
+        [];
+    update();
+    isLoading.value = false;
+  }
 }
