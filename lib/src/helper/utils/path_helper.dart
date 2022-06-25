@@ -25,7 +25,6 @@ class PathHelper {
 
       return downloadsDirectory;
     } on PlatformException {
-      print('Could not get the downloads directory');
       return null;
     }
   }

@@ -8,17 +8,19 @@ import 'search_bar.dart';
 
 class SliverSearchAppBar extends SliverPersistentHeaderDelegate {
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    var adjustedShrinkOffset = shrinkOffset > minExtent ? minExtent : shrinkOffset;
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    var adjustedShrinkOffset =
+        shrinkOffset > minExtent ? minExtent : shrinkOffset;
     double offset = (minExtent - adjustedShrinkOffset) * 0.5;
     double topPadding = MediaQuery.of(context).padding.top + 16.sp;
     return Stack(children: [
       SizedBox(
-        height: 300.sp,
+        height: 300,
         child: ClipPath(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: 300.sp,
+            height: 300,
             decoration: const BoxDecoration(
               color: colorWhite,
             ),
@@ -26,12 +28,12 @@ class SliverSearchAppBar extends SliverPersistentHeaderDelegate {
         ),
       ),
       Positioned(
-        top: topPadding + offset - 30.sp,
-        left: 12.sp,
+        top: topPadding + offset - 30,
+        left: 12,
         child: AnimatedOpacity(
           duration: ANIMATION_DURATION_500_MS,
           opacity: adjustedShrinkOffset.toInt() > 0 ? 0 : 1,
-          child: BarTitle(
+          child: const BarTitle(
             title: 'Tìm kiếm',
             style: text24w700Blue,
           ),
@@ -50,10 +52,11 @@ class SliverSearchAppBar extends SliverPersistentHeaderDelegate {
   double get maxExtent => 300;
 
   @override
-  double get minExtent => 160;
+  double get minExtent => 200;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
-    return oldDelegate.maxExtent != maxExtent || oldDelegate.minExtent != minExtent;
+    return oldDelegate.maxExtent != maxExtent ||
+        oldDelegate.minExtent != minExtent;
   }
 }

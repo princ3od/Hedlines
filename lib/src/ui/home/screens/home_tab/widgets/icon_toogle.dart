@@ -4,12 +4,12 @@ import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/ui/common/buttons/touchable_opacity.dart';
 
 class IconToggleButton extends StatefulWidget {
-  Function? onTap;
-  Function? onLongPress;
-  Color? inActiveColor;
-  Color? activeColor;
-  String pathImage;
-  IconToggleButton({
+  final Function? onTap;
+  final Function? onLongPress;
+  final Color? inActiveColor;
+  final Color? activeColor;
+  final String pathImage;
+  const IconToggleButton({
     this.onTap,
     this.onLongPress,
     this.inActiveColor,

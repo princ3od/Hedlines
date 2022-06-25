@@ -16,6 +16,8 @@ class Strings {
   static const String sureLogout = 'sureLogout';
   static const String cancel = 'cancel';
   static const String ok = 'ok';
+
+  static const startSearch = 'startSearch';
 }
 
 class MyI18n {

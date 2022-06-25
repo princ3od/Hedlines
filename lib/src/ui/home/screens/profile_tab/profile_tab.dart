@@ -1,24 +1,16 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
-import 'package:hedlines/src/constants/app_state.dart';
 import 'package:hedlines/src/controller/home/profile_tab/profile_controller.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/helper/utils/assets_helper.dart';
-import 'package:hedlines/src/routes/app_routes.dart';
 import 'package:hedlines/src/ui/common/buttons/inline_button.dart';
 import 'package:hedlines/src/ui/home/screens/profile_tab/widgets/topic_reference.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
-
-import '../../../../configs/lang/localization.dart';
 import '../../../../constants/constants.dart';
 import '../../../../constants/slide_mode.dart';
 import '../../../../controller/app_controller.dart';
-import '../../../../routes/app_pages.dart';
-import '../../../common/dialogs/dialog_confirm_cancel.dart';
-import '../../../common/dialogs/dialog_signOut.dart';
+import '../../../common/dialogs/dialog_sign_out.dart';
 import '../../../common/dialogs/dialog_wrapper.dart';
 import 'widgets/profile_overlay.dart';
 
@@ -29,12 +21,10 @@ class ProfileTab extends StatefulWidget {
   State<ProfileTab> createState() => _ProfileTabState();
 }
 
-class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateMixin {
+class _ProfileTabState extends State<ProfileTab>
+    with SingleTickerProviderStateMixin {
   ProfileController profileController = Get.put(ProfileController());
 
-  final List<String> gridData = ["Kinh doanh", "Giải trí", "Thời sự", "Du lịch", "Thể thao", "Công nghệ"];
-  late List<String> topicChoose;
-  bool isShowSaveButton = true;
   late Animation<double> animation;
   late AnimationController controller;
 
@@ -42,14 +32,17 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
   @override
   void initState() {
     super.initState();
-    topicChoose = [...profileController.userModel.value.preferences];
-    controller = AnimationController(duration: ANIMATION_DURATION_1000_MS, vsync: this);
-    animation = CurvedAnimation(parent: controller, curve: Curves.linearToEaseOut)..addListener(() {});
+    controller =
+        AnimationController(duration: ANIMATION_DURATION_1000_MS, vsync: this);
+    animation =
+        CurvedAnimation(parent: controller, curve: Curves.linearToEaseOut)
+          ..addListener(() {});
     _overlayEntry = OverlayEntry(
       builder: (context) {
         final size = MediaQuery.of(context).size;
         return SlideTransition(
-          position: Tween(begin: Offset(0, -1), end: Offset(0, 0)).animate(animation),
+          position: Tween(begin: const Offset(0, -1), end: const Offset(0, 0))
+              .animate(animation),
           child: Container(
             width: size.width,
             height: size.height,
@@ -81,7 +74,7 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
               SizedBox(
                 height: 61.sp,
               ),
-              Text(
+              const Text(
                 "Hồ sơ",
                 style: text24w700Blue,
               ),
@@ -91,15 +84,17 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
               Row(
                 children: [
                   CircleAvatar(
-                    backgroundImage: NetworkImage(AppController.userInfo.value?.avatar ?? ""),
-                    foregroundImage: const AssetImage(AssetsHelper.iconHome),
+                    foregroundImage: NetworkImage(
+                        AppController.userInfo.value?.avatar ?? ""),
+                    backgroundImage:
+                        const AssetImage(AssetsHelper.iconAvatarHolder),
                     radius: 20.sp,
                   ),
                   SizedBox(
                     width: 16.sp,
                   ),
                   Text(
-                    profileController.userModel.value.fullname ?? "",
+                    AppController.userInfo.value?.fullname ?? "",
                     style: text14w500Blue,
                   ),
                 ],
@@ -107,7 +102,7 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
               SizedBox(
                 height: 27.sp,
               ),
-              Text(
+              const Text(
                 "Chủ đề của tôi",
                 style: text16w600Blue,
               ),
@@ -119,8 +114,9 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
                   dialogAnimationWrapper(
                     slideFrom: SlideMode.bot,
                     child: DialogSignOut(
-                      onConfirmed: () {
-                        profileController.signOut();
+                      onConfirmed: () async {
+                        await profileController.signOut();
+                        await AppController().signOut();
                       },
                       title: "Cảnh báo",
                       bodyText: "Bạn có chắc chắn\nđăng xuất?",
@@ -141,18 +137,24 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
         Positioned(
           top: 280.sp,
           left: 8.sp,
-          child: Opacity(
-            opacity: isShowSaveButton ? 1 : 0,
-            child: SizedBox(
-              width: 150.sp,
-              height: 35.sp,
-              child: InlineButton(
-                leading: null,
-                mainAxisSize: MainAxisSize.max,
-                onLongPress: null,
-                onTap: null,
-                title: "Lưu",
-                textStyle: text14w700Blue,
+          child: Obx(
+            () => Visibility(
+              visible: profileController.showSaveButton.value,
+              child: SizedBox(
+                width: 150.sp,
+                height: 35.sp,
+                child: InlineButton(
+                  textColor: backgroundPrimaryColor,
+                  isLoading: profileController.isSaving.value,
+                  leading: null,
+                  mainAxisSize: MainAxisSize.max,
+                  onLongPress: null,
+                  onTap: () {
+                    profileController.savePreferences();
+                  },
+                  title: "Lưu",
+                  textStyle: text14w700Blue,
+                ),
               ),
             ),
           ),
@@ -163,23 +165,29 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
           child: SizedBox(
             width: 213.sp,
             height: 100.sp,
-            child: GridView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: gridData.length,
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: (orientation == Orientation.portrait) ? 3 : 5,
-                mainAxisSpacing: (orientation == Orientation.portrait) ? 4.sp : 8.sp,
-                crossAxisSpacing: (orientation == Orientation.portrait) ? 2.sp : 5.sp,
-                childAspectRatio: 4 / 2,
+            child: Obx(
+              () => GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: profileController.topics.length,
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: (orientation == Orientation.portrait) ? 3 : 5,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 8,
+                  childAspectRatio: 4 / 2,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  return TopicReference(
+                    isUserReference: profileController.selectedTopics
+                        .contains(profileController.topics[index].id),
+                    mainAxisSize: MainAxisSize.max,
+                    title: profileController.topics[index].name,
+                    onTap: () => profileController.selectTopic(
+                      profileController.topics[index].id,
+                    ),
+                  );
+                },
               ),
-              itemBuilder: (BuildContext context, int index) {
-                return TopicReference(
-                  isUserReference: topicChoose.contains(gridData[index]),
-                  mainAxisSize: MainAxisSize.max,
-                  title: gridData[index],
-                );
-              },
             ),
           ),
         )
@@ -192,12 +200,4 @@ class _ProfileTabState extends State<ProfileTab> with SingleTickerProviderStateM
     controller.dispose();
     super.dispose();
   }
-
-  // _toggleTopic(String topic) {
-  //   if (profileController.userModel.value.topicPreferences.contains(topic)) {
-  //     profileController.userModel.value.topicPreferences.remove(topic);
-  //   } else {
-  //     profileController.userModel.value.topicPreferences.add(topic);
-  //   }
-  // }
 }

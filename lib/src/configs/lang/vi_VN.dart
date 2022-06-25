@@ -8,12 +8,13 @@ Map<String, String> vietnamese = {
   Strings.english: 'Tiếng Anh',
 
   //Home
-  Strings.home: 'Home',
-  Strings.search: "Search",
-  Strings.profile: "Profile",
+  Strings.home: 'Trang chủ',
+  Strings.search: "Tìm kiếm",
+  Strings.profile: "Hồ sơ",
 
   //Dialog
   Strings.sureLogout: 'Bạn có chắc chắn muốn đăng xuất?',
   Strings.cancel: 'Hủy',
   Strings.ok: 'Xác nhận',
+  Strings.startSearch: 'Bắt đầu tìm kiếm',
 };

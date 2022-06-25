@@ -1,6 +1,6 @@
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hedlines/src/constants/constants.dart';
 import 'package:hedlines/src/constants/sign_type.dart';
+import 'package:hedlines/src/constants/strings.dart';
 import 'package:hedlines/src/controller/auth/auth_controller.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:flutter/material.dart';
@@ -44,16 +44,17 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                 height: 10.sp,
               ),
               Text(
-                "HEDLINE",
+                AppStrings.appName.toUpperCase(),
                 style: text56w400Blue.copyWith(
-                  letterSpacing: -6.sp,
+                  letterSpacing: -5,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               SizedBox(
                 height: 10.sp,
               ),
-              Text(
-                "articles you want",
+              const Text(
+                AppStrings.slogan,
                 style: text20w400Blue,
               ),
               SizedBox(

@@ -66,8 +66,8 @@ class DialogConfirmCancel extends StatelessWidget {
                     height: 1.36,
                   ),
                 )
-              : SizedBox(),
-          title != null ? SizedBox(height: 8.sp) : SizedBox(),
+              : const SizedBox(),
+          title != null ? SizedBox(height: 8.sp) : const SizedBox(),
           RichText(
             textAlign: beforeTextAlign,
             text: TextSpan(
@@ -88,7 +88,7 @@ class DialogConfirmCancel extends StatelessWidget {
                           color: highlightColor,
                         ),
                       )
-                    : TextSpan(),
+                    : const TextSpan(),
                 TextSpan(
                   text: bodyAfter,
                   style: TextStyle(
@@ -100,7 +100,7 @@ class DialogConfirmCancel extends StatelessWidget {
             ),
           ),
           SizedBox(height: 8.sp),
-          Container(
+          SizedBox(
             height: 48.sp,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -118,7 +118,7 @@ class DialogConfirmCancel extends StatelessWidget {
                           ),
                         ),
                       )
-                    : SizedBox(),
+                    : const SizedBox(),
                 SizedBox(width: 38.sp),
                 TouchableOpacity(
                   onTap: onConfirmed,
@@ -131,7 +131,7 @@ class DialogConfirmCancel extends StatelessWidget {
                       shadows: hasTextShadow
                           ? <Shadow>[
                               Shadow(
-                                offset: Offset(2.0, 3.0),
+                                offset: const Offset(2.0, 3.0),
                                 blurRadius: 2.0,
                                 color: Colors.grey.shade300,
                               ),

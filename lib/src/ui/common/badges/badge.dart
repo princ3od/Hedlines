@@ -17,7 +17,7 @@ class Badge extends StatefulWidget {
   /// * [BorderRadius]
   /// * [BadgeAnimationType]
   /// * [BorderSide]
-  Badge({
+  const Badge({
     Key? key,
     this.badgeContent,
     this.child,
@@ -161,11 +161,13 @@ class BadgeState extends State<Badge> with SingleTickerProviderStateMixin {
     );
 
     if (widget.animationType == BadgeAnimationType.slide) {
-      _animation = CurvedAnimation(parent: _animationController, curve: Curves.elasticOut);
+      _animation = CurvedAnimation(
+          parent: _animationController, curve: Curves.elasticOut);
     } else if (widget.animationType == BadgeAnimationType.scale) {
       _animation = _scaleTween.animate(_animationController);
     } else if (widget.animationType == BadgeAnimationType.fade) {
-      _animation = CurvedAnimation(parent: _animationController, curve: Curves.easeIn);
+      _animation =
+          CurvedAnimation(parent: _animationController, curve: Curves.easeIn);
     }
 
     _animationController.forward();
@@ -184,7 +186,9 @@ class BadgeState extends State<Badge> with SingleTickerProviderStateMixin {
           widget.child!,
           BadgePositioned(
             position: widget.position,
-            child: widget.ignorePointer ? IgnorePointer(child: _getBadge()) : _getBadge(),
+            child: widget.ignorePointer
+                ? IgnorePointer(child: _getBadge())
+                : _getBadge(),
           ),
         ],
       );
@@ -202,7 +206,7 @@ class BadgeState extends State<Badge> with SingleTickerProviderStateMixin {
     Widget _badgeView() {
       return AnimatedOpacity(
         opacity: widget.showBadge ? 1 : 0,
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         child: Material(
           shape: border,
           elevation: widget.elevation,
@@ -218,14 +222,16 @@ class BadgeState extends State<Badge> with SingleTickerProviderStateMixin {
     Widget _badgeViewGradient() {
       return AnimatedOpacity(
         opacity: widget.showBadge ? 1 : 0,
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         child: Material(
           shape: border,
           elevation: widget.elevation,
           child: Container(
             decoration: BoxDecoration(
               gradient: widget.gradient,
-              shape: widget.shape == BadgeShape.circle ? BoxShape.circle : BoxShape.rectangle,
+              shape: widget.shape == BadgeShape.circle
+                  ? BoxShape.circle
+                  : BoxShape.rectangle,
             ),
             child: Padding(
               padding: widget.padding,

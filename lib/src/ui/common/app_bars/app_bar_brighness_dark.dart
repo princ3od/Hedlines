@@ -10,8 +10,9 @@ AppBar appBarBrighnessDark({
     toolbarHeight: 0.0,
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarBrightness: brightness,
-      statusBarIconBrightness: brightness == Brightness.dark ? Brightness.light : Brightness.dark,
-      systemNavigationBarColor: navigationBarColor != null ? navigationBarColor : Colors.red,
+      statusBarIconBrightness:
+          brightness == Brightness.dark ? Brightness.light : Brightness.dark,
+      systemNavigationBarColor: navigationBarColor ?? Colors.red,
     ),
     backgroundColor: backgroundColor ?? Colors.transparent,
     elevation: 0.0,

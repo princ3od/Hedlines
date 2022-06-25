@@ -1,13 +1,10 @@
-import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hedlines/src/model/fake_model/social_model.dart';
+import 'package:hedlines/src/model/social_model.dart';
 
-import '../../helper/utils/date_time_helper.dart';
-import '../../helper/utils/string_helper.dart';
+import '../helper/utils/date_time_helper.dart';
 
 class UserModel {
-  final String? id;
+  String? id;
   final String? username;
   String? fullname;
   String? email;
@@ -15,15 +12,15 @@ class UserModel {
   //
   final DateTime? createdAt;
   final DateTime? modifiedAt;
-  final DateTime? lastVisted;
+  final DateTime? lastVisited;
   final Map<String, DateTime>? liked;
-  final Map<String, String>? previous_viewed_article;
+  final Map<String, String>? previousViewedArticle;
 
-  List<dynamic> preferences = [];
+  List<String> preferences = [];
   UserModel({
-    this.lastVisted,
+    this.lastVisited,
     this.liked,
-    this.previous_viewed_article,
+    this.previousViewedArticle,
     this.id,
     this.username,
     this.fullname,
@@ -57,6 +54,7 @@ class UserModel {
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'username': username,
       'fullname': fullname,
       'email': email,
@@ -64,9 +62,9 @@ class UserModel {
       'modifiedAt': modifiedAt,
       'avatar': avatar,
       'preferences': preferences,
-      'lastVisted': lastVisted,
+      'last_visited': lastVisited,
       'liked': liked,
-      'previous_viewed_article': previous_viewed_article,
+      'previous_viewed_article': previousViewedArticle,
     };
   }
 
@@ -79,9 +77,10 @@ class UserModel {
       avatar: socialModel.googleAvatar,
       createdAt: DateTime.now(),
       modifiedAt: DateTime.now(),
+      lastVisited: DateTime.now().subtract(const Duration(days: 1)),
       preferences: [],
       liked: {},
-      previous_viewed_article: {},
+      previousViewedArticle: {},
     );
   }
 
@@ -94,32 +93,11 @@ class UserModel {
       createdAt: (map['createdAt'] as Timestamp).toDate(),
       modifiedAt: (map['modifiedAt'] as Timestamp).toDate(),
       avatar: map['avatar'],
-      preferences: map['preferences'] ?? [],
-      lastVisted: map['lastVisted'],
+      preferences: List.from(map['preferences']),
+      lastVisited: (map['last_visited'] as Timestamp).toDate(),
       liked: DateTimeHelper.convertTimeStampToDateTime(map['liked']),
-      previous_viewed_article: StringHeler.convertMapStringToString(map['previous_viewed_article']),
     );
   }
-
-  factory UserModel.fromUpdateUser(Map<String, dynamic> map) {
-    return UserModel(
-      id: map['id'],
-      username: map['username'] ?? '',
-      fullname: map['fullname'] ?? '',
-      email: map['email'] ?? '',
-      createdAt: map['createdAt'],
-      modifiedAt: map['modifiedAt'],
-      avatar: map['avatar'],
-      preferences: map['preferences'],
-      lastVisted: map['lastVisted'],
-      liked: map['liked'],
-      previous_viewed_article: map['previous_viewed_article'],
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory UserModel.fromJson(String source) => UserModel.fromMap(json.decode(source));
 
   @override
   bool operator ==(Object other) {

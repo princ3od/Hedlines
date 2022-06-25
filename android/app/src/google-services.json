@@ -14,6 +14,67 @@
       },
       "oauth_client": [
         {
+          "client_id": "549759952379-54fes3c0jg2tfm289rk5s0n3tihq5sbj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hedlines",
+            "certificate_hash": "78e0cad28226283776bff1c170cc7c44a293d606"
+          }
+        },
+        {
+          "client_id": "549759952379-d113m1v1g8ffb9g4vtk7874k9071hgdp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hedlines",
+            "certificate_hash": "15229067429420a11f3d2720a10afa2938c4c89e"
+          }
+        },
+        {
+          "client_id": "549759952379-3hj565u2c25qef5j8bvmfct3of55haut.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC16PC9H9fwNHJpDqReD6GN_TLJA98Whrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "549759952379-3hj565u2c25qef5j8bvmfct3of55haut.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549759952379:android:8d4b5ecb3c48d51047175e",
+        "android_client_info": {
+          "package_name": "com.glacial.hedlines"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549759952379-1e7e8ap1c6ahsn2s4hgdd6mnn6gqpjc8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.glacial.hedlines",
+            "certificate_hash": "78e0cad28226283776bff1c170cc7c44a293d606"
+          }
+        },
+        {
+          "client_id": "549759952379-595l419acdl3uf6erk57ig30l19f4orj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.glacial.hedlines",
+            "certificate_hash": "15229067429420a11f3d2720a10afa2938c4c89e"
+          }
+        },
+        {
           "client_id": "549759952379-3hj565u2c25qef5j8bvmfct3of55haut.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/routes/app_pages.dart';
@@ -22,11 +21,6 @@ AppBar appBarTitleBack({
   bool? isVisibleBackButton = true,
 }) {
   return AppBar(
-    systemOverlayStyle: SystemUiOverlayStyle(
-      statusBarColor: Colors.white,
-      statusBarBrightness: brightness ?? Theme.of(AppNavigator.context!).brightness,
-      statusBarIconBrightness: (brightness ?? Theme.of(AppNavigator.context!).brightness) == Brightness.dark ? Brightness.light : Brightness.dark,
-    ),
     elevation: elevation ?? 0.25,
     backgroundColor: backgroundColor ?? backgroundPrimaryColor,
     automaticallyImplyLeading: false,

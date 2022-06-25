@@ -11,16 +11,22 @@ class AccountRemember {
 
   final List<Account>? account;
 
-  factory AccountRemember.fromJson(String str) => AccountRemember.fromMap(json.decode(str));
+  factory AccountRemember.fromJson(String str) =>
+      AccountRemember.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
   factory AccountRemember.fromMap(Map<String, dynamic> json) => AccountRemember(
-        account: json["account"] == null ? null : List<Account>.from(json["account"].map((x) => Account.fromMap(x))),
+        account: json["account"] == null
+            ? null
+            : List<Account>.from(
+                json["account"].map((x) => Account.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "account": account == null ? null : List<dynamic>.from(account!.map((x) => x.toMap())),
+        "account": account == null
+            ? null
+            : List<dynamic>.from(account!.map((x) => x.toMap())),
       };
 }
 
@@ -38,7 +44,7 @@ class Account {
   String toJson() => json.encode(toMap());
 
   factory Account.fromMap(Map<String, dynamic> json) => Account(
-        email: json["email"] == null ? null : json["email"],
+        email: json["email"],
         password: json["password"],
       );
 

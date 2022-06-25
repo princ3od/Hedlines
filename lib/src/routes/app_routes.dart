@@ -1,8 +1,8 @@
 class Routes {
-  static const ROOT = '/';
-  static const AUTHENTICATION = '/authentication';
-  static const HOME = '/home';
-  static const TOPIC = '/topic';
-  static const WELLCOME = '/wellcome';
-  static const ARTICLE_DETAIL = '/articleDelail';
+  static const root = '/';
+  static const authentication = '/authentication';
+  static const home = '/home';
+  static const topic = '/topic';
+  static const welcome = '/wellcome';
+  static const articleDetail = '/articleDelail';
 }

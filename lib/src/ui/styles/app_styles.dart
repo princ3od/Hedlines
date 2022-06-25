@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
@@ -8,27 +6,27 @@ import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 final AppBar appBarCalendar = AppBar(
   backgroundColor: Colors.transparent,
   elevation: 0.0,
-  systemOverlayStyle: SystemUiOverlayStyle(
+  systemOverlayStyle: const SystemUiOverlayStyle(
     statusBarBrightness: Brightness.dark,
   ),
 );
 
-final Divider dividerCalendar = Divider(
+const Divider dividerCalendar = Divider(
   color: colorDividerTimeline,
-  thickness: 0.2.sp,
-  height: 0.2.sp,
-  indent: 10.sp,
-  endIndent: 12.sp,
+  thickness: 0.2,
+  height: 0.2,
+  indent: 10,
+  endIndent: 12,
 );
 
 final Widget dividerThinkness6 = Container(
-  height: 6.sp,
+  height: 6,
   color: backgroundDetails,
-  margin: EdgeInsets.only(top: 2.sp, bottom: 10.sp),
+  margin: const EdgeInsets.only(top: 2, bottom: 10),
 );
 
 final Widget dividerThinkness6NotMargin = Container(
-  height: 6.sp,
+  height: 6,
   color: backgroundDetails,
 );
 
@@ -90,172 +88,172 @@ const colorDialogBackGround = Color(0xFFFFFFFF);
 
 // Height-width ratio
 final isLargeDevice = 100.h / 100.w > 1.6;
-final TextStyle text13w400cBlack2 = TextStyle(
-  fontSize: 13.sp,
+const TextStyle text13w400cBlack2 = TextStyle(
+  fontSize: 13,
   fontWeight: FontWeight.w400,
   color: colorBlack2,
 );
-final TextStyle text14w600cBlack2 = TextStyle(
-  fontSize: 14.sp,
+const TextStyle text14w600cBlack2 = TextStyle(
+  fontSize: 14,
   fontWeight: FontWeight.w600,
   color: colorBlack2,
 );
-final TextStyle text14w700cBlack1 = TextStyle(
-  fontSize: 14.sp,
+const TextStyle text14w700cBlack1 = TextStyle(
+  fontSize: 14,
   fontWeight: FontWeight.w700,
   color: colorBlack1,
 );
-final TextStyle text14w700cBlack2 = TextStyle(
-  fontSize: 14.sp,
+const TextStyle text14w700cBlack2 = TextStyle(
+  fontSize: 14,
   fontWeight: FontWeight.w700,
   color: colorBlack2,
 );
-final TextStyle text12w600cBlack2 = TextStyle(
-  fontSize: 12.sp,
+const TextStyle text12w600cBlack2 = TextStyle(
+  fontSize: 12,
   fontWeight: FontWeight.w600,
   color: colorBlack2,
 );
-final TextStyle text12w400cFontGreen = TextStyle(
-  fontSize: 12.sp,
+const TextStyle text12w400cFontGreen = TextStyle(
+  fontSize: 12,
   fontWeight: FontWeight.w400,
   color: colorFontGreen,
 );
-final TextStyle text12w400cFinished = TextStyle(
-  fontSize: 12.sp,
+const TextStyle text12w400cFinished = TextStyle(
+  fontSize: 12,
   fontWeight: FontWeight.w400,
   color: colorFinished,
 );
-final TextStyle text13w600cBlack2 = TextStyle(
-  fontSize: 13.sp,
+const TextStyle text13w600cBlack2 = TextStyle(
+  fontSize: 13,
   fontWeight: FontWeight.w600,
   color: colorBlack2,
 );
-final TextStyle text13w700cWhite = TextStyle(
-  fontSize: 13.sp,
+const TextStyle text13w700cWhite = TextStyle(
+  fontSize: 13,
   fontWeight: FontWeight.w700,
   color: colorWhite,
 );
 
-final TextStyle text10w400cGray2 = TextStyle(
-  fontSize: 10.sp,
+const TextStyle text10w400cGray2 = TextStyle(
+  fontSize: 10,
   fontWeight: FontWeight.w400,
   color: colorGray2,
 );
-final TextStyle text13w400cGray2 = TextStyle(
-  fontSize: 13.sp,
+const TextStyle text13w400cGray2 = TextStyle(
+  fontSize: 13,
   fontWeight: FontWeight.w400,
   color: colorGray2,
 );
-final TextStyle text15w700cBlack2 = TextStyle(
-  fontSize: 15.sp,
+const TextStyle text15w700cBlack2 = TextStyle(
+  fontSize: 15,
   fontWeight: FontWeight.w700,
   color: colorBlack2,
 );
-final TextStyle text13w700cGray1 = TextStyle(
-  fontSize: 13.sp,
+const TextStyle text13w700cGray1 = TextStyle(
+  fontSize: 13,
   fontWeight: FontWeight.w700,
   color: colorGray1,
 );
-final TextStyle text13w400cGreen2 = TextStyle(
-  fontSize: 13.sp,
+const TextStyle text13w400cGreen2 = TextStyle(
+  fontSize: 13,
   fontWeight: FontWeight.w400,
   color: colorGreen2,
 );
-final TextStyle text13w400cFontGreen = TextStyle(
-  fontSize: 13.sp,
+const TextStyle text13w400cFontGreen = TextStyle(
+  fontSize: 13,
   fontWeight: FontWeight.w400,
   color: colorFontGreen,
 );
-final TextStyle text13w400cRed = TextStyle(
-  fontSize: 10.5.sp,
+const TextStyle text13w400cRed = TextStyle(
+  fontSize: 10.5,
   fontWeight: FontWeight.w400,
   color: Color(0xffB31D1D),
 );
 
-final TextStyle text56w400Blue = TextStyle(
-  fontSize: 53.sp,
+const TextStyle text56w400Blue = TextStyle(
+  fontSize: 53,
   fontWeight: FontWeight.w400,
   letterSpacing: 1,
   color: Color(0xff0953AD),
   fontStyle: FontStyle.normal,
 );
-final TextStyle text20w400Blue = TextStyle(
-  fontSize: 17.sp,
+const TextStyle text20w400Blue = TextStyle(
+  fontSize: 17,
   fontWeight: FontWeight.w400,
   color: Color(0xff0953AD),
   fontStyle: FontStyle.normal,
 );
 
-final TextStyle text14w500Blue = TextStyle(
-  fontSize: 12.sp,
+const TextStyle text14w500Blue = TextStyle(
+  fontSize: 14,
   fontWeight: FontWeight.w500,
   color: Color(0xff0953AD),
   fontStyle: FontStyle.normal,
 );
 
-final TextStyle text24w700Blue = TextStyle(
-  fontSize: 21.sp,
+const TextStyle text24w700Blue = TextStyle(
+  fontSize: 21,
   fontWeight: FontWeight.w700,
   color: Color(0xff0953AD),
   fontStyle: FontStyle.normal,
 );
 
-final TextStyle text14w700Blue = TextStyle(
-  fontSize: 12.sp,
+const TextStyle text14w700Blue = TextStyle(
+  fontSize: 14,
   fontWeight: FontWeight.w700,
   color: Color(0xff0953AD),
   fontStyle: FontStyle.normal,
 );
 
-final TextStyle text24w700Black = TextStyle(
-  fontSize: 21.sp,
+const TextStyle text24w700Black = TextStyle(
+  fontSize: 24,
   fontWeight: FontWeight.w700,
   color: colorBlack1,
   fontStyle: FontStyle.normal,
 );
 
-final TextStyle text10w400Black = TextStyle(
-  fontSize: 8.5.sp,
+const TextStyle text12w400Black = TextStyle(
+  fontSize: 12,
   fontWeight: FontWeight.w500,
   color: colorBlack1,
   fontStyle: FontStyle.normal,
 );
-final TextStyle text14w500Black = TextStyle(
-  fontSize: 12.sp,
+const TextStyle text14w500Black = TextStyle(
+  fontSize: 14,
   fontWeight: FontWeight.w500,
   color: colorBlack1,
   fontStyle: FontStyle.normal,
 );
 
-final TextStyle text14w700White = TextStyle(
-  fontSize: 12.sp,
+const TextStyle text14w700White = TextStyle(
+  fontSize: 12,
   fontWeight: FontWeight.w500,
   color: colorWhite,
   fontStyle: FontStyle.normal,
 );
 
-final TextStyle text10w700White = TextStyle(
-  fontSize: 8.5.sp,
+const TextStyle text10w700White = TextStyle(
+  fontSize: 10,
   fontWeight: FontWeight.w700,
   color: colorWhite,
   fontStyle: FontStyle.normal,
 );
 final TextStyle text10w400Blue = TextStyle(
-  fontSize: 8.5.sp,
+  fontSize: 10.5,
   fontWeight: FontWeight.w400,
   color: backgroundPrimaryColor,
   fontStyle: FontStyle.normal,
 );
 
-final TextStyle text14w500Grey = TextStyle(
-  fontSize: 11.sp,
+const TextStyle text14w500Grey = TextStyle(
+  fontSize: 11,
   fontWeight: FontWeight.w500,
   color: Color(0xff999999),
   fontStyle: FontStyle.normal,
 );
 
-final TextStyle text16w600Blue = TextStyle(
-  fontSize: 12.5.sp,
+const TextStyle text16w600Blue = TextStyle(
+  fontSize: 16,
   fontWeight: FontWeight.w600,
   color: Color(0xff0953AD),
   fontStyle: FontStyle.normal,

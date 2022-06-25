@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:hedlines/src/configs/theme/app_colors.dart';
+import 'package:hedlines/src/controller/app_controller.dart';
 import 'package:hedlines/src/helper/sizer_custom/sizer.dart';
 import 'package:hedlines/src/ui/common/app_bars/app_bar_brighness_dark.dart';
 import 'package:hedlines/src/ui/common/buttons/inline_button.dart';
 import 'package:hedlines/src/ui/styles/app_styles.dart';
 import 'package:flutter_html/flutter_html.dart';
 
-class WellcomeScreen extends StatefulWidget {
-  const WellcomeScreen({Key? key}) : super(key: key);
+class WelcomeScreen extends StatefulWidget {
+  const WelcomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<WellcomeScreen> createState() => _WellcomeScreenState();
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-class _WellcomeScreenState extends State<WellcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     Widget html = Html(
@@ -25,7 +26,6 @@ class _WellcomeScreenState extends State<WellcomeScreen> {
 </div>
 """,
     );
-    final orientation = MediaQuery.of(context).orientation;
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
@@ -42,7 +42,7 @@ class _WellcomeScreenState extends State<WellcomeScreen> {
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  "Chào mừng <name>\nđến với Hedlines",
+                  'Chào mừng ${AppController.userInfo.value?.fullname ?? "bạn"}\nđến với Hedlines',
                   style: text24w700Blue,
                   textAlign: TextAlign.left,
                 ),
