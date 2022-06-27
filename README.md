@@ -10,6 +10,10 @@ An mobile app that allows users to view lastest news from many trusted-sources.
 - Update preferences
 - View articles (news) by vertical sliding (like Tiktok)
 
+## Promotion Video
+
+[![INTRO VIDEO]](https://www.youtube.com/watch?v=1e7YgQerrK8)
+
 ## Tech Stack
 
 **Client:** Flutter (Dart)
