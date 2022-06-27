@@ -11,8 +11,7 @@ An mobile app that allows users to view lastest news from many trusted-sources.
 - View articles (news) by vertical sliding (like Tiktok)
 
 ## Promotion Video
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/watch?v=pnq9gxAfEC8/0.jpg)](https://www.youtube.com/watch?v=pnq9gxAfEC8)
+[![INTRO VIDEO](https://img.youtube.com/vi/pnq9gxAfEC8/0.jpg)](https://www.youtube.com/watch?v=pnq9gxAfEC8)
 
 ## Tech Stack
 
