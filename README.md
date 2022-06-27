@@ -12,7 +12,7 @@ An mobile app that allows users to view lastest news from many trusted-sources.
 
 ## Promotion Video
 
-[![INTRO VIDEO]](https://www.youtube.com/watch?v=1e7YgQerrK8)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/watch?v=pnq9gxAfEC8/0.jpg)](https://www.youtube.com/watch?v=pnq9gxAfEC8)
 
 ## Tech Stack
 
