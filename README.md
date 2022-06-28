@@ -6,7 +6,7 @@ An mobile app that allows users to view lastest news from many trusted-sources.
 
 ## Promotion Video
 
-[![INTRO VIDEO](./assets/images/readme/promotion5.png)](https://www.youtube.com/watch?v=pnq9gxAfEC8)
+[![INTRO VIDEO](./assets/images/readme/promotion5.png)](https://www.youtube.com/watch?v=pnq9gxAfEC8){:target="_blank"}
 
 ## Features
 
