@@ -4,14 +4,16 @@
 
 An mobile app that allows users to view lastest news from many trusted-sources.
 
+## Promotion Video
+
+[![INTRO VIDEO](https://img.youtube.com/vi/pnq9gxAfEC8/0.jpg)](https://www.youtube.com/watch?v=pnq9gxAfEC8)
+
 ## Features
 
 - Login
 - Update preferences
 - View articles (news) by vertical sliding (like Tiktok)
-
-## Promotion Video
-[![INTRO VIDEO](https://img.youtube.com/vi/pnq9gxAfEC8/0.jpg)](https://www.youtube.com/watch?v=pnq9gxAfEC8)
+- Search articles
 
 ## Tech Stack
 
@@ -23,9 +25,9 @@ An mobile app that allows users to view lastest news from many trusted-sources.
 
 ## Installation
 
-Get the **APK** in release page
+Get the **APK** in *releases* page
 
-*OR*
+### *OR*
 
 Step 1:
 
